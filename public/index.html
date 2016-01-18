@@ -1,32 +1,40 @@
-<!-- index.html -->
-<!doctype html>
-
-<!-- ASSIGN OUR ANGULAR MODULE -->
-<html ng-app="meanApp">
-<head>
-    <!-- META -->
+<!DOCTYPE html>
+<html>
+<head ng-app="meanApp">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Node/Angular Todo App</title>
+    <title>Image Gallery</title>
 
-    <!-- SCROLLS -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap 
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 
-    <!-- SPELLS -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
-    <script src="js/controllers/main.js"></script> <!-- load up our controller -->
-    <script src="js/services/todos.js"></script> <!-- load our todo service -->
-    <script src="js/core.js"></script> <!-- load our main application -->
-
+    <script src="js/vendor/jquery-2.2.0.min.js"></script>
+    <script src="js/vendor/angular.min.js"></script>
+    <script src="js/vendor/angular-route.min.js"></script>
+    <!--MAIN-->
+    <script src="js/app.js"></script> 
+    <script src="js/routes.js"></script> 
+    <!--SERVICES-->
+    <script src="js/services/album.js"></script>
+    <!--CONTROLLERS-->
+    <script src="js/controllers/albums-index-controller.js"></script>
+    <script src="js/controllers/albums-show-controller.js"></script>
+    <script src="js/controllers/albums-create-controller.js"></script>
+    
 </head>
-<!-- SET THE CONTROLLER AND GET ALL TODOS -->
-<body ng-controller="mainController">
-    <nav class="navbar navbar-inverse">
-        <div class="container">
+
+<body>
+    <nav class="navbar navbar-inverse"></nav>
+    <div class="container">
+        <div class="col-md-3">
+            <ul class="nav">
+                <li><a href="albums">Albums</a></li>
+            </ul>
         </div>
-    </nav>
+        <div ng-view></div>
+    </div>
+    
 </body>
 
 </html>

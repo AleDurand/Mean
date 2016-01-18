@@ -1,0 +1,9 @@
+<h1>TODO crate</h1>
+<form name="albumForm" ng-submit="albumForm.$valid && save(album)" novalidate>
+    <input name="albumName" ng-model="album.name" placeholder="Name" required />
+    <input name="albumDesc" ng-model="album.description" placeholder="Description" required />
+    <input name="albumPath" ng-model="album.path" placeholder="Path" required />
+    <input type="submit" value="Submit" /> 
+    <p ng-if="errors"> {{errors}} </p> 
+</form>
+

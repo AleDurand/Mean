@@ -5,12 +5,12 @@ angular.module('meanApp')
 			redirectTo: '/albums'
 		})
 		.when('/albums',{
-			templateUrl: '../templates/pages/albums/index.html',
+			templateUrl: 'templates/pages/albums/index.html',
 			controller: 'AlbumsIndexController',
 			controllerAs: 'indexController'
 		})
 		.when('/albums/:id', {
-			templateUrl: '../templates/pages/albums/show.html',
+			templateUrl: 'templates/pages/albums/show.html',
 			controller: 'AlbumsShowController',
 			controllerAs: 'showController'
 		})

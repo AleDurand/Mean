@@ -1,9 +1,6 @@
 angular.module('meanApp', ['ngRoute'])
 .config(['$routeProvider', function($routeProvider){
 	$routeProvider
-		.when('/',{
-			redirectTo: '/albums'
-		})
 		.when('/albums',{
 			templateUrl: 'templates/pages/albums/index.html',
 			controller: 'AlbumsIndexController',
@@ -14,7 +11,12 @@ angular.module('meanApp', ['ngRoute'])
 			controller: 'AlbumsShowController',
 			controllerAs: 'showController'
 		})
-		.otherwise({ redirectTo: '/' });
+		.when('/albums/create', {
+			templateUrl: 'templates/pages/albums/create.html',
+			controller: 'AlbumsCreateController',
+			controllerAs: 'createController'
+		})
+		.otherwise({ redirectTo: '/albums' });
 }]);
 
 

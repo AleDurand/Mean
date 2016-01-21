@@ -7,6 +7,8 @@ var database = require('./config/database');            // load the database con
 var morgan = require('morgan');             // log requests to the console (express4)
 var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
+var multer = require('multer');
+var fs = require('fs');
 
 // configuration ===============================================================
 mongoose.connect(database.url);     // connect to mongoDB database on modulus.io

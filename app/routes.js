@@ -1,4 +1,5 @@
 var Albums = require('./models/album');
+var upload = require('./utils/upload');
 
 module.exports = function(app) {
 
@@ -10,7 +11,7 @@ module.exports = function(app) {
         });
     });
 
-    app.post('/api/albums', function(req, res) {
+    app.post('/api/albums', [ upload.any(), function(req, res, next) {
         Albums.create({
             name : req.body.name,
             description : req.body.name,
@@ -19,7 +20,8 @@ module.exports = function(app) {
             if (err)
                 res.send(err);
         });
-    });
+        
+    }]);
 
     app.delete('/api/albums/:album_id', function(req, res) {
         Albums.remove({

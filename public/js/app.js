@@ -6,15 +6,15 @@ angular.module('meanApp', ['ngRoute'])
 			controller: 'AlbumsIndexController',
 			controllerAs: 'indexController'
 		})
-		.when('/albums/:id', {
-			templateUrl: 'templates/pages/albums/show.html',
-			controller: 'AlbumsShowController',
-			controllerAs: 'showController'
-		})
 		.when('/albums/create', {
 			templateUrl: 'templates/pages/albums/create.html',
 			controller: 'AlbumsCreateController',
 			controllerAs: 'createController'
+		})
+		.when('/albums/:id', {
+			templateUrl: 'templates/pages/albums/show.html',
+			controller: 'AlbumsShowController',
+			controllerAs: 'showController'
 		})
 		.otherwise({ redirectTo: '/albums' });
 }]);

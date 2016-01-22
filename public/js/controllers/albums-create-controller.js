@@ -8,9 +8,11 @@ angular.module('meanApp')
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined }
         })
-        .success(function(){
+        .success(function(data){
+        	alert(data);
         })
-        .error(function(){
+        .error(function(err){
+        	alert(err);
         });
     };
 });

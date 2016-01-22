@@ -12,15 +12,7 @@ module.exports = function(app) {
     });
 
     app.post('/api/albums', [ upload.any(), function(req, res, next) {
-        Albums.create({
-            name : req.body.name,
-            description : req.body.name,
-            path : req.body.path
-        }, function(err, album) {
-            if (err)
-                res.send(err);
-        });
-        
+        res.status(204).send('No content');
     }]);
 
     app.delete('/api/albums/:album_id', function(req, res) {

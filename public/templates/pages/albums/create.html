@@ -1,4 +1,4 @@
-<form name="albumForm" ng-submit="albumForm.$valid && save(album)" novalidate>
+<form name="albumForm" ng-submit="createController.save(album, image)" novalidate>
 	<div class="form-group">
 		<label for="name">Photo name</label>
 		<input class="form-control" ng-model="album.name" placeholder="Name" required/>
@@ -9,7 +9,7 @@
 	</div>
 	<div class="form-group">
 		<label for="file">File input</label>
-		<input type="file" required/>
+		<input type="file" file-model="image" required/>
 	</div>
 	<button type="submit" class="btn btn-default">Submit</button>
 </form>

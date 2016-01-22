@@ -1,11 +1,16 @@
 angular.module('meanApp')
-.controller('AlbumsCreateController', function($http) {
+.controller('AlbumsCreateController', function($scope, $http) {
 	var controller = this;
-	this.saveAlbum = function(album) {
-		controller.errors = null;
-		$http({method: 'POST', url: '/albums', data: album})
-			.catch(function(note) {
-				controller.errors = note.data.error;
-			})
-	};
+	 this.save = function(album, image){
+        var fd = new FormData();
+        fd.append('file', image);
+        $http.post('/api/albums', fd, {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined }
+        })
+        .success(function(){
+        })
+        .error(function(){
+        });
+    };
 });

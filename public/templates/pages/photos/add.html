@@ -1,0 +1,7 @@
+<form name="albumForm" ng-submit="createController.save(album, images)" novalidate>
+	<div class="form-group">
+		<label for="file">File input</label>
+		<input type="file" file-model="images" multiple required/>
+	</div>
+	<button type="submit" class="btn btn-default">Submit</button>
+</form>

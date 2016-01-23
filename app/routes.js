@@ -1,9 +1,10 @@
 var Albums = require('./models/album');
 var Photos = require('./models/photo');
+var upload = require('./utils/upload');
 
 module.exports = function(app) {
 
-    app.post('/api/albums', function(req, res) {
+    app.post('/api/albums', [ upload.any(), function(req, res, next) {
         album = JSON.parse(req.body.album);
         Albums.create({
             name : album.name,
@@ -14,7 +15,7 @@ module.exports = function(app) {
                  res.send(err);
              res.status(204).end();
         });
-    });
+    }]);
 
     app.get('/api/albums', function(req, res) {
         Albums.find(function(err, albums) {

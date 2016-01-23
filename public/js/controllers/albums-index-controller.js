@@ -3,4 +3,5 @@ angular.module('meanApp')
 	Album.all()
 		.success(function(data) {
 			$scope.albums = data;
+		});
 });

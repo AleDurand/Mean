@@ -16,6 +16,11 @@ angular.module('meanApp', ['ngRoute'])
 			controller: 'AlbumsShowController',
 			controllerAs: 'showController'
 		})
+		.when('/albums/:id/photos', {
+			templateUrl: 'templates/pages/photos/add.html',
+			controller: 'AlbumsAddPhotosController',
+			controllerAs: 'addController'
+		})
 		.otherwise({ redirectTo: '/albums' });
 }]);
 

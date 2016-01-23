@@ -1,7 +1,9 @@
 <div ng-repeat="album in albums">
-    <img ng-src="{{album.path}}" style="margin:auto;">
-    <h4>{{album.name}}</h4>
-    <p>{{album.description}}</p>
+    <a ng-href="#/albums/{{album._id}}">  
+        <img ng-src="resources/utils/folder.jpg" style="margin:auto;">
+        <h4>{{album.name}}</h4>
+        <p>{{album.description}}</p>
+    </a>
 </div> 
 
 

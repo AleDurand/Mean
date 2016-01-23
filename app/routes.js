@@ -10,7 +10,7 @@ module.exports = function(app) {
         Albums.create({
             name : album.name,
             description : album.description,
-            path : "resources/" + album.name + "/"
+            path : "resources/albums/" + album.name + "/"
         }, function(err, album) {
              if (err)
                  res.send(err);

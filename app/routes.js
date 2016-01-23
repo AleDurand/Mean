@@ -1,3 +1,4 @@
+var mongoose = require('mongoose');
 var Albums = require('./models/album');
 var Photos = require('./models/photo');
 var upload = require('./utils/upload');
@@ -25,9 +26,19 @@ module.exports = function(app) {
         });
     });
 
+    app.get('/api/albums/:album_id', function(req, res) {
+        Albums.findOne({
+            _id : mongoose.Types.ObjectId(req.params.album_id)
+        }, function(err, album) {
+            if (err)
+                res.send(err);
+            res.json(album);
+        });
+    });
+
     app.delete('/api/albums/:album_id', function(req, res) {
         Albums.remove({
-            _id : req.params.album_id
+            _id : mongoose.Types.ObjectId(req.params.album_id)
         }, function(err, album) {
             if (err)
                 res.send(err);

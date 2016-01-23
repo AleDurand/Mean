@@ -1,23 +1,7 @@
-<div class="container">
-    <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
-            <h1>Gallery</h1>
-            <div>
-                <div style="height: 305px">
-                    <carousel interval="myInterval">
-                        <slide active="slide.active">
-                        	<div ng-repeat="album in albums">
-	                            <img ng-src="{{album.path}}" style="margin:auto;">
-	                            <div class="carousel-caption">
-	                                <h4>{{album.name}}</h4>
-	                                <p>{{album.description}}</p>
-	                            </div>
-	                        </div>    
-                        </slide>
-                    </carousel>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<div ng-repeat="album in albums">
+    <img ng-src="{{album.path}}" style="margin:auto;">
+    <h4>{{album.name}}</h4>
+    <p>{{album.description}}</p>
+</div> 
+
 

@@ -53,7 +53,7 @@ module.exports = function(app) {
         });
     });
 
-    app.post('/api/albums/:album_id/photos', [ upload({destination: basepath + "a"}).any(), function(req, res, next) {
+    app.post('/api/albums/:album_id/photos', [ upload.any(), function(req, res, next) {
         album = JSON.parse(req.body.album);
         for(var i = 0; i < req.files.length; i++){
             console.log(req.files[i].originalname);

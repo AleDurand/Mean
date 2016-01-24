@@ -1,8 +1,14 @@
+'use strict';
+
 angular.module('meanApp')
 .controller('AlbumsShowController', function($scope, $http, $routeParams, Album) {
 	Album.get($routeParams.id)
-		.success(function(data) {
-			$scope.album = data;
+		.success(function(response) {
+			$scope.success = true;
+			$scope.album = response;
+		})
+		.error(function(response) {
+			$scope.error = response.message;
 		});
 	this.save = function(album, images){
 		var fd = new FormData();
@@ -14,9 +20,12 @@ angular.module('meanApp')
 			transformRequest: angular.identity,
 			headers: {'Content-Type': undefined }
 		})
-		.success(function(data){
+		.success(function(response){
+			$scope.success = true;
+			$scope.album = response;
 		})
-		.error(function(err){
+		.error(function(response){
+			$scope.error = response.message;
 		});
 	};	
 });

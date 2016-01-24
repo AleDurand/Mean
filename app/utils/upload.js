@@ -8,6 +8,12 @@ var storage = multer.diskStorage({
 	},
 	filename: function (req, file, cb) {
 		cb(null, file.originalname);
+	},
+	fileFilter: function(req, file, cb) {
+		if(file.mimetype !== 'image/png' && file.mimetype !== 'image/jpg' && file.mimetype !== 'image/jpeg'){
+			return cb(new Error('Only image files are allowed!'), false);
+		}
+		cb(null, true);
 	}
 });
 

@@ -4,6 +4,7 @@ var fs = require('fs');
 var mongoose = require('mongoose');
 var Albums = require('../models/album');
 var upload = require('../utils/upload');
+var errorHandler = require('../errors/errorHandler')
 var basepath = 'resources/albums/';
 
 exports.create = function(req, res) {
@@ -13,13 +14,17 @@ exports.create = function(req, res) {
         path : basepath + req.body.name + "/"
     }, function (error, albumn) {
         if (error)
-            return res.status(400).send({message: error});
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(error)
+            });    
         else{
             try{
                 fs.mkdirSync('./public/' + basepath + req.body.name);
                 return res.status(201).end();
             } catch (error) {
-                return res.status(400).send(error);
+                return res.status(400).send({
+                    message: 'Error occurred while creating the album.'
+                });
             } 
         }
     }); 
@@ -28,7 +33,9 @@ exports.create = function(req, res) {
 exports.all = function(req, res) {
     Albums.find(function(error, albums) {
         if (error)
-            return res.status(400).send({message: error});
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(error)
+            });
         return res.json(albums);
     });
 };
@@ -38,7 +45,9 @@ exports.getById = function(req, res) {
         _id : req.params.album_id
     }, function(error, album) {
         if (error)
-            return res.status(404).send({message: error});
+            return res.status(404).send({
+                message: errorHandler.getErrorMessage(error)
+            });
         return res.json(album);
     });
 };
@@ -48,7 +57,9 @@ exports.delete = function(req, res) {
         _id : req.params.album_id
     }, function(error, album) {
         if (error)
-            return res.status(404).send({message: error});
+            return res.status(404).send({
+                message: errorHandler.getErrorMessage(error)
+            });
         return res.status(204).end();
     });
 };
@@ -72,7 +83,9 @@ exports.addPhotos = function(req, res) {
                    { $addToSet: { photos: newPath } 
                }, function(error, album) {
                     if (error)
-                        return res.status(404).send({message: error});
+                        return res.status(404).send({
+                            message: errorHandler.getErrorMessage(error)
+                        });
                 });
             }
             return res.json(album);

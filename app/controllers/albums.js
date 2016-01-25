@@ -13,10 +13,12 @@ exports.create = function(req, res) {
         description : req.body.description,
         path : basepath + req.body.name + "/"
     }, function (error, albumn) {
-        if (error)
+        if (error){
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(error)
-            });    
+            });  
+        }
+              
         else{
             try{
                 fs.mkdirSync('./public/' + basepath + req.body.name);
@@ -53,14 +55,24 @@ exports.getById = function(req, res) {
 };
 
 exports.delete = function(req, res) {
-    Albums.remove({
+    Albums.findOne({
         _id : req.params.album_id
     }, function(error, album) {
-        if (error)
-            return res.status(404).send({
+        if (error){
+           return res.status(404).send({
                 message: errorHandler.getErrorMessage(error)
-            });
-        return res.status(204).end();
+            }); 
+        } else {
+            album.remove();
+            try{
+                rmdir('./public/'+ album.path);
+                return res.status(204).end();
+            } catch (error) {
+                return res.status(400).send({
+                    message: 'Error occurred while removing the album.'
+                });
+            }         
+        } 
     });
 };
 
@@ -93,4 +105,23 @@ exports.addPhotos = function(req, res) {
     });
 };
 
+
+var rmdir = function(dir) {
+    var list = fs.readdirSync(dir);
+    for(var i = 0; i < list.length; i++) {
+        var filename = path.join(dir, list[i]);
+        var stat = fs.statSync(filename);
+
+        if(filename == "." || filename == "..") {
+            // pass these files
+        } else if(stat.isDirectory()) {
+            // rmdir recursively
+            rmdir(filename);
+        } else {
+            // rm fiilename
+            fs.unlinkSync(filename);
+        }
+    }
+    fs.rmdirSync(dir);
+};
 

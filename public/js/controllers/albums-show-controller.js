@@ -27,5 +27,5 @@ angular.module('meanApp')
 		.error(function(response){
 			$scope.error = response.message;
 		});
-	};	
+	};		
 });

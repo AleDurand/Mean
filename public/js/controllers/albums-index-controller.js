@@ -10,4 +10,14 @@ angular.module('meanApp')
 		.error(function(response) {
 			$scope.error = response.message;
 		});
+	this.delete = function(album){
+		Album.delete(album._id)
+			.success(function(response){
+				$scope.success = true;
+				$scope.album = response;
+			})
+			.error(function(response){
+				$scope.error = response.message;
+			});
+	};	
 });

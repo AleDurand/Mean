@@ -7,7 +7,7 @@ module.exports = function (app) {
     // Albums API
     app.route('/api/albums').post(albums.create);
     app.route('/api/albums').get(albums.all);
-    app.route('/api/albums/:name').get(albums.getById);
-    app.route('/api/albums/:name').delete(albums.delete);
-    app.route('/api/albums/:name/photos').post(albums.addPhotos);
+    app.route('/api/albums/:album_id').get(albums.getById);
+    app.route('/api/albums/:album_id').delete(albums.delete);
+    app.route('/api/albums/:album_id/photos').post(albums.addPhotos);
 };

@@ -11,7 +11,7 @@ angular.module('meanApp')
 			$scope.error = response.message;
 		});
 	this.delete = function(album){
-		Album.delete(album._id)
+		Album.delete(album.name)
 			.success(function(response){
 				$scope.success = true;
 				$scope.album = response;

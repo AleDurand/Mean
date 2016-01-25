@@ -11,12 +11,12 @@ angular.module('meanApp', ['ngRoute'])
 			controller: 'AlbumsCreateController',
 			controllerAs: 'createController'
 		})
-		.when('/albums/:id', {
+		.when('/albums/:name', {
 			templateUrl: 'templates/pages/albums/show.html',
 			controller: 'AlbumsShowController',
 			controllerAs: 'showController'
 		})
-		.when('/albums/:id/photos', {
+		.when('/albums/:name/photos', {
 			templateUrl: 'templates/pages/photos/add.html',
 			controller: 'AlbumsAddPhotosController',
 			controllerAs: 'addController'

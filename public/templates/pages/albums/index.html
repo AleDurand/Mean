@@ -8,7 +8,7 @@
     </div>
     <div ng-repeat="album in albums | filter: {name: search}" ng-animate="'slide'">
         <div class="col-lg-3 col-md-4 col-xs-6">
-            <a class="thumbnail" ng-href="#/albums/{{album._id}}">
+            <a class="thumbnail" ng-href="#/albums/{{album.name}}">
                 <img class="img-responsive" src="resources/utils/folder.jpg" alt="{{album.name}}">
             </a>
             <div class="caption">

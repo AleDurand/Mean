@@ -43,7 +43,7 @@ exports.all = function(req, res) {
 
 exports.getById = function(req, res) {
     Albums.findOne({
-        name : req.params.name
+        _id : req.params.album_id
     }, function(error, album) {
         if (error)
             return res.status(404).send({
@@ -55,7 +55,7 @@ exports.getById = function(req, res) {
 
 exports.delete = function(req, res) {
     Albums.findOne({
-        name : req.params.name
+        _id : req.params.album_id
     }, function(error, album) {
         if (error){
            return res.status(404).send({
@@ -92,7 +92,7 @@ exports.addPhotos = function(req, res) {
             for(var i = 0; i < req.files.length; i++){
                 newPath = album.path + req.files[i].originalname;
                 Albums.update(
-                   { name: req.params.name },
+                   { _id: req.params.album_id },
                    { $addToSet: { photos: newPath } 
                }, function(error, album) {
                     if (error)

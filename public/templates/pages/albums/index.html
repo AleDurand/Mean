@@ -10,10 +10,7 @@
             <div class="caption">
                 <h3>{{album.name}}</h3>
                 <p>{{album.description}}</p>
-            </div>
-            <div class="form-group">
-                <label for="album">Remove album</label>
-                <button ng-click="indexController.delete(album)">Delete</button>
+                <p><button ng-click="indexController.delete(album)" class = "btn btn-primary">X</button></p>
             </div>
         </div>
     </div>

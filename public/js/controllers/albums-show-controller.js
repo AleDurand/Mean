@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('meanApp')
-.controller('AlbumsShowController', function($scope, $http, $routeParams, Album) {
+.controller('AlbumsShowController', function($scope, $route, $http, $routeParams, Album) {
 	Album.get($routeParams.id)
 		.success(function(response) {
 			$scope.success = true;
@@ -23,6 +23,7 @@ angular.module('meanApp')
 		.success(function(response){
 			$scope.success = true;
 			$scope.album = response;
+			$route.reload();
 		})
 		.error(function(response){
 			$scope.error = response.message;

@@ -17,8 +17,7 @@ exports.create = function(req, res) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(error)
             });  
-        }
-              
+        } 
         else{
             try{
                 fs.mkdirSync('./public/' + basepath + req.body.name);
@@ -63,11 +62,13 @@ exports.delete = function(req, res) {
                 message: errorHandler.getErrorMessage(error)
             }); 
         } else {
+            var path = album.path;
             album.remove();
             try{
-                rmdir('./public/'+ album.path);
+                rmdir('./public/'+ path);
                 return res.status(204).end();
             } catch (error) {
+                console.log(error);
                 return res.status(400).send({
                     message: 'Error occurred while removing the album.'
                 });
@@ -107,9 +108,11 @@ exports.addPhotos = function(req, res) {
 
 
 var rmdir = function(dir) {
+    console.log('############ rm dir ############');
     var list = fs.readdirSync(dir);
     for(var i = 0; i < list.length; i++) {
-        var filename = path.join(dir, list[i]);
+        var filename = dir + list[i];
+        console.log(filename);
         var stat = fs.statSync(filename);
 
         if(filename == "." || filename == "..") {

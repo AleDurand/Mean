@@ -2,7 +2,7 @@
 
 angular.module('meanApp')
 .controller('AlbumsShowController', function($scope, $route, $http, $routeParams, Album) {
-	Album.get($routeParams.name)
+	Album.get($routeParams.id)
 		.success(function(response) {
 			$scope.success = true;
 			$scope.album = response;
@@ -16,7 +16,7 @@ angular.module('meanApp')
 		for (var i = 0; i < images.length; i++) {
 			fd.append('file' + i, images[i]._file);
 		}
-		$http.post('/api/albums/' + $routeParams.name + '/photos', fd, {
+		$http.post('/api/albums/' + $routeParams.id + '/photos', fd, {
 			transformRequest: angular.identity,
 			headers: {'Content-Type': undefined }
 		})

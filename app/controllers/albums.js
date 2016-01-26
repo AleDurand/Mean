@@ -19,16 +19,14 @@ exports.create = function(req, res) {
                 message: errorHandler.getErrorMessage(error)
             });  
         } 
-        else{
-            try{
-                fs.mkdirSync('./public/' + basepath + req.body.name);
-                return res.status(201).end();
-            } catch (error) {
-                return res.status(400).send({
-                    message: 'Error occurred while creating the album.'
-                });
-            } 
-        }
+        try{
+            fs.mkdirSync('./public/' + basepath + req.body.name);
+            return res.status(201).end();
+        } catch (error) {
+            return res.status(400).send({
+                message: 'Error occurred while creating the album.'
+            });
+        } 
     }); 
 };
 
@@ -50,7 +48,9 @@ exports.getById = function(req, res) {
             return res.status(404).send({
                 message: errorHandler.getErrorMessage(error)
             });
-        return res.json(album);
+        album.populate("photos", function(error, album) {
+            return res.json(album)
+        });
     });
 };
 
@@ -62,19 +62,16 @@ exports.delete = function(req, res) {
            return res.status(404).send({
                 message: errorHandler.getErrorMessage(error)
             }); 
-        } else {
-            var path = album.path;
-            album.remove();
-            try{
-                rmdir('./public/'+ path);
-                return res.status(204).end();
-            } catch (error) {
-                console.log(error);
-                return res.status(400).send({
-                    message: 'Error occurred while removing the album.'
-                });
-            }         
         } 
+        album.remove();
+        try{
+            rmdir('./public/'+ album.path);
+            return res.status(204).end();
+        } catch (error) {
+            return res.status(400).send({
+                message: 'Error occurred while removing the album.'
+            });
+        }          
     });
 };
 
@@ -87,44 +84,31 @@ exports.addPhotos = function(req, res) {
                 message: 'Error occurred while uploading the photos'
             });
         }
-        else{
-            var album = JSON.parse(req.body.album);
-            var newPath = "";
-            for(var i = 0; i < req.files.length; i++){
-                Photos.create({
-                    name: req.files[i].originalname,
-                    path: album.path + req.files[i].originalname
-                }, function(err, photo){
-                    if(!err){
-                        console.log(photo);
-                        Albums.update(
-                           { _id: req.params.album_id },
-                           { $addToSet: { photos: photo } 
-
-                       }, function(error, album) {
-                            if (error){
-                                return res.status(404).send({
-                                    message: errorHandler.getErrorMessage(error)
-                                });
-                            }
-                        });
-                    }
-                });                
-            }
-            Albums.findOne({_id: req.params.album_id}).populate('photos').exec(function(err,album){
-                 if(err){
-                    console.log('asdasd');
-                 }
-                 return res.json(album);
-            });
-            
+        var album = JSON.parse(req.body.album);
+        for(var i = 0; i < req.files.length; i++){
+            Photos.create({
+                name: req.files[i].originalname,
+                path: album.path + req.files[i].originalname
+            }, function(err, photo){
+                if(!err){
+                    Albums.update(
+                       { _id: req.params.album_id },
+                       { $addToSet: { photos: photo } 
+                   }, function(error, album) {
+                        if (error){
+                            return res.status(404).send({
+                                message: errorHandler.getErrorMessage(error)
+                            });
+                        }
+                    });
+                }
+            });                
         }
     });
 };
 
 
 var rmdir = function(dir) {
-    console.log('############ rm dir ############');
     var list = fs.readdirSync(dir);
     for(var i = 0; i < list.length; i++) {
         var filename = dir + list[i];

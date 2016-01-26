@@ -22,7 +22,12 @@ var AlbumSchema = new Schema({
     photos: [{type: Schema.Types.ObjectId, ref: 'Photo'}]
 });
 
-var Album = mongoose.model('Album', AlbumSchema);
+AlbumSchema.post('remove', function(album) {
+    for(var i = 0; i < album.photos.length; i++){
+        PhotoSchema.remove({_id: album.photos[i]}).exec();
+    }
+});
 
+var Album = mongoose.model('Album', AlbumSchema);
 
 module.exports = Album;

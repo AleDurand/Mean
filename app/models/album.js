@@ -1,6 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose');
+var PhotoSchema = require('./photo');
 var Schema = mongoose.Schema;
 
 var AlbumSchema = new Schema({
@@ -18,15 +19,10 @@ var AlbumSchema = new Schema({
     	unique: 'Path already exists',
     	required: 'Please fill in a path'
     },
-    photos: {
-    	type: [{
-    		type: String,
-    		unique: 'Photo name already exists'
-    	}],
-    	default: []
-    }
+    photos: [{type: Schema.Types.ObjectId, ref: 'Photo'}]
 });
 
 var Album = mongoose.model('Album', AlbumSchema);
+
 
 module.exports = Album;

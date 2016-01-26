@@ -2,6 +2,7 @@
 
 var fs = require('fs');
 var mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
 var Albums = require('../models/album');
 var Photos = require('../models/photo');
 var upload = require('../utils/upload');
@@ -13,65 +14,53 @@ exports.create = function(req, res) {
         name : req.body.name,
         description : req.body.description,
         path : basepath + req.body.name + "/"
-    }, function (error, albumn) {
-        if (error){
-            return res.status(400).send({
-                message: errorHandler.getErrorMessage(error)
-            });  
-        } 
-        try{
-            fs.mkdirSync('./public/' + basepath + req.body.name);
-            return res.status(201).end();
-        } catch (error) {
-            return res.status(400).send({
-                message: 'Error occurred while creating the album.'
-            });
-        } 
-    }); 
+    })
+    .then(function(album){
+        fs.mkdirSync('./public/' + basepath + req.body.name);
+        return res.status(201).end();
+    })
+    .catch(function(error) {
+        res.status(400).send({ message: 'Error occurred while creating the album.' });
+    });
 };
 
 exports.all = function(req, res) {
-    Albums.find(function(error, albums) {
-        if (error)
-            return res.status(400).send({
-                message: errorHandler.getErrorMessage(error)
-            });
+    Albums.find()
+    .then(function(albums) {
         return res.json(albums);
+    })
+    .catch(function(error) {
+        return res.status(400).send({ message: errorHandler.getErrorMessage(error) });
     });
 };
 
 exports.getById = function(req, res) {
-    Albums.findOne({
-        _id : req.params.album_id
-    }, function(error, album) {
-        if (error)
-            return res.status(404).send({
-                message: errorHandler.getErrorMessage(error)
-            });
-        album.populate("photos", function(error, album) {
-            return res.json(album)
-        });
+    console.log("dsasdasd");
+    Albums.findOne({ _id : req.params.album_id })
+    .then(function(album) {
+        console.log("dsasdasd" + album);
+        return album.populate("photos");
+    })
+    .then(function(album2) {
+        return album2;
+    })
+    .catch(function(error) {
+        return res.status(400).send({ message: errorHandler.getErrorMessage(error) });
     });
 };
 
 exports.delete = function(req, res) {
-    Albums.findOne({
-        _id : req.params.album_id
-    }, function(error, album) {
-        if (error){
-           return res.status(404).send({
-                message: errorHandler.getErrorMessage(error)
-            }); 
-        } 
+    Albums.findOne({ _id : req.params.album_id })
+    .then(function(album){
         album.remove();
-        try{
-            rmdir('./public/'+ album.path);
-            return res.status(204).end();
-        } catch (error) {
-            return res.status(400).send({
-                message: 'Error occurred while removing the album.'
-            });
-        }          
+        return album;
+    })
+    .then(function(album){
+        rmdir('./public/' + album.path);
+        return res.status(204).end();
+    })
+    .catch(function(error) {
+        return res.status(400).send({ message: errorHandler.getErrorMessage(error) });
     });
 };
 

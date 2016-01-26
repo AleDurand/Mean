@@ -10,7 +10,6 @@
     "method-override": "~2.1.2",
     "mongoose": "~3.6.2",
     "morgan": "~1.2.2",
-    "multer": "latest",
-    "node-inspector": "^0.12.5"
+    "multer": "latest"
   }
 }

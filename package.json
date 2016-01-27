@@ -5,12 +5,12 @@
   "main": "server.js",
   "author": "Scotch",
   "dependencies": {
+    "bluebird": "^3.1.4",
     "body-parser": "~1.5.2",
     "express": "~4.7.2",
     "method-override": "~2.1.2",
-    "mongoose": "~3.6.2",
+    "mongoose": "latest",
     "morgan": "~1.2.2",
-    "multer": "latest",
-    "node-inspector": "^0.12.5"
+    "multer": "latest"
   }
 }

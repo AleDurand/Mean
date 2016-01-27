@@ -28,5 +28,10 @@ angular.module('meanApp')
 		.error(function(response){
 			$scope.error = response.message;
 		});
-	};		
+	};
+
+	this.Selected = function (photo, album){
+		album.imageAlbum = photo._id;
+		Album.update(album._id,album);		
+	};
 });

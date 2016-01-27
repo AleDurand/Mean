@@ -12,10 +12,6 @@ var PhotoSchema = new Schema({
     	type: String,
     	unique: 'Path already exists',
     	required: 'Please fill in a path'
-    },
-    albumImage : {
-        type: Boolean,
-        default: false
     }
 });
 

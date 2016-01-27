@@ -5,7 +5,9 @@
 </div>
 <div ng-repeat="photo in album.photos">
     <div class="col-lg-3 col-md-4 col-xs-6">
+        <input type="radio" class="radio" id="{{photo.name}}_checkbox" ng-click="showController.Selected(photo, album)"/>
         <img class="img-responsive img-thumbnail" ng-src="{{photo.path}}" alt="">
+
     </div>
 </div>
 

@@ -107,6 +107,20 @@ exports.addPhotos = function(req, res) {
     });
 };
 
+exports.update = function(req, res) {
+    Albums.update(
+        {_id: req.params.album_id},
+        {albumImage: req.body.imageAlbum}
+   , function(error, album) {
+        console.log("ERROR\n"+error);
+        console.log("ALBUM\n"+req.params.album_id);
+        if (error){
+            return res.status(404).send({
+                message: errorHandler.getErrorMessage(error)
+            });
+        }
+    });
+};
 
 var rmdir = function(dir) {
     var list = fs.readdirSync(dir);

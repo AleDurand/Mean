@@ -25,7 +25,7 @@ exports.create = function(req, res) {
 };
 
 exports.all = function(req, res) {
-    Albums.find()
+    Albums.find().populate("photos")
     .then(function(albums) {
         return res.json(albums);
     })
@@ -35,14 +35,9 @@ exports.all = function(req, res) {
 };
 
 exports.getById = function(req, res) {
-    console.log("dsasdasd");
-    Albums.findOne({ _id : req.params.album_id })
+    Albums.findOne({ _id : req.params.album_id }).populate("photos")
     .then(function(album) {
-        console.log("dsasdasd" + album);
-        return album.populate("photos");
-    })
-    .then(function(album2) {
-        return album2;
+        return res.json(album);
     })
     .catch(function(error) {
         return res.status(400).send({ message: errorHandler.getErrorMessage(error) });
@@ -93,6 +88,7 @@ exports.addPhotos = function(req, res) {
                 }
             });                
         }
+        res.status(204).end();
     });
 };
 

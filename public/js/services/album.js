@@ -1,5 +1,5 @@
 angular.module('meanApp')
-.factory('Album', ['$http', function AlbumFactory($http) {
+.factory('Album', ['$http', function AlbumFactory($http,localStorageService, $base64) {
     return {
         all : function() {
             return $http({method: 'GET', url: '/api/albums'});

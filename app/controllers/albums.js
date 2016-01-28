@@ -104,6 +104,7 @@ exports.addPhotos = function(req, res) {
                 }
             });                
         }
+        res.status(204).end();
     });
 };
 

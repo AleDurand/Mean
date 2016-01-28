@@ -25,7 +25,7 @@ exports.create = function(req, res) {
 };
 
 exports.all = function(req, res) {
-    Albums.find().populate("photos")
+    Albums.find().populate("photos").populate("albumImage")
     .then(function(albums) {
         return res.json(albums);
     })
@@ -41,6 +41,16 @@ exports.getById = function(req, res) {
     })
     .catch(function(error) {
         return res.status(400).send({ message: errorHandler.getErrorMessage(error) });
+    });
+};
+
+exports.update = function(req, res) {
+    Albums.update({_id: req.params.album_id}, {albumImage: req.body.imageAlbum})
+    .then(function() {
+        return res.status(204).end();
+    })
+    .catch(function(error) {
+        return res.status(400).send({ message: errorHandler.getErrorMessage(error)});
     });
 };
 

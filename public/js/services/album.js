@@ -10,6 +10,9 @@ angular.module('meanApp')
         create : function(album) {
             return $http({method: 'POST', url: '/api/albums', data: album});
         },
+        update : function(id, album) {
+            return $http({method: 'PUT', url: '/api/albums/' + id, data: album});
+        },
         delete : function(id) {
             return $http({method:'DELETE', url: '/api/albums/' + id});
         }

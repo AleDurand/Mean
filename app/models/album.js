@@ -19,7 +19,12 @@ var AlbumSchema = new Schema({
     	unique: 'Path already exists',
     	required: 'Please fill in a path'
     },
-    photos: [{type: Schema.Types.ObjectId, ref: 'Photo'}]
+    albumImage : {
+        type: Schema.Types.ObjectId, ref: 'Photo'
+    },
+    photos: [{
+        type: Schema.Types.ObjectId, ref: 'Photo'
+    }]
 });
 
 AlbumSchema.post('remove', function(album) {

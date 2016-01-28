@@ -4,7 +4,7 @@ angular.module('meanApp', ['ngRoute'])
 		.when('/albums',{
 			templateUrl: 'templates/pages/albums/index.html',
 			controller: 'AlbumsIndexController',
-			controllerAs: 'indexController'
+			controllerAs: 'indexController',
 		})
 		.when('/albums/create', {
 			templateUrl: 'templates/pages/albums/create.html',
@@ -20,6 +20,11 @@ angular.module('meanApp', ['ngRoute'])
 			templateUrl: 'templates/pages/photos/add.html',
 			controller: 'AlbumsAddPhotosController',
 			controllerAs: 'addController'
+		})
+		.when('/login', {
+			templateUrl: 'templates/pages/users/login/index.html',
+			controller: 'UserLoginController',
+			controllerAs: 'loginController'
 		})
 		.otherwise({ redirectTo: '/albums' });
 }]);

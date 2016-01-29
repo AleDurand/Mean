@@ -102,7 +102,6 @@ exports.addPhotos = function(req, res) {
     });
 };
 
-
 var rmdir = function(dir) {
     var list = fs.readdirSync(dir);
     for(var i = 0; i < list.length; i++) {

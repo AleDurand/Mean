@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');    // pull information from HTML POST (
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 var multer = require('multer');
 var fs = require('fs');
-
+var passport = require('passport');		//Authentication 
 // configuration ===============================================================
 mongoose.connect(database.url);     // connect to mongoDB database on modulus.io
 
@@ -19,6 +19,7 @@ app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));                                  
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
 app.use(methodOverride());
+app.use(passport.initialize());
 
 // routes ======================================================================
 require('./app/routes.js')(app);

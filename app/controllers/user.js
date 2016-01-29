@@ -13,6 +13,7 @@ var hardCodedUser = new User({
 });
 
 hardCodedUser.save(); 
+
 // Create endpoint /api/users for POST
 exports.postUsers = function(req, res) {
   var user = new User({

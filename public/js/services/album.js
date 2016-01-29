@@ -15,9 +15,6 @@ angular.module('meanApp')
         },
         delete : function(id) {
             return $http({method:'DELETE', url: '/api/albums/' + id});
-        },
-        update : function(id, album) {
-            return $http({method: 'PUT', url: '/api/albums/' + id, data: album});
         }
     };
 }]);

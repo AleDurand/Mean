@@ -3,7 +3,6 @@
 module.exports = function (app) {
     // Album routes
     var albums = require('./controllers/albums');
-    var photos = require('./controllers/photos');
     var user = require('./controllers/user');
     var auth = require('./controllers/middlewares/auth');
     

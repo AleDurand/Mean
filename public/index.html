@@ -31,7 +31,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse navbar-static-top">
         <div class="navbar-header">
             <a class="navbar-brand" href="#/">
                 <label>Angular Gallery App</label>
@@ -45,29 +45,25 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">Login <b class="caret"></b></a>
-                    <div class="dropdown-menu" style="padding: 15px;min-width: 250px;">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <form class="form" id="login-nav" ng-controller="UserLoginController">
-                                    <div class="form-group" ng-show="!isLogged()">
-                                        <label for="username">Username</label>
-                                        <input class="form-control" type="text" placeholder="Username" ng-model="user.email" required/>
-                                    </div>
-                                    <div class="form-group" ng-show="!isLogged()">
-                                        <label for="password">Password</label>
-                                        <input class="form-control" type="password" placeholder="Password" ng-model="user.password" required/>
-                                    </div>
-                                    <div class="form-group" ng-show="!isLogged()">
-                                        <button type="submit" class="btn btn-success btn-block" ng-click="login(user.email, user.password)">Sign in</button>
-                                    </div>
-                                    <div class="form-group" ng-show="isLogged()">
-                                        <button type="submit" class="btn btn-success btn-block" ng-click="logout()">Logout</button>
-                                    </div>
-                                </form>
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">Login <span class="caret"></span></a>
+                    <ul class="dropdown-menu dropdown-menu-right"  style="padding: 15px;min-width: 250px;">
+                        <form class="navbar-form" id="login-nav" ng-controller="UserLoginController">
+                            <div class="form-group" ng-show="!isLogged()">
+                                <label for="username">Username</label>
+                                <input class="form-control" type="text" placeholder="Username" ng-model="user.email" required/>
                             </div>
-                        </div>
-                    </div>
+                            <div class="form-group" ng-show="!isLogged()">
+                                <label for="password">Password</label>
+                                <input class="form-control" type="password" placeholder="Password" ng-model="user.password" required/>
+                            </div>
+                            <div class="form-group" ng-show="!isLogged()">
+                                <button type="submit" class="btn btn-success btn-block" ng-click="login(user.email, user.password)">Sign in</button>
+                            </div>
+                            <div class="form-group" ng-show="isLogged()">
+                                <button type="submit" class="btn btn-success btn-block" ng-click="logout()">Logout</button>
+                            </div>
+                        </form>
+                    </ul>
                 </li>
             </ul>
         </div>

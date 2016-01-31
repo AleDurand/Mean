@@ -5,13 +5,13 @@
 </div>
 <div ng-repeat="photo in album.photos">
     <div class="col-lg-3 col-md-4 col-xs-6">
-        <input type="radio" class="radio" id="{{photo.name}}_checkbox" ng-click="showController.selected(photo, album)"/>
+        <input ng-show="user" type="radio" class="radio" id="{{photo.name}}_checkbox" ng-click="showController.selected(photo, album)"/>
         <img class="img-responsive img-thumbnail" ng-src="{{photo.path}}" alt="">
 
     </div>
 </div>
 
-<form name="albumForm" ng-submit="showController.save(album,images)" validate>
+<form name="albumForm" ng-show="user" ng-submit="showController.save(album,images)" validate>
     <fieldset>
     	<div class="form-group">
     		<label for="file">File input</label>

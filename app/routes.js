@@ -9,8 +9,8 @@ module.exports = function (app) {
     
     // Album enpoints
     app.route('/api/albums').post(auth.isAuthenticated, albums.create);
-    app.route('/api/albums').get(auth.isAuthenticated, albums.all);
-    app.route('/api/albums/:album_id').get(auth.isAuthenticated, albums.getById);
+    app.route('/api/albums').get(albums.all);
+    app.route('/api/albums/:album_id').get(albums.getById);
     app.route('/api/albums/:album_id').delete(auth.isAuthenticated, albums.delete);
     app.route('/api/albums/:album_id/photos').post(auth.isAuthenticated, albums.addPhotos);
     app.route('/api/albums/:album_id').put(auth.isAuthenticated, albums.update);

@@ -5,21 +5,21 @@ var PhotoSchema = require('./photo');
 var Schema = mongoose.Schema;
 
 var AlbumSchema = new Schema({
-    name : {
-    	type: String,
-    	unique: 'Album already exists',
-    	required: 'Please fill in a name'
+    name: {
+        type: String,
+        unique: 'Album already exists',
+        required: 'Please fill in a name'
     },
-    description : {
-    	type: String,
-    	required: 'Please fill in a description'
+    description: {
+        type: String,
+        required: 'Please fill in a description'
     },
     path: {
-    	type: String,
-    	unique: 'Path already exists',
-    	required: 'Please fill in a path'
+        type: String,
+        unique: 'Path already exists',
+        required: 'Please fill in a path'
     },
-    albumImage : {
+    albumImage: {
         type: Schema.Types.ObjectId, ref: 'Photo'
     },
     photos: [{
@@ -27,9 +27,9 @@ var AlbumSchema = new Schema({
     }]
 });
 
-AlbumSchema.post('remove', function(album) {
-    for(var i = 0; i < album.photos.length; i++){
-        PhotoSchema.remove({_id: album.photos[i]}).exec();
+AlbumSchema.post('remove', function (album) {
+    for (var i = 0; i < album.photos.length; i++) {
+        PhotoSchema.remove({ _id: album.photos[i] }).exec();
     }
 });
 

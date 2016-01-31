@@ -4,14 +4,14 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var PhotoSchema = new Schema({
-    name : {
-    	type: String,
-    	required: 'Please fill in a name'
+    name: {
+        type: String,
+        required: 'Please fill in a name'
     },
     path: {
-    	type: String,
-    	unique: 'Path already exists',
-    	required: 'Please fill in a path'
+        type: String,
+        unique: 'Path already exists',
+        required: 'Please fill in a path'
     }
 });
 

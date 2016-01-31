@@ -1,23 +1,26 @@
 'use strict'
 
 angular.module('meanApp')
-.controller('UserLoginController', function ($scope, $location, $window, AuthenticationService) {
-        
+    .controller('UserLoginController', function ($scope, $window, Authentication) {
+               
         //Admin User Controller (login, logout)
-        $scope.logIn = function logIn(username, password) {
+        $scope.login = function (username, password) {
             if (username !== undefined && password !== undefined) {
                 var authdata = btoa(username + ':' + password);
                 $window.localStorage.token = authdata;
-                $location.path("/albums");
-                AuthenticationService.isLogged = true;
+                Authentication.isLogged = true;
             }
         }
- 
-        $scope.logout = function logout() {
-            if (AuthenticationService.isLogged) {
-                AuthenticationService.isLogged = false;
+
+        $scope.logout = function () {
+            if (Authentication.isLogged) {
+                Authentication.isLogged = false;
                 delete $window.localStorage.token;
-                $location.path("/");
             }
         }
+
+        $scope.isLogged = function () {
+            return Authentication.isLogged;
+        }
+
     });

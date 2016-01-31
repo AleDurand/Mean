@@ -1,8 +1,8 @@
 angular.module('meanApp')
-.factory('AuthenticationService', function() {
-    var auth = {
-        isLogged: false
-    }
- 
-    return auth;
-});
+    .factory('Authentication', function () {
+        var auth = {
+            isLogged: false
+        }
+
+        return auth;
+    });

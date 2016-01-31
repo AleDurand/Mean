@@ -1,4 +1,4 @@
-angular.module('meanApp')
+angular.module('AlbumsModule')
     .directive('fileModel', ['$parse', function ($parse) {
         return {
             restrict: 'A',

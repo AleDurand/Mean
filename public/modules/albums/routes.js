@@ -1,28 +1,20 @@
-angular.module('meanApp', ['ngRoute'])
+angular.module('AlbumsModule', ['ngRoute'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/albums', {
-                templateUrl: 'templates/pages/albums/index.html',
+                templateUrl: 'modules/albums/views/index.html',
                 controller: 'AlbumsIndexController',
                 controllerAs: 'indexController',
             })
             .when('/albums/create', {
-                templateUrl: 'templates/pages/albums/create.html',
+                templateUrl: 'modules/albums/views/create.html',
                 controller: 'AlbumsCreateController',
                 controllerAs: 'createController'
             })
             .when('/albums/:id', {
-                templateUrl: 'templates/pages/albums/show.html',
+                templateUrl: 'modules/albums/views/show.html',
                 controller: 'AlbumsShowController',
                 controllerAs: 'showController'
             })
-            .when('/albums/:id/photos', {
-                templateUrl: 'templates/pages/photos/add.html',
-                controller: 'AlbumsAddPhotosController',
-                controllerAs: 'addController'
-            })
             .otherwise({ redirectTo: '/albums' });
     }]);
-
-
-

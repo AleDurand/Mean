@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('meanApp')
+angular.module('AlbumsModule')
     .controller('AlbumsShowController', function ($scope, $route, $http, $routeParams, Album, Authentication) {
         $scope.user = Authentication.isLogged;
 

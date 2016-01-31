@@ -1,4 +1,4 @@
-angular.module('meanApp')
+angular.module('AlbumsModule')
     .factory('Album', ['$http', function AlbumFactory($http) {
         return {
             all: function () {

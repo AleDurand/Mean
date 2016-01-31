@@ -1,10 +1,10 @@
 'use strict'
 
-angular.module('meanApp')
+angular.module('UsersModule')
     .controller('UserLoginController', function ($scope, $window, Authentication) {
                
         //Admin User Controller (login, logout)
-        $scope.login = function (username, password) {
+        this.login = function (username, password) {
             if (username !== undefined && password !== undefined) {
                 var authdata = btoa(username + ':' + password);
                 $window.localStorage.token = authdata;
@@ -12,14 +12,14 @@ angular.module('meanApp')
             }
         }
 
-        $scope.logout = function () {
+        this.logout = function () {
             if (Authentication.isLogged) {
                 Authentication.isLogged = false;
                 delete $window.localStorage.token;
             }
         }
 
-        $scope.isLogged = function () {
+        this.isLogged = function () {
             return Authentication.isLogged;
         }
 

@@ -7,26 +7,31 @@
 
     <title>Image Gallery</title>
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="libraries/css/bootstrap.min.css">
+    <link rel="stylesheet" href="libraries/css/style.css">
 
-    <script src="js/vendor/jquery-2.2.0.min.js"></script>
-    <script src="js/vendor/angular.min.js"></script>
-    <script src="js/vendor/angular-route.min.js"></script>
-    <script src="js/vendor/angular-animate.js"></script>
-    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="libraries/js/jquery-2.2.0.min.js"></script>
+    <script src="libraries/js/angular.min.js"></script>
+    <script src="libraries/js/angular-route.min.js"></script>
+    <script src="libraries/js/angular-animate.js"></script>
+    <script src="libraries/js/bootstrap.min.js"></script>
     <!--MAIN-->
-    <script src="js/app.js"></script>
+    <script src="app.js"></script>
+    <!--ROUTES-->
+    <script src="modules/albums/routes.js"></script>
+    <script src="modules/users/routes.js"></script>
     <!--SERVICES-->
-    <script src="js/services/album.js"></script>
-    <script src="js/services/authentication.js"></script>
-    <script src="js/services/token-interceptor.js"></script>
+    <script src="modules/albums/services/album-service.js"></script>
+    <script src="modules/users/services/user-authentication-service.js"></script>
+    <script src="modules/users/services/user-interceptor-service.js"></script>
     <!--CONTROLLERS-->
-    <script src="js/controllers/albums-index-controller.js"></script>
-    <script src="js/controllers/albums-show-controller.js"></script>
-    <script src="js/controllers/albums-create-controller.js"></script>
-    <script src="js/controllers/users/login/user-login-controller.js"></script>
-    <script src="js/directives/fileModel.js"></script>
+    <script src="modules/albums/controllers/albums-index-controller.js"></script>
+    <script src="modules/albums/controllers/albums-show-controller.js"></script>
+    <script src="modules/albums/controllers/albums-create-controller.js"></script>
+    <script src="modules/users/controllers/user-login-controller.js"></script>
+    <!--DIRECTIVES-->
+    <script src="modules/albums/directives/fileModel.js"></script>
+
 
 </head>
 
@@ -44,27 +49,7 @@
                 <li><a href="#/albums/create">Create</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">Login <span class="caret"></span></a>
-                    <ul class="dropdown-menu dropdown-menu-right"  style="padding: 15px;min-width: 250px;">
-                        <form class="navbar-form" id="login-nav" ng-controller="UserLoginController">
-                            <div class="form-group" ng-show="!isLogged()">
-                                <label for="username">Username</label>
-                                <input class="form-control" type="text" placeholder="Username" ng-model="user.email" required/>
-                            </div>
-                            <div class="form-group" ng-show="!isLogged()">
-                                <label for="password">Password</label>
-                                <input class="form-control" type="password" placeholder="Password" ng-model="user.password" required/>
-                            </div>
-                            <div class="form-group" ng-show="!isLogged()">
-                                <button type="submit" class="btn btn-success btn-block" ng-click="login(user.email, user.password)">Sign in</button>
-                            </div>
-                            <div class="form-group" ng-show="isLogged()">
-                                <button type="submit" class="btn btn-success btn-block" ng-click="logout()">Logout</button>
-                            </div>
-                        </form>
-                    </ul>
-                </li>
+                <li><a href="#/users/login">Login</a></li>
             </ul>
         </div>
     </nav>

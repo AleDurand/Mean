@@ -1,0 +1,16 @@
+<form>
+    <div class="form-group" ng-show="!loginController.isLogged()">
+        <label for="username">Username</label>
+        <input class="form-control" type="text" placeholder="Username" ng-model="user.email" required/>
+    </div>
+    <div class="form-group" ng-show="!loginController.isLogged()">
+        <label for="password">Password</label>
+        <input class="form-control" type="password" placeholder="Password" ng-model="user.password" required/>
+    </div>
+    <div class="form-group" ng-show="!loginController.isLogged()">
+        <button type="submit" class="btn btn-success btn-block" ng-click="loginController.login(user.email, user.password)">Sign in</button>
+    </div>
+    <div class="form-group" ng-show="loginController.isLogged()">
+        <button type="submit" class="btn btn-success btn-block" ng-click="loginController.logout()">Logout</button>
+    </div>
+</form>

@@ -2,7 +2,7 @@
 
 angular.module('AlbumsModule')
     .controller('AlbumsShowController', function ($scope, $route, $http, $routeParams, Album, Authentication) {
-        $scope.user = Authentication.isLogged;
+        $scope.user = Authentication.user;
 
         Album.get($routeParams.id)
             .success(function (response) {

@@ -2,7 +2,7 @@
 
 angular.module('AlbumsModule')
     .controller('AlbumsCreateController', function ($scope, Album, Authentication) {
-        $scope.user = Authentication.isLogged;
+        $scope.user = Authentication.user;
 
         $scope.success = null;
         $scope.error = null;

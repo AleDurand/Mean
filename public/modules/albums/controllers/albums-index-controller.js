@@ -2,7 +2,7 @@
 
 angular.module('AlbumsModule')
     .controller('AlbumsIndexController', function ($scope, $route, Album, Authentication) {
-        $scope.user = Authentication.isLogged;
+        $scope.user = Authentication.user;
 
         Album.all()
             .success(function (response) {

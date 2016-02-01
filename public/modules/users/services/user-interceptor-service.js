@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('meanApp')
     .factory('TokenInterceptor', function ($q, $window, Authentication) {
         return {

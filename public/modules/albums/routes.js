@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('AlbumsModule', ['ngRoute'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider

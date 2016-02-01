@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('UsersModule', ['ngRoute'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider

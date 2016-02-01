@@ -7,14 +7,14 @@ angular.module('UsersModule')
         this.login = function (username, password) {
             if (username !== undefined && password !== undefined) {
                 var authdata = btoa(username + ':' + password);
-                $window.localStorage.token = authdata;
+                $window.sessionStorage.token = authdata;
                 User.getByUsername(username)
                     .success(function(response) {
                         Authentication.user = response;
                     })
                     .error(function(error) {
                         Authentication.user = null;
-                        delete $window.localStorage.token;
+                        delete $window.sessionStorage.token;
                     })
             }
         }
@@ -22,7 +22,7 @@ angular.module('UsersModule')
         this.logout = function () {
             if (Authentication.user) {
                 Authentication.user = null;
-                delete $window.localStorage.token;
+                delete $window.sessionStorage.token;
             }
         }
 

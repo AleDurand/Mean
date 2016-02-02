@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('meanApp', ['ngRoute', 'AlbumsModule', 'UsersModule']);
+angular.module('meanApp', ['ngRoute', 'AlbumsModule', 'UsersModule', 'ContactModule']);
 
 
 

@@ -20,4 +20,11 @@ passport.use(new BasicStrategy(function (username, password, callback) {
     });
 }));
 
-exports.isAuthenticated = passport.authenticate('basic', { session: false });
+exports.isAuthenticated = function (req, res, next) {
+    passport.authenticate('basic', { session: false }, function (err, user, info) {
+        if (err || !user) {
+            return res.status(401).send({ message: "Invalid username or password" });
+        }
+        else if (!res.headersSent) next();
+    })(req, res, next);
+};

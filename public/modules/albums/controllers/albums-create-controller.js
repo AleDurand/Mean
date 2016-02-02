@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('AlbumsModule')
-    .controller('AlbumsCreateController', function ($scope, Album, Authentication) {
+    .controller('AlbumsCreateController', function ($scope, $location, Album, Authentication) {
         $scope.user = Authentication.user;
 
         $scope.success = null;
@@ -11,6 +11,7 @@ angular.module('AlbumsModule')
                 .success(function (response) {
                     $scope.success = true;
                     $scope.albums = response;
+                    $location.path('/');
                 })
                 .error(function (response) {
                     $scope.error = response.message;

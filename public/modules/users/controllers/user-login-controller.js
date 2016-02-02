@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('UsersModule')
-    .controller('UserLoginController', function ($scope, $window, User, Authentication) {
+    .controller('UserLoginController', function ($scope, $location, $window, User, Authentication) {
                
         //Admin User Controller (login, logout)
         this.login = function (username, password) {
@@ -9,12 +9,15 @@ angular.module('UsersModule')
                 var authdata = btoa(username + ':' + password);
                 $window.sessionStorage.token = authdata;
                 User.getByUsername(username)
-                    .success(function(response) {
+                    .success(function (response) {
                         Authentication.user = response;
+                        $scope.success = true;
+                        $location.path('/');
                     })
-                    .error(function(error) {
+                    .error(function (error) {
                         Authentication.user = null;
                         delete $window.sessionStorage.token;
+                        $scope.error = error.message;
                     })
             }
         }

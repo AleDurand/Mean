@@ -2,6 +2,7 @@
 
 var albums = require('./controllers/albums');
 var users = require('./controllers/users');
+var contact = require('./controllers/contact');
 var auth = require('./controllers/middlewares/auth');
 
 module.exports = function (app) {
@@ -19,6 +20,7 @@ module.exports = function (app) {
     app.route('/api/users/:user_id').delete(auth.isAuthenticated, users.delete);
     app.route('/api/users').get(auth.isAuthenticated, users.all);
     app.route('/api/users/:user_id').get(auth.isAuthenticated, users.getByUsername);
-    
+    // Contact endpoints
+    app.route('/api/contact/send-email').post(contact.sendEmail);
 
 };

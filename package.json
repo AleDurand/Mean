@@ -5,6 +5,7 @@
   "main": "server.js",
   "author": "Scotch",
   "dependencies": {
+    "bcrypt-nodejs": "~0.0.3",
     "bluebird": "^3.1.4",
     "body-parser": "~1.5.2",
     "express": "~4.7.2",
@@ -12,7 +13,7 @@
     "mongoose": "latest",
     "morgan": "~1.2.2",
     "multer": "latest",
-    "bcrypt-nodejs": "~0.0.3",
+    "nodemailer": "^2.1.0",
     "passport": "~0.3.2",
     "passport-http": "0.3.0"
   }

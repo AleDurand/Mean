@@ -3,18 +3,19 @@
 var errorHandler = require('../errors/errorHandler');
 var nodemailer = require('nodemailer');
 
-var transporter = nodemailer.createTransport('smtps://contact.designer.bb%40gmail.com:Password1%40@smtp.gmail.com');
+var transporter = nodemailer.createTransport('smtps://contact.designer.bb%40gmail.com:Password1%40@smtp.googlemail.com');
+var send = transporter.templateSender(template);
 
-var mailOptions = {
-    from: 'Fred Foo 👥 <contact.designer.bb@gmail.com>', 
-    to: 'valid_email@gmail.com',
-    subject: 'Hello ✔', 
-    text: 'Hello world 🐴',
-    html: '<b>Hello world 🐴</b>' 
+var template = {
+    from: 'Administrator <contact.designer.bb@gmail.com>',
+    to: 'alejandro.durand.90@gmail.com',
+    subject: 'Contact {{address}}',
+    text: '{{message}} \n\n {{name}}\n{{phone}}',
+    html: '{{message}} \n\n {{name}}\n{{phone}}'
 };
 
 exports.sendEmail = function (req, res) {
-    transporter.sendMail(mailOptions, function (error, info) {
+    send(template, req.body, function (error, info) {
         if (error) {
             return res.status(400).send({ message: errorHandler.getErrorMessage(error) });
         }

@@ -4,14 +4,15 @@
     <p>Path: {{album.path}}</p>
 </div>
 <div ng-repeat="photo in album.photos">
-    <div class="col-lg-3 col-md-4 col-xs-6">
-        <input ng-show="user" type="radio" class="radio" id="{{photo.name}}_checkbox" ng-click="showController.selected(photo, album)"
-        />
-        <img class="img-responsive img-thumbnail" ng-src="{{photo.path}}" alt="">
-
+    <div class="col-lg-3 col-md-4 col-xs-6"> 
+        </br>
+        <input style="float:left;" ng-show="true" type="radio" class="radio" id="{{photo.name}}_checkbox" ng-click="showController.selected(photo, album)"></> 
+        <label style="padding:inherit;" for="{{photo.name}}_checkbox">Seleccionar como portada</label>       
+        <a class="fancybox-button" rel="fancybox-button" href="{{photo.path}}" title="{{album.name}}">            
+            <img class="img-responsive img-thumbnail" ng-src="{{photo.path}}" alt="" />
+        </a>        
     </div>
 </div>
-
 <form name="albumForm" ng-show="user" ng-submit="showController.save(album,images)" validate>
     <fieldset>
         <div class="form-group">

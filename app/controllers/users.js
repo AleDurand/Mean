@@ -8,8 +8,8 @@ var errorHandler = require('../errors/errorHandler')
 var hardCodedUser = new Users({
     name: "Marcela",
     lastname: "Sánchez",
-    username: "MarcelaSanchez",
-    password: "MarcelaSanchezAlpachiri",
+    username: "123",
+    password: "123",
     email: "mrnrodecker@gmail.com"
 });
 

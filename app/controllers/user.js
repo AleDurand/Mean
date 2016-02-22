@@ -7,8 +7,8 @@ var User = require('../models/user');
 var hardCodedUser = new User({
     name: "Marcela",
     lastname: "Sánchez",
-    username: "MarcelaSanchez",
-    password: "MarcelaSanchezAlpachiri",
+    username: "marcela",
+    password: "1234",
     email: "mrnrodecker@gmail.com"
 });
 

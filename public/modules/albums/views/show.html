@@ -7,11 +7,11 @@
     <div class="col-lg-3 col-md-4 col-xs-6">
         <input ng-show="user" type="radio" class="radio" id="{{photo.name}}_checkbox" ng-click="showController.selected(photo, album)"
         />
-        <img class="img-responsive img-thumbnail" ng-src="{{photo.path}}" alt="">
-
+        <a class="fancybox-button" rel="fancybox-button" href="{{photo.path}}" title="Primer album piolin">
+            <img class="img-responsive img-thumbnail" ng-src="{{photo.path}}" alt="" />
+        </a>
     </div>
 </div>
-
 <form name="albumForm" ng-show="user" ng-submit="showController.save(album,images)" validate>
     <fieldset>
         <div class="form-group">

@@ -5,15 +5,19 @@ mongoose.Promise = require('bluebird');
 var Users = require('../models/user');
 var errorHandler = require('../errors/errorHandler')
 
-var hardCodedUser = new Users({
+Users.create({
     name: "Marcela",
     lastname: "Sánchez",
     username: "MarcelaSanchez",
     password: "MarcelaSanchezAlpachiri",
     email: "mrnrodecker@gmail.com"
-});
-
-hardCodedUser.update({ upsert: true });
+})
+    .then(function (user) {
+        console.log("User created")
+    })
+    .catch(function (error) {
+        console.log("User already exists")
+    })
 
 exports.create = function (req, res) {
     Users.create({

@@ -6,7 +6,7 @@ mongoose.Promise = require('bluebird');
 var Albums = require('../models/album');
 var Photos = require('../models/photo');
 var upload = require('../utils/upload');
-var errorHandler = require('../errors/errorHandler')
+var errorHandler = require('../errors/errorHandler');
 var basepath = 'resources/albums/';
 
 exports.create = function(req, res) {
@@ -37,6 +37,7 @@ exports.all = function(req, res) {
 exports.getById = function(req, res) {
     Albums.findOne({ _id : req.params.album_id }).populate("photos")
     .then(function(album) {
+        if (!album) return res.status(404).send({ message: "Album not found." })
         return res.json(album);
     })
     .catch(function(error) {
@@ -45,8 +46,12 @@ exports.getById = function(req, res) {
 };
 
 exports.update = function(req, res) {
-    Albums.update({_id: req.params.album_id}, {albumImage: req.body.imageAlbum})
-    .then(function() {
+    Albums.findOne({ _id : req.params.album_id })
+    .then(function(album){
+        if (!album) return res.status(404).send({ message: "Album not found." })
+        Albums.update({ _id : req.params.album_id }, { albumImage: req.body.imageAlbum })
+    })
+    .then(function () {
         return res.status(204).end();
     })
     .catch(function(error) {
@@ -57,6 +62,7 @@ exports.update = function(req, res) {
 exports.delete = function(req, res) {
     Albums.findOne({ _id : req.params.album_id })
     .then(function(album){
+        if (!album) return res.status(404).send({ message: "Album not found." })
         album.remove();
         return album;
     })

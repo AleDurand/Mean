@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('AlbumsModule')
     .factory('Album', ['$http', function AlbumFactory($http) {
         return {

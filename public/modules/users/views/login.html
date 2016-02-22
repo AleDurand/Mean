@@ -13,4 +13,10 @@
     <div class="form-group" ng-show="loginController.isLogged()">
         <button type="submit" class="btn btn-success btn-block" ng-click="loginController.logout()">Logout</button>
     </div>
+    <div ng-show="success" class="text-center text-success">
+        <strong>Login successfully</strong>
+    </div>
+    <div ng-show="error" class="text-center text-danger">
+        <strong ng-bind="error"></strong>
+    </div>
 </form>

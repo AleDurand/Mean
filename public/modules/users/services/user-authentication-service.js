@@ -1,8 +1,9 @@
+'use strict';
+
 angular.module('meanApp')
     .factory('Authentication', function () {
         var auth = {
-            isLogged: false
+            user: false
         }
-
         return auth;
     });

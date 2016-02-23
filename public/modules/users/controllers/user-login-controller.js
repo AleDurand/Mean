@@ -13,6 +13,8 @@ angular.module('UsersModule')
                         Authentication.user = response;
                         $scope.success = true;
                         $location.path('/');
+                        $('#Login').removeClass('active');
+                        $('#Albums').addClass('active');
                     })
                     .error(function (error) {
                         Authentication.user = null;

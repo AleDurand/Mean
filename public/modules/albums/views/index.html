@@ -20,4 +20,25 @@
             </div>
         </div>
     </div>
+    <button class="btn" ng-show="user" ng-click="toggleModal()">Crear Álbum</button>
 </div>
+
+<modal title="Crear Álbum" visible="showModal" id="createAlbumModal">
+    <form name="albumForm" ng-submit="indexController.save(album)" validate>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="name">Nombre</label>
+                <input class="form-control" ng-model="album.name" placeholder="Nombre" required/>
+            </div>
+            <div class="form-group">
+                <label for="description">Descripción</label>
+                <input class="form-control" ng-model="album.description" placeholder="Descripción" required/>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button style="background-color:#25b5b8; color:white;" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-floppy-disk"></span> Aceptar</button>
+            <button class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        </div>
+
+    </form>
+</modal>

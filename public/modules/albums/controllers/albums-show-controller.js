@@ -32,7 +32,7 @@ angular.module('AlbumsModule')
                 });
         };
         this.selected = function (photo, album) {
-            album.imageAlbum = photo._id;
+            album.albumImage = photo._id;
             Album.update(album._id, album);
         };
     });

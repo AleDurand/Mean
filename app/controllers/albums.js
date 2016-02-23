@@ -49,9 +49,9 @@ exports.update = function(req, res) {
     Albums.findOne({ _id : req.params.album_id })
     .then(function(album){
         if (!album) return res.status(404).send({ message: "Album not found." })
-        Albums.update({ _id : req.params.album_id }, { albumImage: req.body.imageAlbum })
+        return album.update({ albumImage: req.body.albumImage })
     })
-    .then(function () {
+    .then(function (album) {
         return res.status(204).end();
     })
     .catch(function(error) {

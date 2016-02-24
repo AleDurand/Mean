@@ -6,32 +6,36 @@
             <input ng-model="search"></input>
         </div>
     </div>
-    <div ng-repeat="album in albums | filter: {name: search}" ng-animate="'slide'">
-        <!--<div class="col-lg-3 col-md-4 col-xs-6">-->
-        <div class="view view-seventh">
-            <img class="img-responsive" ng-src="{{album.albumImage.path}}" alt="{{album.name}}">
-            <div class="mask">
-                <h2>{{album.name}}</h2>
-                <p style="margin-left:-13px !important;">{{album.description}}</p>
-                <div ng-if="user">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <a class="info" ng-href="#/albums/{{album._id}}" style="margin-top:-14px !important;">Ver Álbum</a>
-                        </div>
-                        <div class="col-md-6">
-                            <a ng-show="user" class="info" ng-click="indexController.delete(album)" style="margin-top:-14px !important;margin-left:-13px">Eliminar</a>
+    <div class="center">
+        <div ng-repeat="album in albums | filter: {name: search}" ng-animate="'slide'">
+            <!--<div class="col-lg-3 col-md-4 col-xs-6">-->
+
+            <div class="view view-seventh">
+                <img class="img-responsive" ng-src="{{album.albumImage.path}}" alt="{{album.name}}">
+                <div class="mask">
+                    <h2>{{album.name}}</h2>
+                    <p style="margin-left:-13px !important;">{{album.description}}</p>
+                    <div ng-if="user">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a class="info" ng-href="#/albums/{{album._id}}" style="margin-top:-14px !important;">Ver Álbum</a>
+                            </div>
+                            <div class="col-md-6">
+                                <a ng-show="user" class="info" ng-click="indexController.delete(album)" style="margin-top:-14px !important;margin-left:-13px">Eliminar</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div ng-if="!user">
-                    <a class="info" ng-href="#/albums/{{album._id}}" style="margin-top:-14px !important;">Ver Álbum</a>
-                </div>
 
+                    <div ng-if="!user">
+                        <a class="info" ng-href="#/albums/{{album._id}}" style="margin-top:-14px !important;">Ver Álbum</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <button class="btn" ng-show="user" ng-click="toggleModal()">Crear Álbum</button>
+
 </div>
+<button class="btn" ng-show="user" ng-click="toggleModal()" style="margin-left: 50%; margin-top: 5%">Crear Álbum</button>
 
 <modal title="Crear Álbum" visible="showModal" id="createAlbumModal">
     <form name="albumForm" ng-submit="indexController.save(album)" validate>

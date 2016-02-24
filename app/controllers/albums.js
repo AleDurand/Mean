@@ -75,6 +75,22 @@ exports.delete = function(req, res) {
     });
 };
 
+exports.deletePhoto = function(req,res){
+    var albumPath =  Albums.findOne({ _id : req.params.album_id }).path
+    Photos.findOne({_id : req.params.photo_id})
+    .then(function(photo){
+       photo.remove();
+       return photo; 
+    })
+    .then(function(photo){
+        fs.unlink('./public/' + photo.path);
+        return res.status(204).end();
+    })
+    .catch(function(error) {
+        return res.status(400).send({ message: errorHandler.getErrorMessage(error) });
+    });
+};
+
 exports.addPhotos = function(req, res) {
     var upload_p = upload.any();
 

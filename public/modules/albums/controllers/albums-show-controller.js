@@ -35,4 +35,9 @@ angular.module('AlbumsModule')
             album.albumImage = photo._id;
             Album.update(album._id, album);
         };
+
+        this.deletePhoto = function (photo, album) {
+            console.log(album);
+            Album.deletePhoto(album._id, photo._id);
+        };
     });

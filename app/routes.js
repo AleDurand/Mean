@@ -13,6 +13,8 @@ module.exports = function (app) {
     app.route('/api/albums/:album_id').delete(auth.isAuthenticated, albums.delete);
     app.route('/api/albums/:album_id/photos').post(auth.isAuthenticated, albums.addPhotos);
     app.route('/api/albums/:album_id').put(auth.isAuthenticated, albums.update);
+    app.route('/api/albums/:album_id/photos/:photo_id').delete(auth.isAuthenticated, albums.deletePhoto);
+    
     // User enpoints
     app.route('/api/users').post(auth.isAuthenticated, users.create);
     app.route('/api/users/:user_id').get(auth.isAuthenticated, users.getById);

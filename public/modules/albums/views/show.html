@@ -4,13 +4,17 @@
     <p>Path: {{album.path}}</p>
 </div>
 <div ng-repeat="photo in album.photos">
-    <div class="col-lg-3 col-md-4 col-xs-6"> 
+    <div class="col-lg-3 col-md-4 col-xs-6">
         </br>
-        <input name="radiobuttons" style="float:left;" ng-checked="photo._id == album.albumImage"ng-show="user" type="radio" class="radio" id="{{photo.name}}_checkbox" ng-click="showController.selected(photo, album)"></> 
-        <label ng-show="user" style="padding:inherit;" for="{{photo.name}}_checkbox">Seleccionar como portada</label>       
-        <a class="fancybox-button" rel="fancybox-button" href="{{photo.path}}" title="{{album.name}}">            
+        <input name="radiobuttons" style="float:left;" ng-checked="photo._id == album.albumImage" ng-show="user" type="radio" class="radio"
+        id="{{photo.name}}_checkbox" ng-click="showController.selected(photo, album)">
+        </>
+        <label ng-show="user" style="padding:inherit;" for="{{photo.name}}_checkbox">Seleccionar como portada</label>
+        <a ng-show="user" class="info" ng-click="showController.deletePhoto(photo,album)" style="margin-top:-14px !important;margin-left:-13px">Eliminar</a>
+
+        <a class="fancybox-button" rel="fancybox-button" href="{{photo.path}}" title="{{album.name}}">
             <img class="img-responsive img-thumbnail" ng-src="{{photo.path}}" alt="" />
-        </a>        
+        </a>
     </div>
 </div>
 <form name="albumForm" ng-show="user" ng-submit="showController.save(album,images)" validate>

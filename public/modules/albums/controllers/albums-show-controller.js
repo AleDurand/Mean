@@ -3,7 +3,8 @@
 angular.module('AlbumsModule')
     .controller('AlbumsShowController', function ($scope, $route, $http, $routeParams, Album, Authentication) {
         $scope.user = Authentication.user;
-
+        $scope.dialog = null;
+        $scope.modalDialog = false;
         Album.get($routeParams.id)
             .success(function (response) {
                 $scope.success = true;
@@ -37,7 +38,34 @@ angular.module('AlbumsModule')
         };
 
         this.deletePhoto = function (photo, album) {
-            console.log(album);
-            Album.deletePhoto(album._id, photo._id);
+            if (album.photos.length == 1) {
+                $scope.dialog = "Si elimina esta imagen el álbum quedará vacío. ¿Desea continuar?"
+                $scope.modalDialog = true;
+                $(document).on('click', '#Aceptar', function () {
+                    $('body').removeClass('modal-open');
+                    $('.modal-backdrop').remove();
+                    Album.deletePhoto(album._id, photo._id)
+                        .success(function (response) {
+                            $scope.success = true;
+                            $route.reload();
+                        });
+
+                });
+            } else if (photo._id == album.albumImage) {
+                $scope.dialog = "No es posible eliminar esta imagen porque es la portada del álbum. Si desea eliminarla por favor seleccione otra portada.";
+                $scope.modalDialog = true;
+            } else {
+                $scope.dialog = "¿Está seguro que desea eliminar la imagen?"
+                $scope.modalDialog = true;
+                $(document).on('click', '#Aceptar', function () {
+                    $('body').removeClass('modal-open');
+                    $('.modal-backdrop').remove();
+                    Album.deletePhoto(album._id, photo._id)
+                        .success(function (response) {
+                            $scope.success = true;
+                            $route.reload();
+                        });
+                })
+            }
         };
     });

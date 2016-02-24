@@ -9,9 +9,8 @@
         <input name="radiobuttons" style="float:left;" ng-checked="photo._id == album.albumImage" ng-show="user" type="radio" class="radio"
         id="{{photo.name}}_checkbox" ng-click="showController.selected(photo, album)">
         </>
-        <label ng-show="user" style="padding:inherit;" for="{{photo.name}}_checkbox">Seleccionar como portada</label>
-        <a ng-show="user" class="info" ng-click="showController.deletePhoto(photo,album)" style="margin-top:-14px !important;margin-left:-13px">Eliminar</a>
-
+        <label ng-show="user" style="padding:inherit;" for="{{photo.name}}_checkbox">Seleccionar como portada </label>
+        <button ng-show="user" class="button3d" ng-click="showController.deletePhoto(photo,album)">X</button>
         <a class="fancybox-button" rel="fancybox-button" href="{{photo.path}}" title="{{album.name}}">
             <img class="img-responsive img-thumbnail" ng-src="{{photo.path}}" alt="" />
         </a>
@@ -33,3 +32,15 @@
         </div>
     </fieldset>
 </form>
+
+<modal title="Eliminar imagen" visible="modalDialog" id="modalError">
+    <div class="modal-body">
+        <div class="form-group">
+            <label>{{dialog}}</label>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button id="Aceptar" style="background-color:#25b5b8; color:white;" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Aceptar</button>
+        <button class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+    </div>
+</modal>

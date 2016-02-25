@@ -2,6 +2,10 @@
 
 angular.module('AlbumsModule')
     .controller('AlbumsIndexController', function ($scope, $route, $location, Album, Authentication) {
+        $('#Albums').addClass('active');
+        $('#Home').removeClass('active');
+        $('#Contact').removeClass('active');
+        $('#Login').removeClass('active');
         $scope.user = Authentication.user;
         $scope.showModal = false;
         $scope.toggleModal = function () {

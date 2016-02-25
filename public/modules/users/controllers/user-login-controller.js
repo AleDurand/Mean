@@ -2,7 +2,10 @@
 
 angular.module('UsersModule')
     .controller('UserLoginController', function ($scope, $location, $window, User, Authentication) {
-               
+        $('#Albums').removeClass('active');
+        $('#Home').removeClass('active');
+        $('#Contact').removeClass('active');
+        $('#Login').addClass('active');               
         //Admin User Controller (login, logout)
         this.login = function (username, password) {
             if (username !== undefined && password !== undefined) {

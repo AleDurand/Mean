@@ -5,6 +5,7 @@ angular.module('AlbumsModule')
         $scope.user = Authentication.user;
         $scope.dialog = null;
         $scope.modalDialog = false;
+        $scope.confirmDelete = false;
         Album.get($routeParams.id)
             .success(function (response) {
                 $scope.success = true;
@@ -39,9 +40,10 @@ angular.module('AlbumsModule')
 
         this.deletePhoto = function (photo, album) {
             if (album.photos.length == 1) {
+                $scope.confirmDelete = true;
                 $scope.dialog = "Si elimina esta imagen el álbum quedará vacío. ¿Desea continuar?"
                 $scope.modalDialog = true;
-                $(document).on('click', '#Aceptar', function () {
+                $(document).off('click','#Aceptar').on('click', '#Aceptar', function () {
                     $('body').removeClass('modal-open');
                     $('.modal-backdrop').remove();
                     Album.deletePhoto(album._id, photo._id)
@@ -52,12 +54,14 @@ angular.module('AlbumsModule')
 
                 });
             } else if (photo._id == album.albumImage) {
+                $scope.confirmDelete=false;
                 $scope.dialog = "No es posible eliminar esta imagen porque es la portada del álbum. Si desea eliminarla por favor seleccione otra portada.";
                 $scope.modalDialog = true;
             } else {
+                $scope.confirmDelete = true;
                 $scope.dialog = "¿Está seguro que desea eliminar la imagen?"
                 $scope.modalDialog = true;
-                $(document).on('click', '#Aceptar', function () {
+                $(document).off('click','#Aceptar').on('click', '#Aceptar', function () {
                     $('body').removeClass('modal-open');
                     $('.modal-backdrop').remove();
                     Album.deletePhoto(album._id, photo._id)

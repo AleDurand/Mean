@@ -1,8 +1,16 @@
-<div>
-    <p>Name: {{album.name}}</p>
-    <p>Description: {{album.description}}</p>
-    <p>Path: {{album.path}}</p>
-</div>
+<section class="header-image header-feature1" ng-click="showController.hideTooltips()">
+    <div class="wrapper" ng-click="showController.hideTooltips(album)">        
+        <div class="tooltip" ng-click="$event.stopPropagation()" ng-show="showtooltipName">
+            <input maxlenght="48" type="text" ng-model="album.name" />
+	   </div>
+        <h1 >{{album.name}} <span ng-show="user" id="editName" ng-click="showController.toggleTooltipName($event,album,album.name)" class="glyphicon glyphicon-edit" style="cursor:pointer"></span></h1>
+        <div  class="tooltip" style="min-width: 80%;" ng-click="$event.stopPropagation()" ng-show="showtooltipDescription">
+            <input maxlength="400" rows="4" cols="50" ng-model="album.description" />
+	   </div>
+        <p style="white-space:pre-line">{{album.description}} <span ng-show="user" id="editDescription" class="glyphicon glyphicon-edit" style="cursor:pointer" ng-click="showController.toggleTooltipDescription($event,album,album.description)"></span> </p>
+    </div>
+</section>
+
 <div ng-repeat="photo in album.photos">
     <div class="col-lg-3 col-md-4 col-xs-6">
         </br>

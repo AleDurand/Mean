@@ -10,6 +10,15 @@ angular.module('AlbumsModule')
         $scope.showModal = false;
         $scope.toggleModal = function () {
             $scope.showModal = !$scope.showModal;
+            $('#filecount').filestyle({
+                input:false,
+                buttonText: 'Seleccionar imagen',
+                buttonName: 'btn-primary',
+                iconName: 'glyphicon glyphicon-folder-open'
+            });
+            $('#clear').click(function () {
+                $('#filecount').filestyle('clear');
+            });
         };
 
         $scope.success = null;

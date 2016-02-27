@@ -38,7 +38,6 @@
 
 .container {
 	top: 0;
-    width: 80%;
 }
 
 .wrapper {
@@ -98,4 +97,33 @@ h1,h2,h3,h4{
 	color: #8d9395;
 	font-weight: bold;
 	outline: none;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+.img-thumbnail{
+    width: 262px;
+    max-width: 100%;
+    height: 178px;
+}
+.input-group{
+    display:block;
 }

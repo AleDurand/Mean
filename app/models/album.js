@@ -23,6 +23,7 @@ var AlbumSchema = new Schema({
         type: Schema.Types.ObjectId, ref: 'Photo'
     },
     photos: [{
+        unique: false,
         type: Schema.Types.ObjectId, ref: 'Photo'
     }]
 });

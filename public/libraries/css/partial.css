@@ -3,20 +3,20 @@
    ========================================================================== */
   
 /*Change Backgound image here */
-
+ 
+body{
+	background: #000 url(../img/background6.jpg) top center;
+	 
+}
 .alert{
 	margin: 20px auto;
 	width: 70%;
-	padding:0;
 }
-.sr-only{
-	position: center;
-}
-#login-block{	 
+#partial-block{	 
 	padding-top: 50px;
 	padding-bottom: 25px;
 }
-#login-block h3{
+#partial-block h3{
 	color: #FFF;
 	text-align: center;
 	font-size:1.5em; 
@@ -25,8 +25,7 @@
  
 }
 
-.login-box{
-	max-width:480px;	 
+.partial-box{;	 
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
 	border-radius: 8px;
@@ -37,15 +36,15 @@
 		
 }
 
-.login-logo{
+.partial-logo{
 	 text-align: center;
 	 padding: 15px 0 10px;
 }
 
-.login-logo img{
+.partial-logo img{
 	border:0;
 }
-.login-form form p{
+.partial-form form p{
 	width:80%;
 	margin: 5px auto 10px;
 	text-align: center;
@@ -56,15 +55,15 @@
 	padding: 5px;
 }
  
-.login-box hr{
+.partial-box hr{
 	margin:10px auto 20px;
 	width:70%;
 	border-top: 1px solid rgba(119, 118, 118, 0.4);
 border-bottom: 1px solid rgba(240, 240, 240, 0.4);
 }
 
-/* Login Form */
-.login-form input{
+/* partial Form */
+.partial-form input{
 	display: block;
 	margin:0 auto 15px;
 	width:70%;
@@ -78,40 +77,40 @@ border-bottom: 1px solid rgba(240, 240, 240, 0.4);
 	-o-transition: opacity .5s ease-in-out;
 	transition: opacity .5s ease-in-out;
 }
-.login-form input:focus{
+.partial-form input:focus{
 	opacity:1;
 	border:1px solid #fff;
 }
  
 
-/* Login Button */
-.btn.btn-login {
+/* partial Button */
+.btn.btn-partial {
 	font-weight: bold;
 	font-size: 0.9em;
-	width: 130px;
+	width: 120px;
 	margin: 20px auto 20px;
 	display:block;
 	color: white;
 	text-transform:uppercase ;	
 	text-shadow: 1px 1px 2px #000;
-	background: #25B5B8; 
-	border: 1px solid #FFFFFF;
+	background: #ffd71d; 
+	border: 1px solid #f9be22;
 	-webkit-box-shadow: inset 0 1px 2px #ffed96;
 	-moz-box-shadow: inset 0 1px 2px #ffed96;
-	box-shadow: inset 0 1px 2px #040204;
+	box-shadow: inset 0 1px 2px #ffed96;
 	-webkit-transition: background .5s ease-in-out;
 	-moz-transition: background .5s ease-in-out;
 	-o-transition: background .5s ease-in-out;
 	transition: background .5s ease-in-out;
 	
 }
-.btn.btn-login:hover {	 
-	background: #040204; 
+.btn.btn-partial:hover {	 
+	background: #f5b406; 
 } 
 .btn.btn-reset{
 	width: 180px;
 }
-.login-links{
+.partial-links{
 	text-align: center;
 	background: rgba(0, 0, 0, 0.3);
 	padding: 5px 0;
@@ -119,7 +118,7 @@ border-bottom: 1px solid rgba(240, 240, 240, 0.4);
 	-moz-box-shadow: inset 1px 0 2px rgba(255, 255, 255, 0.59);
 	box-shadow: inset 1px 0 2px rgba(255, 255, 255, 0.59);
 }
-.login-links a{
+.partial-links a{
 	color: #FFF; 
 	display:inline-block;
 	padding:5px;
@@ -131,7 +130,7 @@ border-bottom: 1px solid rgba(240, 240, 240, 0.4);
 	transition: all .5s ease;
 	text-shadow: 1px 1px 2px #000; 
 }
-.login-links a:hover{
+.partial-links a:hover{
 	text-decoration: none;
 	color:#FFF;
 	opacity:1; 
@@ -181,11 +180,11 @@ label.radio input{
 	text-shadow: 1px 1px 1px #000;
 }
 
-/* Social Login */
-.social-login{
+/* Social partial */
+.social-partial{
 	margin:10px 0 5px;
 }
-.social-login .btn{ 
+.social-partial .btn{ 
    text-align: center;
     margin: 5px auto;
     color:#FFF;
@@ -252,7 +251,7 @@ label.radio input{
 	-o-transition: box-shadow .05s ease-in-out;
 	transition: box-shadow .05s ease-in-out;
 }
-.fb-login, .twit-login{
+.fb-partial, .twit-partial{
 	-webkit-animation-delay: .8s;
 	-moz-animation-delay: .8s;
 	-o-animation-delay: .8s;
@@ -263,7 +262,7 @@ label.radio input{
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers)
 =================================================================== */
 @media only screen and (max-width: 479px) {
-	#login-block{	 
+	#partial-block{	 
 		padding-top: 10px;
 		padding-bottom: 25px;
 	}
@@ -273,7 +272,7 @@ label.radio input{
 /* Tablet Portrait Size to Tablet Landscape Size (devices and browsers)
 =================================================================== */
 @media only screen and (min-width: 480px) and (max-width: 767px){
-	#login-block {	 
+	#partial-block {	 
 		margin: 0 auto;
 		width: 420px;
 	}

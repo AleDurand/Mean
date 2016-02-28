@@ -5,7 +5,7 @@ var nodemailer = require('nodemailer');
 
 var template = {
     from: 'Administrator <contact.designer.bb@gmail.com>',
-    to: 'alejandro.durand.90@gmail.com',
+    to: 'mrnrodecker@gmail.com',
     subject: 'Contact {{address}}',
     text: '{{message}} {{name}} {{phone}}',
     html: '{{message}} <br><br> <b>{{name}}<br>{{phone}}</b>'

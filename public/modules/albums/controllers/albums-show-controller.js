@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('AlbumsModule')
-    .controller('AlbumsShowController', function ($scope, $route, $http, $routeParams, Album, Authentication) {
+    .controller('AlbumsShowController', function ($scope, $route, $http, $routeParams, Album, Contact, Authentication) {
         $scope.user = Authentication.user;
         $scope.dialog = null;
         $scope.modalDialog = false;
@@ -10,6 +10,7 @@ angular.module('AlbumsModule')
         $scope.showtooltipDescription = false;       
         $scope.prevDescription = '';
         $scope.prevName = '';
+        $scope.toEmail = null;
         Album.get($routeParams.id)
             .success(function (response) {
                 $scope.success = true;
@@ -90,7 +91,29 @@ angular.module('AlbumsModule')
                 $('#editDescription').addClass('glyphicon-ok');
             }
         }
-
+         this.sendEmail = function (email,album) {
+            var photoNames=""
+            for(var i=0; i<album.photos.length; i++){
+                //TODO: cambiar
+                if(document.getElementById(album.photos[i].name+'_checkbox').checked)
+                    photoNames = photoNames+', '+ album.photos[i].name.split('.')[0];
+            }
+            //Imagenes a imprimir
+            //1.jpg, 2.jpg
+            email.message = email.message + photoNames;
+            Contact.sendEmail(email)                
+                .success(function (response) {
+                    $scope.success = true;
+                })
+                .error(function (response) {
+                    $scope.error = response.message;
+                });
+        }
+        
+        this.toEmail = function (photo,album){
+            
+        }
+        
         this.deletePhoto = function (photo, album) {
             if (album.photos.length == 1) {
                 $scope.confirmDelete = true;
@@ -125,6 +148,7 @@ angular.module('AlbumsModule')
                 })
             }
         };
+        
     });
  
     

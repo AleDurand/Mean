@@ -25,7 +25,7 @@ angular.module('AlbumsModule')
         $scope.error = null;
         this.save = function (album) {
             Album.create(album)
-                .success(function (response) {
+            .success(function (response) {
                     $scope.success = true;
                     $scope.albums = response;
                     $location.path('/');

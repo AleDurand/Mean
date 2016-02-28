@@ -1,4 +1,4 @@
-<section class="header-image header-feature1" ng-click="showController.hideTooltips()">
+<section class="header-image header-feature1 partial-box clearfix animated flipInY"">
     <div class="wrapper" ng-click="showController.hideTooltips(album)">
         <div class="tooltip" ng-click="$event.stopPropagation()" ng-show="showtooltipName">
             <input maxlenght="48" type="text" ng-model="album.name" />
@@ -19,6 +19,10 @@
             id="{{photo.name}}_checkbox" ng-click="showController.selected(photo, album)">
             </>
             <label ng-show="user" style="padding:inherit;" for="{{photo.name}}_checkbox">Seleccionar como portada </label>
+            <input name="checkboxes" style="float:left;" ng-show="!user" type="checkbox" class="checkbox"
+            id="{{photo.name}}_checkbox" ng-click="showController.toEmail(photo, album)">
+            </>
+            <label ng-show="!user" style="padding:inherit;" for="{{photo.name}}_checkbox">Seleccionar para enviar </label>
             <button ng-show="user" class="button3d" ng-click="showController.deletePhoto(photo,album)">X</button>
             <a class="fancybox-button" rel="fancybox-button" href="{{photo.path}}" title="{{album.name}}">
                 <img class="img-responsive img-thumbnail" ng-src="{{photo.path}}" alt="" />
@@ -26,7 +30,7 @@
         </div>
     </div>
 </div>
-<div class="row">
+<div class="row" ng-show="user">
     <div class="col-md-12" style="text-align:center">
         <form name="albumForm" validate>
             <div class="form-group">
@@ -47,6 +51,49 @@
         </form>
     </div>
 </div>
+
+<div class="row" ng-show="!user">
+    <div class="col-md-8">
+        <h3>Send us a Message</h3>
+        <form ng-submit="showController.sendEmail(email,album)" validate>
+            <div class="control-group form-group">
+                <div class="controls">
+                    <label>Full Name:</label>
+                    <input type="text" class="form-control" ng-model="email.name" required>
+                    <p class="help-block"></p>
+                </div>
+            </div>
+            <div class="control-group form-group">
+                <div class="controls">
+                    <label>Phone Number:</label>
+                    <input class="form-control" ng-model="email.phone" required>
+                </div>
+            </div>
+            <div class="control-group form-group">
+                <div class="controls">
+                    <label>Email Address:</label>
+                    <input class="form-control" ng-model="email.address" required>
+                </div>
+            </div>
+            <div class="control-group form-group">
+                <div class="controls">
+                    <label>Message:</label>
+                    <textarea rows="10" cols="100" class="form-control" ng-model="email.message" required maxlength="999" style="resize:none"></textarea>
+                </div>
+            </div>
+            <!-- For success/fail messages -->
+            <button type="submit" class="btn btn-primary">Send Message</button>
+            <div ng-show="success" class="text-center text-success">
+                <strong>Email sent successfully</strong>
+            </div>
+            <div ng-show="error" class="text-center text-danger">
+                <strong ng-bind="error"></strong>
+            </div>
+        </form>
+    </div>
+
+</div>
+
 <modal title="Eliminar imagen" visible="modalDialog" id="modalError">
     <div class="modal-body">
         <div class="form-group">
@@ -61,6 +108,8 @@
         <button class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
     </div>
 </modal>
+
+
 <script>
     $('#filecount').filestyle({
         input : false,

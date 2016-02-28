@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="libraries/css/style.css">
     <link rel="stylesheet" href="libraries/css/flexy-menu.css">
     <link rel="stylesheet" href="libraries/css/3deffects.css">
+    <link rel="stylesheet" href="libraries/css/footer-distributed-with-address-and-phones.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link href="libraries/css/login.css" rel="stylesheet">
     <link href="libraries/css/animate-custom.css" rel="stylesheet">
     <script src="libraries/js/jquery-2.2.0.min.js"></script>
@@ -20,7 +22,6 @@
     <!-- Add fancyBox -->
     <link rel="stylesheet" href="libraries/js/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
     <script type="text/javascript" src="libraries/js/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
     <!-- Optionally add helpers - button, thumbnail and/or media -->
     <link rel="stylesheet" href="libraries/js/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen"
     />
@@ -81,7 +82,35 @@
     <div class="container">
         <div ng-view></div>
     </div>
+    <footer class="footer-distributed">
+			<div class="footer-left">
 
+				<span><img src="resources/utils/logo.png"></span>
+
+				<p class="footer-company-name">Mariano Rodecker 2016 - Ingeniería de Aplicaciones Web</p>
+			</div>
+            <div class="footer-center">
+				<div>
+					<i class="fa fa-map-marker"></i>
+					<p><span>20 de Agosto N°15</span> Alpachiri, La Pampa, Argentina</p>
+				</div>
+				<div>
+					<i class="fa fa-phone"></i>
+					<p>(2954)686401</p>
+				</div>
+                <div>
+					<i class="fa fa-envelope"></i>
+					<p><a href="mailto:marcelasanchez@gmail.com">marcelasanchez@gmail.com</a></p>
+				</div>
+			</div>
+            <div class="footer-right">
+				<p class="footer-company-about">
+					<span>Marcela Sánchez Fotografía</span>
+					Espacio dedicado a mostrar las fotos tomadas en diferentes eventos.
+				</p>
+			</div>
+            
+		</footer>
 </body>
 <script type="text/javascript">
     $(document).ready(function(){
@@ -90,20 +119,30 @@
 		nextEffect		: 'elastic',
 		closeBtn		: false,
 		helpers		: {
-			title	: { type : 'inside' },
+			title	: {},
 			buttons	: {}
-		}
+		},
+        beforeShow: function () {
+        /* Add watermark to gallery elements only */
+        if (this.group.length > 1) {
+            $('<div class="watermark"><img src="resources/utils/watermark.png"></div>')
+                .bind("contextmenu", function (e) {
+                return false; /* Disables right click */
+            }).prependTo($.fancybox.inner);
+        }
+    }
 	});
+    
 });
     jQuery(document).ready(function() {
-	  "use strict"; 
-      // FLEXY MENU SETTING
-	  $(".flexy-menu").flexymenu({
+        "use strict"; 
+        // FLEXY MENU SETTING
+        $(".flexy-menu").flexymenu({
             align: "right",
             indicator: true
-         });
-     
-   });
+            });
+        
+    });
 
 </script>
 

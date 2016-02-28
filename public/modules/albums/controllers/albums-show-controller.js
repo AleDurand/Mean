@@ -11,6 +11,7 @@ angular.module('AlbumsModule')
         $scope.prevDescription = '';
         $scope.prevName = '';
         $scope.toEmail = null;
+        
         Album.get($routeParams.id)
             .success(function (response) {
                 $scope.success = true;
@@ -95,7 +96,7 @@ angular.module('AlbumsModule')
             var photoNames=""
             for(var i=0; i<album.photos.length; i++){
                 //TODO: cambiar
-                if(document.getElementById(album.photos[i].name+'_checkbox').checked)
+                if(document.getElementById(album.photos[i].name+'_selected').checked)
                     photoNames = photoNames+', '+ album.photos[i].name.split('.')[0];
             }
             //Imagenes a imprimir

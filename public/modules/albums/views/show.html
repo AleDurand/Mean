@@ -20,9 +20,9 @@
             </>
             <label ng-show="user" style="padding:inherit;" for="{{photo.name}}_checkbox">Seleccionar como portada </label>
             <input name="checkboxes" style="float:left;" ng-show="!user" type="checkbox" class="checkbox"
-            id="{{photo.name}}_checkbox" ng-click="showController.toEmail(photo, album)">
+            id="{{photo.name}}_selected" ng-click="showController.toEmail(photo, album)">
             </>
-            <label ng-show="!user" style="padding:inherit;" for="{{photo.name}}_checkbox">Seleccionar para enviar </label>
+            <label ng-show="!user" style="padding:inherit;" for="{{photo.name}}_selected">Seleccionar para enviar </label>
             <button ng-show="user" class="button3d" ng-click="showController.deletePhoto(photo,album)">X</button>
             <a class="fancybox-button" rel="fancybox-button" href="{{photo.path}}" title="{{album.name}}">
                 <img class="img-responsive img-thumbnail" ng-src="{{photo.path}}" alt="" />
@@ -58,26 +58,20 @@
         <form ng-submit="showController.sendEmail(email,album)" validate>
             <div class="control-group form-group">
                 <div class="controls">
-                    <label>Full Name:</label>
+                    <label>Nombre:</label>
                     <input type="text" class="form-control" ng-model="email.name" required>
                     <p class="help-block"></p>
                 </div>
             </div>
             <div class="control-group form-group">
                 <div class="controls">
-                    <label>Phone Number:</label>
-                    <input class="form-control" ng-model="email.phone" required>
-                </div>
-            </div>
-            <div class="control-group form-group">
-                <div class="controls">
-                    <label>Email Address:</label>
+                    <label>Email:</label>
                     <input class="form-control" ng-model="email.address" required>
                 </div>
             </div>
             <div class="control-group form-group">
                 <div class="controls">
-                    <label>Message:</label>
+                    <label>Mensaje:</label>
                     <textarea rows="10" cols="100" class="form-control" ng-model="email.message" required maxlength="999" style="resize:none"></textarea>
                 </div>
             </div>

@@ -6,12 +6,15 @@ angular.module('ContactModule')
         $('#Home').removeClass('active');
         $('#Contact').addClass('active');
         $('#Login').removeClass('active');
+        $scope.success= false;
         this.sendEmail = function (email) {
             Contact.sendEmail(email)
                 .success(function (response) {
                     $scope.success = true;
+                    $scope.error= false;
                 })
                 .error(function (response) {
+                    $scope.success = false;
                     $scope.error = response.message;
                 });
         }

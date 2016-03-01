@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ContactModule')
-    .controller('ContactIndexController', function ($scope, $rootScope, $route, Contact, Authentication) {
+    .controller('ContactIndexController', function ($scope, $rootScope, $route, Contact) {
         $('#Albums').removeClass('active');
         $('#Home').removeClass('active');
         $('#Contact').addClass('active');

@@ -32,6 +32,7 @@ angular.module('UsersModule')
             if (Authentication.user) {
                 Authentication.user = null;
                 delete $window.sessionStorage.token;
+                $rootScope.user = false;
             }
         }
         

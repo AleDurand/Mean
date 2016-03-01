@@ -54,7 +54,8 @@
 
 <div class="row" ng-show="!user">
     <div class="col-md-8">
-        <h3>Send us a Message</h3>
+        <h3>¿Querés que imprima tus fotos?</h3>
+        <h5> Seleccionando las que desees se agregarán automáticamente al mail<h5>
         <form ng-submit="showController.sendEmail(email,album)" validate>
             <div class="control-group form-group">
                 <div class="controls">
@@ -76,7 +77,7 @@
                 </div>
             </div>
             <!-- For success/fail messages -->
-            <button type="submit" class="btn btn-primary">Send Message</button>
+            <button type="submit" class="btn btn-primary">Enviar</button>
             <div ng-show="success" class="text-center text-success">
                 <strong>Email sent successfully</strong>
             </div>

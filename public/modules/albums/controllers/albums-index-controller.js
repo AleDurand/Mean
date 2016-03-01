@@ -20,7 +20,7 @@ angular.module('AlbumsModule')
                 $('#filecount').filestyle('clear');
             });
         };
-
+        
         $scope.success = null;
         $scope.error = null;
         this.save = function (album) {
@@ -47,8 +47,14 @@ angular.module('AlbumsModule')
             });
             
         this.delete = function (album) {
-            Album.delete(album._id)
-                .success(function (response) {
+            $scope.confirmDelete = true;
+            $scope.dialog = "¿Desea eliminar el álbum " + album.name +"?"
+            $scope.showDeleteModal = true;
+            $(document).off('click', '#Aceptar').on('click', '#Aceptar', function () {
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
+                Album.delete(album._id)
+                    .success(function (response) {
                     $scope.success = true;
                     $scope.album = response;
                     $route.reload();
@@ -56,6 +62,7 @@ angular.module('AlbumsModule')
                 .error(function (response) {
                     $scope.error = response.message;
                 });
+            });
         };
 
     });

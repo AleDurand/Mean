@@ -10,8 +10,10 @@ Users.create({
     lastname: "Sánchez",
     username: "123",
     password: "123",
-    email: "mrnrodecker@gmail.com"
-})
+    email: "mrnrodecker@gmail.com",
+    address: "20 de Agosto N° 15",
+    phoneNumber: "(2954)686401"
+    })
     .then(function (user) {
         console.log("User created")
     })
@@ -25,7 +27,9 @@ exports.create = function (req, res) {
         lastname: req.body.lastname,
         username: req.body.username,
         password: req.body.password,
-        email: req.body.email
+        email: req.body.email,
+        address: req.body.address,
+        phoneNumber: req.body.phoneNumber
     })
         .then(function (user) {
             return res.json(user);
@@ -56,7 +60,9 @@ exports.update = function (req, res) {
                     lastname: req.body.lastname,
                     username: req.body.username,
                     password: req.body.password,
-                    email: req.body.email
+                    email: req.body.email,
+                    address: req.body.address,
+                    phoneNumber: req.body.phoneNumber
                 })
         })
         .then(function () {

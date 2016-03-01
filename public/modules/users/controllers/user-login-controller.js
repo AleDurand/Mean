@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('UsersModule')
-    .controller('UserLoginController', function ($scope, $location, $window, User, Authentication) {
+    .controller('UserLoginController', function ($scope, $rootScope,$location, $window, User, Authentication) {
         $('#Albums').removeClass('active');
         $('#Home').removeClass('active');
         $('#Contact').removeClass('active');
@@ -14,6 +14,7 @@ angular.module('UsersModule')
                 User.getByUsername(username)
                     .success(function (response) {
                         Authentication.user = response;
+                        $rootScope.user = true;
                         $scope.success = true;
                         $location.path('/');
                         $('#Login').removeClass('active');
@@ -25,15 +26,15 @@ angular.module('UsersModule')
                         $scope.error = error.message;
                     })
             }
-        }
-
+        }   
+        
         this.logout = function () {
             if (Authentication.user) {
                 Authentication.user = null;
                 delete $window.sessionStorage.token;
             }
         }
-
+        
         this.isLogged = function () {
             return Authentication.user;
         }

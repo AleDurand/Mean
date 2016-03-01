@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('AlbumsModule')
-    .controller('AlbumsShowController', function ($scope, $route, $http, $routeParams, Album, Contact, Authentication) {
-        $scope.user = Authentication.user;
+    .controller('AlbumsShowController', function ($scope, $rootScope, $route, $http, $routeParams, Album, Contact) {
         $scope.dialog = null;
         $scope.modalDialog = false;
         $scope.confirmDelete = false;
@@ -72,7 +71,7 @@ angular.module('AlbumsModule')
             .success(function (response) {
                 $scope.success = true;
                 $scope.album.name = response.name;
-            $scope.album.description = response.description;
+                $scope.album.description = response.description;
             })
             .error(function (response) {
                 $scope.error = response.message;
@@ -109,10 +108,6 @@ angular.module('AlbumsModule')
                 .error(function (response) {
                     $scope.error = response.message;
                 });
-        }
-        
-        this.toEmail = function (photo,album){
-            
         }
         
         this.deletePhoto = function (photo, album) {

@@ -1,101 +1,66 @@
-<!-- Page Heading/Breadcrumbs -->
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">Contact
-                    <small>Subheading</small>
-                </h1>
-        <ol class="breadcrumb">
-            <li ng-click="indexController.disableTab()"><a href="#/"> Home</a>
-            </li>
-            <li class="active">Contact</li>
-        </ol>
-    </div>
-</div>
-<!-- /.row -->
+<footer class="footer-distributed" ng-controller="ContactIndexController" ng-click="hideTooltips()">
+    <div class="footer-left">
 
-<!-- Content Row -->
-<div class="row">
-    <!-- Map Column -->
-    <div class="col-md-8">
-        <!-- Embedded Google Map -->
-        <iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;ll=37.0625,-95.677068&amp;spn=56.506174,79.013672&amp;t=m&amp;z=4&amp;output=embed"></iframe>
+        <span><img src="resources/utils/logo.png"></span>
+
+        <p class="footer-company-name">{{credits}}</p>
     </div>
-    <!-- Contact Details Column -->
-    <div class="col-md-4">
-        <h3>Contact Details</h3>
-        <p>
-            3481 Melrose Place
-            <br>Beverly Hills, CA 90210
-            <br>
+    <div class="footer-center">
+        <div>
+            <div class="tooltip" ng-click="$event.stopPropagation()" ng-show="showtooltipAddress">
+                <input maxlength="140" rows="4" cols="50" ng-model="contact.address" />
+            </div>
+            <div style=" margin-top:0 !important" class="tooltip" ng-click="$event.stopPropagation()" ng-show="showtooltipCity">
+                <input maxlength="140" rows="4" cols="50" ng-model="contact.city" />
+            </div>
+            <i class="fa fa-map-marker"></i>
+            <p>
+                <span style="display:inline;">
+                    {{contact.address}} 
+                    <span ng-show="user" id="editAddress" class="glyphicon glyphicon-edit" style="cursor:pointer; display:inline;"
+                        ng-click="toggleTooltipAddress($event,contact)">
+                    </span>
+                </span>
+                </br>
+                {{contact.city}}
+                <span ng-show="user" id="editCity" class="glyphicon glyphicon-edit" style="cursor:pointer; display:inline;" ng-click="toggleTooltipCity($event,contact)">
+                </span>
+            </p>
+        </div>
+        <div>
+            <div class="tooltip" ng-click="$event.stopPropagation()" ng-show="showtooltipPhoneNumber">
+                <input maxlength="140" rows="4" cols="50" ng-model="contact.phoneNumber" />
+            </div>
+            <i class="fa fa-phone"></i>
+            <p>
+                {{contact.phoneNumber}}
+                <span ng-show="user" id="editPhoneNumber" class="glyphicon glyphicon-edit" style="cursor:pointer; display:inline;" ng-click="toggleTooltipPhoneNumber($event,contact)">
+                </span>
+            </p>
+        </div>
+        <div>
+            <div class="tooltip" ng-click="$event.stopPropagation()" ng-show="showtooltipEmail">
+                <input maxlength="140" rows="4" cols="50" ng-model="contact.email" />
+            </div>
+            <i class="fa fa-envelope"></i>
+            <p>
+                <a ng-href="mailto:{{contact.email}}">
+                    {{contact.email}}
+                    <span ng-show="user" id="editEmail" class="glyphicon glyphicon-edit" style="cursor:pointer; display:inline;" ng-click="toggleTooltipEmail($event,contact)">
+                </span>
+                </a>
+            </p>
+        </div>
+    </div>
+    <div class="footer-right">
+        <div class="tooltip" ng-click="$event.stopPropagation()" ng-show="showtooltipAppDescription">
+            <input maxlength="140" rows="4" cols="50" ng-model="contact.appDescription" />
+        </div>
+        <p class="footer-company-about">
+            <span>Marcela Sánchez Fotografía</span> {{contact.appDescription}}
+            <span ng-show="user" id="editAppDescription" class="glyphicon glyphicon-edit" style="cursor:pointer; display:inline;" ng-click="toggleTooltipAppDescription($event,contact)">
+                </span>
         </p>
-        <p><i class="fa fa-phone"></i>
-            <abbr title="Phone">P</abbr>: (123) 456-7890</p>
-        <p><i class="fa fa-envelope-o"></i>
-            <abbr title="Email">E</abbr>: <a href="mailto:name@example.com">name@example.com</a>
-        </p>
-        <p><i class="fa fa-clock-o"></i>
-            <abbr title="Hours">H</abbr>: Monday - Friday: 9:00 AM to 5:00 PM</p>
-        <ul class="list-unstyled list-inline list-social-icons">
-            <li>
-                <a href="#"><i class="fa fa-facebook-square fa-2x"></i></a>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-linkedin-square fa-2x"></i></a>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-twitter-square fa-2x"></i></a>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-google-plus-square fa-2x"></i></a>
-            </li>
-        </ul>
-    </div>
-</div>
-<!-- /.row -->
-
-<!-- Contact Form -->
-<!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
-<div class="row">
-    <div class="col-md-8">
-        <h3>Send us a Message</h3>
-        <form ng-submit="indexController.sendEmail(email)" validate>
-            <div class="control-group form-group">
-                <div class="controls">
-                    <label>Full Name:</label>
-                    <input type="text" class="form-control" ng-model="email.name" required>
-                    <p class="help-block"></p>
-                </div>
-            </div>
-            <div class="control-group form-group">
-                <div class="controls">
-                    <label>Phone Number:</label>
-                    <input class="form-control" ng-model="email.phone" required>
-                </div>
-            </div>
-            <div class="control-group form-group">
-                <div class="controls">
-                    <label>Email Address:</label>
-                    <input class="form-control" ng-model="email.address" required>
-                </div>
-            </div>
-            <div class="control-group form-group">
-                <div class="controls">
-                    <label>Message:</label>
-                    <textarea rows="10" cols="100" class="form-control" ng-model="email.message" required maxlength="999" style="resize:none"></textarea>
-                </div>
-            </div>
-            <!-- For success/fail messages -->
-            <button type="submit" class="btn btn-primary">Send Message</button>
-            <div ng-show="success" class="text-center text-success">
-                <strong>Email sent successfully</strong>
-            </div>
-            <div ng-show="error" class="text-center text-danger">
-                <strong ng-bind="error"></strong>
-            </div>
-        </form>
     </div>
 
-</div>
-<!-- /.row -->
-
-<hr>
+</footer>

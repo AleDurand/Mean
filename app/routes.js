@@ -24,5 +24,7 @@ module.exports = function (app) {
     app.route('/api/users/:user_id').get(auth.isAuthenticated, users.getByUsername);
     // Contact endpoints
     app.route('/api/contact/send-email').post(contact.sendEmail);
+    app.route('/api/contact').get(contact.get);
+    app.route('/api/contact').put(auth.isAuthenticated,contact.update)
 
 };

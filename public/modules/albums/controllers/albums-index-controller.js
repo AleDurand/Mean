@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('AlbumsModule')
-    .controller('AlbumsIndexController', function ($scope, $route, $location, Album, Authentication) {
+    .controller('AlbumsIndexController', function ($scope, $rootScope,$route, $location, Album) {
         $('#Albums').addClass('active');
         $('#Home').removeClass('active');
         $('#Contact').removeClass('active');
         $('#Login').removeClass('active');
-        $scope.user = Authentication.user;
+        
         $scope.showModal = false;
         $scope.toggleModal = function () {
             $scope.showModal = !$scope.showModal;
@@ -45,6 +45,7 @@ angular.module('AlbumsModule')
             .error(function (response) {
                 $scope.error = response.message;
             });
+            
         this.delete = function (album) {
             Album.delete(album._id)
                 .success(function (response) {

@@ -8,8 +8,6 @@
     </div>
     <div class="center">
         <div ng-repeat="album in albums | filter: {name: search}" ng-animate="'slide'">
-            <!--<div class="col-lg-3 col-md-4 col-xs-6">-->
-
             <div class="view view-seventh">
                 <img class="img-responsive" ng-src="{{album.albumImage.path}}" alt="{{album.name}}">
                 <div class="mask">
@@ -25,7 +23,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div ng-if="!user">
                         <a class="info" ng-href="#/albums/{{album._id}}" style="margin-top:-14px !important;">Ver Álbum</a>
                     </div>

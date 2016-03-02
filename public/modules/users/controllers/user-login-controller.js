@@ -2,17 +2,14 @@
 
 angular.module('UsersModule')
     .controller('UserLoginController', function ($scope, $rootScope, $location, $window, User, Authentication) {
-        $('#Albums').removeClass('active');
-        $('#Home').removeClass('active');
-        $('#Contact').removeClass('active');
-        $('#Login').addClass('active');
         $scope.changePassword = false;
-        $scope.oldPassword = "hola Marian";             
+        $scope.master = {};        
         //Admin User Controller (login, logout)
         this.login = function (username, password) {
             if (username !== undefined && password !== undefined) {
                 var authdata = btoa(username + ':' + password);
                 $window.sessionStorage.token = authdata;
+                $scope.submitted = true;
                 User.getByUsername(username)
                     .success(function (response) {
                         Authentication.user = true;
@@ -21,13 +18,25 @@ angular.module('UsersModule')
                         $scope.success = true;
                         $('#Login').removeClass('active');
                         $('#Albums').addClass('active');
+                        $scope.loginError = false;
                         $scope.loginform.username.$setValidity("notFound", true);
-                        $scope.loginform.password.$setValidity("notFound", true);
+                        $scope.loginform.password.$setValidity("notFound", true);       
+                        //Reset the login form
+                        
+                        $scope.loginform.$setPristine();
+                        $scope.loginform.username.$setUntouched();
+                        $scope.loginform.password.$setUntouched();
+                        $scope.loginform.newPassword.$setUntouched();
+                        $scope.loginform.verifyPassword.$setUntouched();
+                        $scope.loginform.$setUntouched();
+
+                        $scope.loginform.newPassword.$setValidity("notEqual", false);
+                        $scope.loginform.verifyPassword.$setValidity("notEqual", false);
                     })
                     .error(function (error) {
                         Authentication.user = null;
                         delete $window.sessionStorage.token;
-                        $scope.error = error.message;
+                        $scope.loginError = true;
                         $scope.loginform.username.$setValidity("notFound", false);
                         $scope.loginform.password.$setValidity("notFound", false);
                     })
@@ -36,11 +45,11 @@ angular.module('UsersModule')
 
         this.logout = function () {
             if (Authentication.user) {
+                $scope.submitted = false;
                 Authentication.user = null;
                 delete $window.sessionStorage.token;
                 $rootScope.user = false;
-                $scope.user.username = "";
-                $scope.user.password = "";
+                $scope.user = angular.copy($scope.master);
             }
         }
 
@@ -50,6 +59,11 @@ angular.module('UsersModule')
 
         this.cancelChangePassword = function () {
             $scope.changePassword = false;
+            $scope.newPassword = '';
+            $scope.verifyPassword='';
+            $scope.loginform.$setPristine();
+            $scope.loginform.newPassword.$setUntouched();
+            $scope.loginform.verifyPassword.$setUntouched();
         }
 
         this.cambiarContrasena = function () {
@@ -59,12 +73,13 @@ angular.module('UsersModule')
         this.confirmChangePassword = function (newPassword, verifyPassword) {
             if (newPassword != undefined && verifyPassword != undefined && newPassword == verifyPassword) {
                 $scope.user.password = newPassword;
-                $scope.loginform.newPassword.$setValidity("notEqual", true);
-                $scope.loginform.verifyPassword.$setValidity("notEqual", true);
                 User.update($scope.user)
                     .success(function () {
                         var authdata = btoa($scope.user.username + ':' + newPassword);
                         $window.sessionStorage.token = authdata;
+                        $scope.loginform.newPassword.$setValidity("notEqual", true);
+                        $scope.loginform.verifyPassword.$setValidity("notEqual", true);
+                        $location.path('/');
                     });
             } else {
                 $scope.loginform.newPassword.$setValidity("notEqual", false);

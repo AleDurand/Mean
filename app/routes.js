@@ -17,11 +17,12 @@ module.exports = function (app) {
     
     // User enpoints
     app.route('/api/users').post(auth.isAuthenticated, users.create);
+    app.route('/api/users/:username').get(auth.isAuthenticated, users.getByUsername);
     app.route('/api/users/:user_id').get(auth.isAuthenticated, users.getById);
-    app.route('/api/users/:user_id').put(auth.isAuthenticated, users.update);
+    app.route('/api/users').put(auth.isAuthenticated, users.update);
     app.route('/api/users/:user_id').delete(auth.isAuthenticated, users.delete);
     app.route('/api/users').get(auth.isAuthenticated, users.all);
-    app.route('/api/users/:user_id').get(auth.isAuthenticated, users.getByUsername);
+    
     // Contact endpoints
     app.route('/api/contact/send-email').post(contact.sendEmail);
     app.route('/api/contact').get(contact.get);

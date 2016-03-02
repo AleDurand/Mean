@@ -6,13 +6,8 @@ var Users = require('../models/user');
 var errorHandler = require('../errors/errorHandler')
 
 Users.create({
-    name: "Marcela",
-    lastname: "Sánchez",
     username: "123",
-    password: "123",
-    email: "mrnrodecker@gmail.com",
-    address: "20 de Agosto N° 15",
-    phoneNumber: "(2954)686401"
+    password: "123"
     })
     .then(function (user) {
         console.log("User created")
@@ -23,13 +18,8 @@ Users.create({
 
 exports.create = function (req, res) {
     Users.create({
-        name: req.body.name,
-        lastname: req.body.lastname,
         username: req.body.username,
-        password: req.body.password,
-        email: req.body.email,
-        address: req.body.address,
-        phoneNumber: req.body.phoneNumber
+        password: req.body.password
     })
         .then(function (user) {
             return res.json(user);
@@ -51,21 +41,12 @@ exports.getById = function (req, res) {
 };
 
 exports.update = function (req, res) {
-    Users.findOne({ _id: req.params.user_id })
+    Users.findOne({ username: req.body.username })
         .then(function (user) {
             if (!user) return res.status(404).send({ message: "User not found." })
-            Users.update({ _id: req.params.user_id },
-                {
-                    name: req.body.name,
-                    lastname: req.body.lastname,
-                    username: req.body.username,
-                    password: req.body.password,
-                    email: req.body.email,
-                    address: req.body.address,
-                    phoneNumber: req.body.phoneNumber
-                })
+            return Users.update({password: req.body.password})
         })
-        .then(function () {
+        .then(function (user) {
             return res.status(204).end();
         })
         .catch(function (error) {
@@ -96,7 +77,7 @@ exports.all = function (req, res) {
 };
 
 exports.getByUsername = function (req, res) {
-    Users.findOne({ _id: req.params.username })
+    Users.findOne({ username: req.params.username })
         .then(function (user) {
             if (!user) return res.status(404).send({ message: "User not found." })
             return res.json(user);

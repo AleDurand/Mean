@@ -1,11 +1,4 @@
-<form>
-    <!--
-    <div ng-show="success" class="text-center text-success">
-        <strong>Login successfully</strong>
-    </div>
-    <div ng-show="error" class="text-center text-danger">
-        <strong ng-bind="error"></strong>
-    </div>-->
+<form name="loginform" novalidate>
     <div class="row">
         <div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">
             <h3 class="animated bounceInDown">Iniciar Sesión</h3>
@@ -15,21 +8,51 @@
                 </div>
                 <hr />
                 <div class="login-form">
-                    <div class="alert alert-error hide">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <h4>Error!</h4> Your Error Message goes here
+                    <span class="messages" ng-show="loginform.$submitted || loginform.username.$touched || loginform.password.$touched">
+                            <span style="margin-left: 15%;"ng-show="loginform.username.$error.notFound || loginform.password.$error.notFound">Nombre de usuario o contraseña inválido.</span>
+                    </span>
+                    <div class="form-group" ng-show="!loginController.isLogged()">
+                        <input class="form-control"  name="username" type="text" placeholder="Nombre de usuario"
+                        ng-model="user.username" required/>
+                        <span class="messages" ng-show="loginform.$submitted || loginform.username.$touched" >
+                            <span style="margin-left: 15%;"ng-show="loginform.username.$error.required">Es obligatorio ingresar el nombre.</span>
+                        </span>
                     </div>
                     <div class="form-group" ng-show="!loginController.isLogged()">
-                        <input class="form-control" type="text" placeholder="Nombre de usuario" ng-model="user.email" required/>
+                        <input class="form-control" type="password" name="password" placeholder="Contraseña" ng-model="user.password" required/>
+                        <span class="messages" ng-show="loginform.$submitted || loginform.password.$touched">
+                            <span style="margin-left: 15%;" ng-show="loginform.password.$error.required">Es obligatorio ingresar la contraseña.</span>
+                        </span>
                     </div>
                     <div class="form-group" ng-show="!loginController.isLogged()">
-                        <input class="form-control" type="password" placeholder="Contraseña" ng-model="user.password" required/>
+                        <button type="submit" class="btn btn-login" ng-click="loginController.login(user.username, user.password)">Iniciar Sesión</button>
                     </div>
-                    <div class="form-group" ng-show="!loginController.isLogged()">
-                        <button type="submit" class="btn btn-login" ng-click="loginController.login(user.email, user.password)">Iniciar Sesión</button>
+                    <div class="form-group" ng-show="loginController.isLogged() && !changePassword">
+                        <button type="submit" class="btn btn-login" ng-click="loginController.cambiarContrasena()">Cambiar contraseña</button>
                     </div>
-                    <div class="form-group" ng-show="loginController.isLogged()">
+                    <div class="form-group" ng-show="loginController.isLogged() && !changePassword">
                         <button type="submit" class="btn btn-login" ng-click="loginController.logout()">Cerrar Sesión</button>
+                    </div>
+                    <span class="messages" ng-show="loginform.$submitted || loginform.newPassword.$touched || loginform.verifyPassword.$touched">
+                            <span style="margin-left: 15%;"ng-show="loginform.newPassword.$error.notEqual || loginform.verifyPassword.$error.notEqual">Las contraseñas ingresadas no coinciden.</span>
+                    </span>
+                    <div class="form-group" ng-show="loginController.isLogged() && changePassword">
+                        <input class="form-control" name="newPassword" type="password" placeholder="Contraseña nueva" ng-model="newPassword" required/>
+                        <span class="messages" ng-show="loginform.$submitted || loginform.newPassword.$touched" >
+                            <span style="margin-left: 15%;"ng-show="loginform.newPassword.$error.required">Es obligatorio ingresar una nueva contraseña.</span>
+                        </span>
+                    </div>
+                    <div class="form-group" ng-show="loginController.isLogged() && changePassword">
+                        <input class="form-control" name="verifyPassword" type="password" placeholder="Repetir contraseña nueva" ng-model="verifyPassword" required/>
+                        <span class="messages" ng-show="loginform.$submitted || loginform.verifyPassword.$touched" >
+                            <span style="margin-left: 15%;"ng-show="loginform.verifyPassword.$error.required">Es obligatorio repetir la nueva contraseña.</span>
+                        </span>
+                    </div>
+                    <div class="form-group" ng-show="loginController.isLogged() && changePassword">
+                        <button type="submit" class="btn btn-login" ng-click="loginController.confirmChangePassword(newPassword,verifyPassword)">Aceptar</button>
+                    </div>
+                    <div class="form-group" ng-show="loginController.isLogged() && changePassword">
+                        <button type="submit" class="btn btn-login" ng-click="loginController.cancelChangePassword()">Cancelar</button>
                     </div>
                 </div>
             </div>

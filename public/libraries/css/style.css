@@ -38,6 +38,7 @@
 }
 
 .container {
+    min-height: 300px;
 	top: 0;
 }
 
@@ -146,5 +147,43 @@ h1,h2,h3,h4{
     height: 100%;
     background: transparent url(http://img443.imageshack.us/img443/6017/eup1n.png) center center no-repeat;
     z-index: 1100;
+}
+/*SEARCH*/
+.navbar-nav > li > form {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 20px; }
+
+@media (min-width: 768px) {
+  .navbar-nav > li > form {
+    padding-top: 15px;
+    padding-bottom: 15px; } }
+
+#search-nav input, #search-nav button[type="reset"] {
+  display: none; }
+
+#search-nav input, #search-nav button {
+  border-radius: 0px;
+  border-width: 0px;
+  color: #454545;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  outline: none; }
+
+#search-nav .search-submit {
+  position: relative;
+  bottom: 2px; }
+  
+.messages {
+    color: #FA787E;    
+}
+  
+form.ng-submitted input.ng-invalid{
+    border-color: #FA787E;
+}
+
+form input.ng-invalid.ng-touched {
+    border-color: #FA787E;
 }
 

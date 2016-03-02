@@ -93,16 +93,7 @@ angular.module('ContactModule')
             $('#editAddress').removeClass('glyphicon-ok');
             $('#editAddress').addClass('glyphicon-edit');
             $('#editCity').removeClass('glyphicon-ok');
-            $('#editCity').addClass('glyphicon-edit')
-            // getPrevValues();
-            // $scope.showtooltipName = false;
-            // $scope.showtooltipDescription = false;
-            // $scope.album.name = $scope.prevName;
-            // $scope.album.description = $scope.prevDescription;
-            // $('#editName').removeClass('glyphicon-ok');
-            // $('#editName').addClass('glyphicon-edit');
-            // $('#editDescription').removeClass('glyphicon-ok');
-            // $('#editDescription').addClass('glyphicon-edit');
+            $('#editCity').addClass('glyphicon-edit');
         }
         
         function getPrevValues(){

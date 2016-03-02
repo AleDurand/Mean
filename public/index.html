@@ -27,7 +27,7 @@
     />
     <script type="text/javascript" src="libraries/js/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
     <script type="text/javascript" src="libraries/js/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
-    
+
     <link rel="stylesheet" href="libraries/js/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen"
     />
     <script type="text/javascript" src="libraries/js/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
@@ -39,6 +39,7 @@
     <script src="libraries/js/bootstrap.min.js"></script>
     <script src="libraries/js/flexy-menu.js"></script>
     <script src="libraries/js/bootstrap-filestyle.min.js"></script>
+    <script src="libraries/js/search.js"></script>
     <!--MAIN-->
     <script src="app.js"></script>
     <!--ROUTES-->
@@ -65,25 +66,39 @@
 
 </head>
 
-<body >
+<body>
     <header class="header-section">
         <div class="wrapper header">
             <div class="logo">
                 <a href="#/"><img src="resources/utils/logo.png" alt="logo" /></a>
             </div>
-            <ul class="flexy-menu thick">
-                <li id="Albums"><a href="#/albums">Albums</a></li>
-                <li id="Login"><a href="#/users/login">Iniciar Sesión</a></li>
+            <ul class="flexy-menu thick">            
+                <li>
+                    <form role="search" id="search-nav" method="get" action="#">
+                        <input type="search" ng-model="search" class="search-field" placeholder="Buscar álbums ..."  style="padding:23px 20px 22px 18px;">
+
+                        <button type="reset">
+                            <span class="fa fa-close">
+                                <span class="sr-only">Cerrar</span>
+                            </span>
+                        </button>
+                        <button type="submit" class="search-submit" style="padding:23px 20px 22px 18px;">
+                            <span class="fa fa-search">
+                                <span class="sr-only">Buscar álbums</span>
+                            </span>
+                        </button>
+                    </form>
+                </li>
             </ul>
         </div>
     </header>
     <div class="container">
         <div ng-view></div>
     </div>
-    
+
     <div ng-include="'modules/contact/views/index.html'">
     </div>
-    
+
 </body>
 <script type="text/javascript">
     $(document).ready(function(){

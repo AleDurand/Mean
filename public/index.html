@@ -72,10 +72,10 @@
             <div class="logo">
                 <a href="#/"><img src="resources/utils/logo.png" alt="logo" /></a>
             </div>
-            <ul class="flexy-menu thick">            
+            <ul class="flexy-menu thick">
                 <li>
                     <form role="search" id="search-nav" method="get" action="#">
-                        <input type="search" ng-model="search" class="search-field" placeholder="Buscar álbums ..."  style="padding:23px 20px 22px 18px;">
+                        <input type="search" ng-model="search" class="search-field" placeholder="Buscar álbums ..." style="padding:23px 20px 22px 18px;">
 
                         <button type="reset">
                             <span class="fa fa-close">
@@ -97,6 +97,24 @@
     </div>
 
     <div ng-include="'modules/contact/views/index.html'">
+        <script>
+            window.fbAsyncInit = function() {
+                FB.init({
+                appId      : '444839095711246',
+                xfbml      : true,
+                version    : 'v2.5'
+                });
+            };
+            
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+
+        </script>
     </div>
 
 </body>

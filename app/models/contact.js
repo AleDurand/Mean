@@ -9,7 +9,8 @@ var ContactSchema = new Schema({
     address : {type: String, required: true, unique:true},
     city : {type: String, required: true, unique:true},
     phoneNumber: {type: String, required:true, unique: true},
-    appDescription: {type: String, required:true,unique:true}
+    appDescription: {type: String, required:true,unique:true},
+    facebookPage: {type: String, required:true,unique:true}
 });
 
 var Contact = mongoose.model('Contact', ContactSchema);

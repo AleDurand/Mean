@@ -2,21 +2,19 @@
 
 angular.module('ContactModule')
     .controller('ContactIndexController', function ($scope, $rootScope, $route, Contact) {
-        $('#Albums').removeClass('active');
-        $('#Home').removeClass('active');
-        $('#Contact').addClass('active');
-        $('#Login').removeClass('active');
         $scope.credits = "Mariano Rodecker - Ingeniería de Aplicaciones Web"
-        $scope.success= false;
+        $scope.success = false;
+
         Contact.get()
             .success(function (response) {
                 $scope.success = true;
                 $scope.contact = response;
+                $scope.facePageToshow = '/' + $scope.contact.facebookPage.split('/')[3];
             })
             .error(function (response) {
                 $scope.error = response.message;
             });
-            
+
         $scope.showtooltipAddress = false;
         $scope.toggleTooltipAddress = function (e, contact) {
             e.stopPropagation();
@@ -30,7 +28,7 @@ angular.module('ContactModule')
                 $('#editAddress').addClass('glyphicon-ok');
             }
         }
-        
+
         $scope.showtooltipCity = false;
         $scope.toggleTooltipCity = function (e, contact) {
             e.stopPropagation();
@@ -44,7 +42,7 @@ angular.module('ContactModule')
                 $('#editCity').addClass('glyphicon-ok');
             }
         }
-        
+
         $scope.showtooltipPhoneNumber = false;
         $scope.toggleTooltipPhoneNumber = function (e, contact) {
             e.stopPropagation();
@@ -58,7 +56,7 @@ angular.module('ContactModule')
                 $('#editPhoneNumber').addClass('glyphicon-ok');
             }
         }
-        
+
         $scope.showtooltipEmail = false;
         $scope.toggleTooltipEmail = function (e, contact) {
             e.stopPropagation();
@@ -72,7 +70,21 @@ angular.module('ContactModule')
                 $('#editEmail').addClass('glyphicon-ok');
             }
         }
-        
+
+        $scope.showtooltipFacebookPage = false;
+        $scope.toggleTooltipFacebookPage = function (e, contact) {
+            e.stopPropagation();
+            $scope.showtooltipFacebookPage = !$scope.showtooltipFacebookPage;
+            if (!$scope.showtooltipFacebookPage) {
+                Contact.update(contact);
+                $('#editFacebookPage').removeClass('glyphicon-ok');
+                $('#editFacebookPage').addClass('glyphicon-edit');
+            } else {
+                $('#editFacebookPage').removeClass('glyphicon-edit');
+                $('#editFacebookPage').addClass('glyphicon-ok');
+            }
+        }
+
         $scope.showtooltipAppDescription = false;
         $scope.toggleTooltipAppDescription = function (e, contact) {
             e.stopPropagation();
@@ -86,32 +98,45 @@ angular.module('ContactModule')
                 $('#editAppDescription').addClass('glyphicon-ok');
             }
         }
-        
+
         $scope.hideTooltips = function () {
             getPrevValues();
             $scope.showtooltipAddress = false;
+            $scope.showtooltipCity = false;
+            $scope.showtooltipPhoneNumber = false;
+            $scope.showtooltipEmail = false;
+            $scope.showtooltipFacebookPage = false;
+            $scope.showtooltipAppDescription = false;
             $('#editAddress').removeClass('glyphicon-ok');
             $('#editAddress').addClass('glyphicon-edit');
             $('#editCity').removeClass('glyphicon-ok');
             $('#editCity').addClass('glyphicon-edit');
+            $('#editPhoneNumber').removeClass('glyphicon-ok');
+            $('#editPhoneNumber').addClass('glyphicon-edit');
+            $('#editEmail').removeClass('glyphicon-ok');
+            $('#editEmail').addClass('glyphicon-edit');
+            $('#editFacebookPage').removeClass('glyphicon-ok');
+            $('#editFacebookPage').addClass('glyphicon-edit');
+            $('#editAppDescription').removeClass('glyphicon-ok');
+            $('#editAppDescription').addClass('glyphicon-edit')
         }
-        
-        function getPrevValues(){
-             Contact.get()
-            .success(function (response) {
-                $scope.success = true;
-                $scope.contact = response;
-            })
-            .error(function (response) {
-                $scope.error = response.message;
-            });
+
+        function getPrevValues() {
+            Contact.get()
+                .success(function (response) {
+                    $scope.success = true;
+                    $scope.contact = response;
+                })
+                .error(function (response) {
+                    $scope.error = response.message;
+                });
         }
-        
+
         this.sendEmail = function (email) {
             Contact.sendEmail(email)
                 .success(function (response) {
                     $scope.success = true;
-                    $scope.error= false;
+                    $scope.error = false;
                 })
                 .error(function (response) {
                     $scope.success = false;

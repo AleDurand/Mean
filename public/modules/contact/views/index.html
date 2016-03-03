@@ -45,9 +45,28 @@
             <i class="fa fa-envelope"></i>
             <p>
                 <a ng-href="mailto:{{contact.email}}">
-                    {{contact.email}}
+                    {{contact.email}}                    
+                </a>
+                <a>
                     <span ng-show="user" id="editEmail" class="glyphicon glyphicon-edit" style="cursor:pointer; display:inline;" ng-click="toggleTooltipEmail($event,contact)">
-                </span>
+                    </span>
+                </a>
+            </p>
+        </div>
+        <!--fa fa-thumbs-o-up-->
+        <div>
+            <div class="tooltip" ng-click="$event.stopPropagation()" ng-show="showtooltipFacebookPage">
+                <input maxlength="140" rows="4" cols="50" ng-model="contact.facebookPage" />
+            </div>
+            <i class="fa fa-facebook"></i>
+            <p>
+                <a ng-href="https://www.facebook.com/marcelasanchezdemosquera" target="_blank">
+                    <p>{{facePageToshow}}</p>
+                </a>
+                <p ng-hide="true">{{contact.facebookPage}}</p>
+                <a>
+                    <span ng-show="user" id="editFacebookPage" class="glyphicon glyphicon-edit" style="cursor:pointer; display:inline;" ng-click="toggleTooltipFacebookPage($event,contact)">
+                    </span>
                 </a>
             </p>
         </div>

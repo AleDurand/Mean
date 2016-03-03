@@ -9,7 +9,8 @@ Contact.create({
     address: "20 de Agosto N° 15",
     phoneNumber: "(2954)686401",
     city: "Alpachiri, La Pampa, Argentina",
-    appDescription: "Espacio dedicado a mostrar las fotos tomadas en diferentes eventos."
+    appDescription: "Espacio dedicado a mostrar las fotos tomadas en diferentes eventos.",
+    facebookPage: "https://www.facebook.com/marcelasanchezdemosquera/"
     })
     .then(function (contact) {
         this.contact=contact;
@@ -58,7 +59,8 @@ exports.update = function (req, res) {
                                   address: req.body.address, 
                                   city: req.body.city, 
                                   phoneNumber: req.body.phoneNumber,
-                                  appDescription: req.body.appDescription}
+                                  appDescription: req.body.appDescription,
+                                  facebookPahe: req.body.facebookPage}
                            })
             })
         .then(function (contact) {

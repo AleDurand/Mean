@@ -18,8 +18,17 @@ angular.module('AlbumsModule')
             delete: function (id) {
                 return $http({ method: 'DELETE', url: '/api/albums/' + id });
             },
+            addPhotos: function (album_id, data) {
+                return $http({
+                    method: 'POST',
+                    url: '/api/albums/' + album_id + '/photos',
+                    data: data,
+                    transformRequest: angular.identity,
+                    headers: { 'Content-Type': undefined }
+                });
+            },
             deletePhoto: function (album_id, photo_id) {
-                return $http({ method: 'DELETE', url: '/api/albums/' + album_id + '/photos/' + photo_id});
+                return $http({ method: 'DELETE', url: '/api/albums/' + album_id + '/photos/' + photo_id });
             }
         };
     }]);

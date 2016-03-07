@@ -1,7 +1,6 @@
 'use strict'
 
 var mongoose = require('mongoose');
-var bcrypt = require('bcrypt-nodejs');
 var Schema = mongoose.Schema;
 
 var ContactSchema = new Schema({

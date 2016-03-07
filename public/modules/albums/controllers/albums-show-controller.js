@@ -25,10 +25,7 @@ angular.module('AlbumsModule')
             for (var i = 0; i < images.length; i++) {
                 fd.append('file' + i, images[i]._file);
             }
-            $http.post('/api/albums/' + $routeParams.id + '/photos', fd, {
-                transformRequest: angular.identity,
-                headers: { 'Content-Type': undefined }
-            })
+            Album.addPhotos($routeParams.id, fd)
                 .success(function (response) {
                     $scope.success = true;
                     $scope.album = response;

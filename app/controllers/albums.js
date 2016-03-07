@@ -17,7 +17,7 @@ exports.create = function(req, res) {
     })
     .then(function(album){
         fs.mkdirSync('./public/' + basepath + req.body.name);
-        return res.status(201).end();
+        return res.status(201).send(album);
     })
     .catch(function(error) {
         res.status(400).send({ message: 'Error occurred while creating the album.' });

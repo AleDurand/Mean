@@ -1,17 +1,17 @@
 'use strict';
 
 angular.module('AlbumsModule')
-    .controller('AlbumsIndexController', function ($scope, $rootScope,$route, $location, Album) {
+    .controller('AlbumsIndexController', function ($scope, $rootScope, $route, $location, Album) {
         $('#Albums').addClass('active');
         $('#Home').removeClass('active');
         $('#Contact').removeClass('active');
         $('#Login').removeClass('active');
-        
+
         $scope.showModal = false;
         $scope.toggleModal = function () {
             $scope.showModal = !$scope.showModal;
             $('#filecount').filestyle({
-                input:false,
+                input: false,
                 buttonText: 'Seleccionar imagen',
                 buttonName: 'btn-primary',
                 iconName: 'glyphicon glyphicon-folder-open'
@@ -20,18 +20,36 @@ angular.module('AlbumsModule')
                 $('#filecount').filestyle('clear');
             });
         };
-        
+
         $scope.success = null;
         $scope.error = null;
-        this.save = function (album) {
+        this.save = function (album, image) {
             Album.create(album)
-            .success(function (response) {
+                .success(function (response) {
                     $scope.success = true;
-                    $scope.albums = response;
-                    $location.path('/');
-                    $scope.showModal = false;
-                    $('body').removeClass('modal-open');
-                    $('.modal-backdrop').remove();
+                    var fd = new FormData();
+                    var images = [image];
+                    fd.append('album', angular.toJson(response));
+                    fd.append('file' + 0, images[0]._file);
+                    Album.addPhotos(response._id, fd)
+                        .success(function (response) {
+                            $scope.success = true;
+                            response.albumImage = response.photos[0]._id;
+                            Album.update(response._id, response)
+                                .success(function (response) {
+                                    $scope.showModal = false;
+                                    $('body').removeClass('modal-open');
+                                    $('.modal-backdrop').remove();
+                                    $location.path('/');
+                                })
+                                .error(function (response) {
+                                    $scope.error = response.message;
+                                });
+                        })
+                        .error(function (response) {
+                            $scope.error = response.message;
+                        });
+
                 })
                 .error(function (response) {
                     $scope.error = response.message;
@@ -45,23 +63,23 @@ angular.module('AlbumsModule')
             .error(function (response) {
                 $scope.error = response.message;
             });
-            
+
         this.delete = function (album) {
             $scope.confirmDelete = true;
-            $scope.dialog = "¿Desea eliminar el álbum " + album.name +"?"
+            $scope.dialog = "¿Desea eliminar el álbum " + album.name + "?"
             $scope.showDeleteModal = true;
             $(document).off('click', '#Aceptar').on('click', '#Aceptar', function () {
                 $('body').removeClass('modal-open');
                 $('.modal-backdrop').remove();
                 Album.delete(album._id)
                     .success(function (response) {
-                    $scope.success = true;
-                    $scope.album = response;
-                    $route.reload();
-                })
-                .error(function (response) {
-                    $scope.error = response.message;
-                });
+                        $scope.success = true;
+                        $scope.album = response;
+                        $route.reload();
+                    })
+                    .error(function (response) {
+                        $scope.error = response.message;
+                    });
             });
         };
 

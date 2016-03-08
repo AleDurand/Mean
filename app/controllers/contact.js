@@ -25,7 +25,7 @@ var template = {
     to: 'mrnrodecker@gmail.com',
     subject: 'Contacta a {{name}}, su email es: {{address}}',
     text: '{{message}} {{name}}',
-    html: '{{message}} <br><br> <b>{{name}}</b>'
+    html: '<b>{{name}}</b> <br> <br> {{message}} <br><br> Imágenes para imprimir (por nombre): {{photos}} </br>'
 };
 
 var transporter = nodemailer.createTransport('smtps://contact.designer.bb%40gmail.com:Password1%40@smtp.googlemail.com');

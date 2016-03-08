@@ -18,10 +18,10 @@
             <input name="radiobuttons" style="float:left;" ng-checked="photo._id == album.albumImage" ng-show="user" type="radio" class="radio"
             id="{{photo.name}}_checkbox" ng-click="showController.selected(photo, album)">
             </>
-            <label ng-show="user" style="padding:inherit;" for="{{photo.name}}_checkbox">Seleccionar como portada </label>
-            <input name="checkboxes" style="float:left;" ng-show="!user" type="checkbox" class="checkbox"
-            id="{{photo.name}}_selected" ng-click="showController.toEmail(photo, album)">
-            </>
+            <p ng-init="htmlSwitchStatus = true" ng-show="!user" >
+                <div id="{{photo.name}}_selected" toggle-switch type="checkbox" class="switch-primary switch-large" html="htmlSwitchStatus"
+                knob-label='<i class="fa fa-question"></i>' on-label='<i class="fa fa-thumbs-up"></i>' off-label='<i class="fa fa-thumbs-down"></i>' ng-model="switchStatus" ></div>
+            </p>
             <label ng-show="!user" style="padding:inherit;" for="{{photo.name}}_selected">Seleccionar para enviar </label>
             <button ng-show="user" class="button3d" ng-click="showController.deletePhoto(photo,album)">X</button>
             <a class="fancybox-button" rel="fancybox-button" href="{{photo.path}}" title="{{album.name}}">

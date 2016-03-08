@@ -6,11 +6,11 @@ angular.module('AlbumsModule')
         $scope.modalDialog = false;
         $scope.confirmDelete = false;
         $scope.showtooltipName = false;
-        $scope.showtooltipDescription = false;       
+        $scope.showtooltipDescription = false;
         $scope.prevDescription = '';
         $scope.prevName = '';
         $scope.toEmail = null;
-        
+
         Album.get($routeParams.id)
             .success(function (response) {
                 $scope.success = true;
@@ -63,18 +63,18 @@ angular.module('AlbumsModule')
                 $('#editName').addClass('glyphicon-ok');
             }
         }
-        function getPrevValues(){
-             Album.get($routeParams.id)
-            .success(function (response) {
-                $scope.success = true;
-                $scope.album.name = response.name;
-                $scope.album.description = response.description;
-            })
-            .error(function (response) {
-                $scope.error = response.message;
-            });
+        function getPrevValues() {
+            Album.get($routeParams.id)
+                .success(function (response) {
+                    $scope.success = true;
+                    $scope.album.name = response.name;
+                    $scope.album.description = response.description;
+                })
+                .error(function (response) {
+                    $scope.error = response.message;
+                });
         }
-        
+
         this.toggleTooltipDescription = function (e, album, description) {
             e.stopPropagation();
             $scope.showtooltipDescription = !$scope.showtooltipDescription;
@@ -88,17 +88,18 @@ angular.module('AlbumsModule')
                 $('#editDescription').addClass('glyphicon-ok');
             }
         }
-         this.sendEmail = function (email,album) {
-            var photoNames=""
-            for(var i=0; i<album.photos.length; i++){
+        this.sendEmail = function (email, album) {
+            var photoNames = ""
+            for (var i = 0; i < album.photos.length; i++) {
                 //TODO: cambiar
-                if(document.getElementById(album.photos[i].name+'_selected').checked)
-                    photoNames = photoNames+', '+ album.photos[i].name.split('.')[0];
+                if (document.getElementById(album.photos[i].name + '_selected').getAttribute('aria-checked'))
+                    if (photoNames == "") {
+                        photoNames = album.photos[i].name.split('.')[0]
+                    } else
+                        photoNames = photoNames + ', ' + album.photos[i].name.split('.')[0];
             }
-            //Imagenes a imprimir
-            //1.jpg, 2.jpg
-            email.message = email.message + photoNames;
-            Contact.sendEmail(email)                
+            email.photos = photoNames;
+            Contact.sendEmail(email)
                 .success(function (response) {
                     $scope.success = true;
                 })
@@ -106,7 +107,7 @@ angular.module('AlbumsModule')
                     $scope.error = response.message;
                 });
         }
-        
+
         this.deletePhoto = function (photo, album) {
             if (album.photos.length == 1) {
                 $scope.confirmDelete = true;
@@ -141,7 +142,7 @@ angular.module('AlbumsModule')
                 })
             }
         };
-        
+
     });
  
     

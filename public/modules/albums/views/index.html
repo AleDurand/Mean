@@ -1,6 +1,6 @@
 <div class="row">
     <div class="center">
-        <div ng-repeat="album in albums | filter: {name: search}" ng-animate="'slide'">
+        <div ng-repeat="album in albums | filter: {name: search} | orderBy:'album._id':true"" ng-animate="'slide'">
             <div class="view view-eighth">
                 <img class="img-responsive" ng-src="{{album.albumImage.path}}" alt="{{album.name}}">
                 <div class="mask">
@@ -28,7 +28,7 @@
 <button class="btn" ng-show="user" ng-click="toggleModal()" style="margin-left: 50%; margin-top: 5%">Crear Álbum</button>
 
 <modal title="Crear Álbum" visible="showModal" id="createAlbumModal">
-    <form name="albumForm" ng-submit="indexController.save(album)" validate>
+    <form name="albumForm" ng-submit="indexController.save(album,image)" validate>
         <div class="modal-body">
             <div class="form-group">
                 <label for="name">Nombre</label>
@@ -42,7 +42,7 @@
                 <label>Subir portada de álbum</label>
                 <div class="row" style="padding: 10px 0">
                     <div class="col-md-12 col-xs-12 ">
-                        <input type="file" id="filecount" file-model="album.albumImage" required>
+                        <input type="file" id="filecount" file-model="image" required>
                     </div>
                 </div>
                 <div class="row">

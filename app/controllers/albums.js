@@ -2,7 +2,8 @@
 
 var fs = require('fs');
 var mongoose = require('mongoose');
-mongoose.Promise = require('bluebird');
+var Promise = require('bluebird');
+mongoose.Promise = Promise;
 var Albums = require('../models/album');
 var Photos = require('../models/photo');
 var upload = require('../utils/upload');
@@ -101,27 +102,30 @@ exports.addPhotos = function(req, res) {
             });
         }
         var album = JSON.parse(req.body.album);
-        for(var i = 0; i < req.files.length; i++){
-            Photos.create({
-                name: req.files[i].originalname,
-                path: album.path + req.files[i].originalname
-            }, function(err, photo){
-                if(!err){
-                    Albums.update(
-                       { _id: req.params.album_id },
-                       { $addToSet: { photos: photo } 
-                   }, function(error, album) {
-                        if (error){
-                            return res.status(404).send({
+        Promise.each(req.files, function(file) {
+             return Photos.create({
+                name: file.originalname,
+                path: album.path + file.originalname
+            }).then(function(photo){
+                return Albums.update(
+                    { _id: req.params.album_id },
+                    { $addToSet: { photos: photo } 
+                })
+            }).catch(function(error){
+                return res.status(404).send({
                                 message: errorHandler.getErrorMessage(error)
                             });
-                        }
-                    });
-                }
-            });                
-        }
-        res.status(204).end();
+            })
+            
+        })
+        .then(function(allItems) {
+            return Albums.findOne({_id : req.params.album_id}).populate('photos').populate('albumImage');
+        })
+        .then(function(album) {
+            return res.status(200).send(album);
+        });
     });
+    
 };
 
 var rmdir = function(dir) {

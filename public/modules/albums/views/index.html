@@ -25,24 +25,33 @@
     </div>
 
 </div>
-<button class="btn" ng-show="user" ng-click="toggleModal()" style="margin-left: 50%; margin-top: 5%">Crear Álbum</button>
+<button class="btn" ng-show="!user" ng-click="toggleModal()" style="margin-left: 50%; margin-top: 5%">Crear Álbum</button>
 
 <modal title="Crear Álbum" visible="showModal" id="createAlbumModal">
-    <form name="albumForm" ng-submit="indexController.save(album,image)" validate>
+    <form name="albumForm" ng-submit="albumForm.$valid && indexController.save(album,image)" novalidate>
         <div class="modal-body">
             <div class="form-group">
                 <label for="name">Nombre</label>
-                <input class="form-control" ng-model="album.name" placeholder="Nombre" required/>
+                <input class="form-control" name="name" ng-model="album.name" placeholder="Nombre" required/>
+                <span class="messages" ng-show="albumForm.name.$touched  || !albumForm.name.$pristine || albumForm.$submitted">
+                    <span ng-show="albumForm.name.$error.required ">Es obligatorio ingresar el nombre.</span>
+                </span>
             </div>
             <div class="form-group">
                 <label for="description">Descripción</label>
-                <input class="form-control" ng-model="album.description" placeholder="Descripción" required/>
+                <input class="form-control" name="description" ng-model="album.description" placeholder="Descripción" required/>
+                <span class="messages" ng-show="albumForm.description.$touched  || !albumForm.description.$pristine || albumForm.$submitted">
+                    <span ng-show="albumForm.description.$error.required ">Es obligatorio ingresar el nombre.</span>
+                </span>
             </div>
             <div class="form-group">
                 <label>Subir portada de álbum</label>
                 <div class="row" style="padding: 10px 0">
                     <div class="col-md-12 col-xs-12 ">
-                        <input type="file" id="filecount" file-model="image" required>
+                        <input type="file" name="file" id="filecount" ng-model="image" file-model="image" valid-file required>
+                        <span class="messages" ng-show="albumForm.file.$error.validFile ">
+                            <span ng-show="albumForm.file.$error.validFile && albumForm.$submitted">Es obligatorio subir una imágen de portada.</span>
+                        </span>
                     </div>
                 </div>
                 <div class="row">

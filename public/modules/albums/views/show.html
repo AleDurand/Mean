@@ -33,7 +33,7 @@
     </div>
 </div>
 <div class="row" ng-show="user">
-    <div class="col-md-12" style="text-align:center">
+    <div class="col-md-12" style="text-align:center;padding:30px;">
         <form name="albumForm" validate>
             <div class="form-group">
                 <label>Subir imágenes</label>
@@ -58,7 +58,7 @@
     <div class="col-md-8">
         <h3>¿Querés que imprima tus fotos?</h3>
         <h5> Seleccionando las que desees se agregarán automáticamente al mail<h5>
-        <form ng-submit="emailForm.$valid && showController.sendEmail(email,album)" name = "emailForm" novalidate>
+        <form ng-submit="emailForm.$valid && showController.sendEmail(email,album)" name ="emailForm" novalidate>
             <div class="control-group form-group">
                 <div class="controls">
                     <label>Nombre:</label>

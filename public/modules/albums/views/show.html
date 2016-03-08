@@ -13,18 +13,19 @@
 </section>
 <div class="row">
     <div ng-repeat="photo in album.photos">
-        <div class="col-lg-3 col-md-4 col-xs-6" style="text-align:center">
+        <div class="col-lg-3 col-md-4 col-xs-6">
             </br>
-            <label ng-show="user" style="padding:inherit;" for="{{photo.name}}_checkbox">Seleccionar como portada </label>
+           
             <input name="radiobuttons" style="float:left;" ng-checked="photo._id == album.albumImage" ng-show="user" type="radio" class="radio"
             id="{{photo.name}}_checkbox" ng-click="showController.selected(photo, album)">
-            </>
+            </> 
+            <label ng-show="user" style="padding:inherit;" for="{{photo.name}}_checkbox">Seleccionar como portada </label>            
+            
+            <button ng-show="user" class="button3d" ng-click="showController.deletePhoto(photo,album)">X</button>
             <p ng-init="htmlSwitchStatus = true"  >
                 <div id="{{photo.name}}_selected" toggle-switch type="checkbox" class="switch-primary switch-large" html="htmlSwitchStatus"
                 knob-label='<i class="fa fa-camera-retro"></i>' ng-show="!user" on-label='<i class="fa fa-thumbs-up"></i>' off-label='<i class="fa fa-thumbs-down"></i>' ng-model="switchStatus" ></div>
             </p>
-            
-            <button ng-show="user" class="button3d" ng-click="showController.deletePhoto(photo,album)">X</button>
             <a class="fancybox-button" rel="fancybox-button" href="{{photo.path}}" title="{{album.name}}">
                 <img class="img-responsive img-thumbnail" ng-src="{{photo.path}}" alt="" />
             </a>
@@ -57,33 +58,44 @@
     <div class="col-md-8">
         <h3>¿Querés que imprima tus fotos?</h3>
         <h5> Seleccionando las que desees se agregarán automáticamente al mail<h5>
-        <form ng-submit="showController.sendEmail(email,album)" validate>
+        <form ng-submit="emailForm.$valid && showController.sendEmail(email,album)" name = "emailForm" novalidate>
             <div class="control-group form-group">
                 <div class="controls">
                     <label>Nombre:</label>
-                    <input type="text" class="form-control" ng-model="email.name" required>
-                    <p class="help-block"></p>
+                    <input type="text" class="form-control" name="name" ng-model="email.name" required>                    
+                    <span class="messages" ng-show="emailForm.name.$touched  || !emailForm.name.$pristine || emailForm.$submitted">
+                        <span ng-show="emailForm.name.$error.required ">Es obligatorio ingresar el nombre.</span>
+                    </span>
                 </div>
             </div>
             <div class="control-group form-group">
                 <div class="controls">
                     <label>Email:</label>
-                    <input class="form-control" ng-model="email.address" required>
+                    <input class="form-control" ng-model="email.address" name ="email" type="email" required>
+                    <span class="messages" ng-show="emailForm.email.$touched || !emailForm.email.$pristine || emailForm.$submitted">
+                        <span ng-show="emailForm.email.$error.required ">El campo 'Nombre' no puede quedar vacío.</span>
+                    </span>
+                    <span class="messages" ng-show="emailForm.email.$touched  && emailForm.email.$invalid || emailForm.$submitted">
+                        <span ng-show="emailForm.email.$touched  && emailForm.email.$invalid && email.length">Ingresar un email válido.</span>
+                    </span>
                 </div>
             </div>
             <div class="control-group form-group">
                 <div class="controls">
                     <label>Mensaje:</label>
-                    <textarea rows="10" cols="100" class="form-control" ng-model="email.message" required maxlength="999" style="resize:none"></textarea>
+                    <textarea name="message" rows="10" cols="100" class="form-control" ng-model="email.message"  maxlength="999" style="resize:none" required>
+                    </textarea>
+                    <span class="messages" ng-show="emailForm.message.$touched || !emailForm.message.$pristine || emailForm.$submitted">
+                        <span ng-show="emailForm.message.$error.required ">El campo 'Mensaje' no puede quedar vacío.</span>
+                    </span>
                 </div>
             </div>
-            <!-- For success/fail messages -->
             <button type="submit" class="btn btn-primary">Enviar</button>
-            <div ng-show="success" class="text-center text-success">
-                <strong>Email sent successfully</strong>
+            <div ng-show="mailSended" class="text-center text-success">
+                <strong>El mail ha sido enviado exitósamente!</strong>
             </div>
             <div ng-show="error" class="text-center text-danger">
-                <strong ng-bind="error"></strong>
+                <strong ng-bind="error"> Ocurrió un error al intentar enviar el mail. Por favor inténtelo nuevamente.</strong>
             </div>
         </form>
     </div>

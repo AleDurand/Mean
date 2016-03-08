@@ -21,8 +21,6 @@ angular.module('UsersModule')
                         $scope.loginError = false;
                         $scope.loginform.username.$setValidity("notFound", true);
                         $scope.loginform.password.$setValidity("notFound", true);       
-                        //Reset the login form
-                        
                         $scope.loginform.$setPristine();
                         $scope.loginform.username.$setUntouched();
                         $scope.loginform.password.$setUntouched();

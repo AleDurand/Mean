@@ -154,6 +154,7 @@
 }
 .ats-switch.switch-large {
   min-width: 120px;
+  margin-left:28%;
 }
 .ats-switch.switch-large .switch-left,
 .ats-switch.switch-large .switch-right,

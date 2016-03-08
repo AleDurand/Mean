@@ -193,3 +193,14 @@ form input.ng-pending{
    border-color: #FA787E; 
 }
 
+form.ng-submitted textarea.ng-invalid{
+    border-color: #FA787E;
+}
+
+form textarea.ng-invalid.ng-touched {
+    border-color: #FA787E;
+}
+form textarea.ng-pending{
+   border-color: #FA787E; 
+}
+

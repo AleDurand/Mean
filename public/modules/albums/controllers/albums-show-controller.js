@@ -10,7 +10,7 @@ angular.module('AlbumsModule')
         $scope.prevDescription = '';
         $scope.prevName = '';
         $scope.toEmail = null;
-
+        $scope.mailSended = false;
         Album.get($routeParams.id)
             .success(function (response) {
                 $scope.success = true;
@@ -92,18 +92,22 @@ angular.module('AlbumsModule')
             var photoNames = ""
             for (var i = 0; i < album.photos.length; i++) {
                 //TODO: cambiar
-                if (document.getElementById(album.photos[i].name + '_selected').getAttribute('aria-checked'))
+                email.photos="";
+                if (document.getElementById(album.photos[i].name + '_selected').getAttribute('aria-checked')=="true"){
                     if (photoNames == "") {
                         photoNames = album.photos[i].name.split('.')[0]
                     } else
                         photoNames = photoNames + ', ' + album.photos[i].name.split('.')[0];
+                }
             }
             email.photos = photoNames;
+            email.album = album.name;
             Contact.sendEmail(email)
                 .success(function (response) {
-                    $scope.success = true;
+                    $scope.mailSended = true;
                 })
                 .error(function (response) {
+                    $scope.mailSended = false;
                     $scope.error = response.message;
                 });
         }

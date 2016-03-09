@@ -25,7 +25,7 @@
     </div>
 
 </div>
-<button class="btn" ng-show="!user" ng-click="toggleModal()" style="margin-left: 50%; margin-top: 5%">Crear Álbum</button>
+<button class="btn" ng-show="user" ng-click="toggleModal()" style="margin-left: 50%; margin-top: 5%">Crear Álbum</button>
 
 <modal title="Crear Álbum" visible="showModal" id="createAlbumModal">
     <form name="albumForm" ng-submit="albumForm.$valid && indexController.save(album,image)" novalidate>

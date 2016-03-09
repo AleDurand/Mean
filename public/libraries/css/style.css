@@ -207,6 +207,15 @@ form textarea.ng-pending{
 .center-form {
     text-align: center;
 }
+.button-view {
+    display: inline-block;
+    text-decoration: none;
+    padding: 7px 14px;
+    background: #25B5B8;
+    color: #fff;
+    text-transform: uppercase;
+    box-shadow: 0 0 1px #000;
+}
 /*Google Fonts*/
 /* latin-ext */
 @font-face {

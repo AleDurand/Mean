@@ -25,7 +25,7 @@
     </div>
 
 </div>
-<button class="btn" ng-show="user" ng-click="toggleModal()" style="margin-left: 50%; margin-top: 5%">Crear Álbum</button>
+<button class="btn" ng-show="!user" ng-click="toggleModal()" style="margin-left: 50%; margin-top: 5%">Crear Álbum</button>
 
 <modal title="Crear Álbum" visible="showModal" id="createAlbumModal">
     <form name="albumForm" ng-submit="albumForm.$valid && indexController.save(album,image)" novalidate>
@@ -52,7 +52,7 @@
                 <label>Subir portada de álbum</label>
                 <div class="row" style="padding: 10px 0">
                     <div class="col-md-12 col-xs-12 ">
-                        <input type="file" name="file" id="filecount" ng-model="image" file-model="image" valid-file required>
+                        <input type="file" name="file" id="filecount" ng-model="image" accept="image/*" file-model="image" valid-file required>
                         <span class="messages" ng-show="albumForm.file.$error.validFile ">
                             <span ng-show="albumForm.file.$error.validFile && albumForm.$submitted">Es obligatorio subir una imágen de portada.</span>
                         </span>

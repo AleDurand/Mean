@@ -204,6 +204,9 @@ form textarea.ng-pending{
    border-color: #FA787E; 
 }
 
+.center-form {
+    text-align: center;
+}
 /*Google Fonts*/
 /* latin-ext */
 @font-face {

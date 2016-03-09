@@ -13,7 +13,7 @@ angular.module('UsersModule')
                 User.getByUsername(username)
                     .success(function (response) {
                         Authentication.user = true;
-                        $scope.user = response;
+                        $rootScope.userLogged = response;
                         $rootScope.user = true;
                         $scope.success = true;
                         $('#Login').removeClass('active');
@@ -28,8 +28,8 @@ angular.module('UsersModule')
                         $scope.loginform.verifyPassword.$setUntouched();
                         $scope.loginform.$setUntouched();
 
-                        $scope.loginform.newPassword.$setValidity("notEqual", false);
-                        $scope.loginform.verifyPassword.$setValidity("notEqual", false);
+                        $scope.loginform.newPassword.$setValidity("notEqual", true);
+                        $scope.loginform.verifyPassword.$setValidity("notEqual", true);
                     })
                     .error(function (error) {
                         Authentication.user = null;
@@ -70,7 +70,8 @@ angular.module('UsersModule')
 
         this.confirmChangePassword = function (newPassword, verifyPassword) {
             if (newPassword != undefined && verifyPassword != undefined && newPassword == verifyPassword) {
-                $scope.user.password = newPassword;
+                $rootScope.userLogged.password = newPassword;
+                $scope.user = $rootScope.userLogged;
                 User.update($scope.user)
                     .success(function () {
                         var authdata = btoa($scope.user.username + ':' + newPassword);

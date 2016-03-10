@@ -6,7 +6,7 @@ var Users = require('../models/user');
 var errorHandler = require('../errors/errorHandler')
 
 Users.create({
-    username: "123",
+    username: "Marcela",
     password: "123"
     })
     .then(function (user) {

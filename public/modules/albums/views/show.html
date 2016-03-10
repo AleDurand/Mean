@@ -73,10 +73,10 @@
                     <label>Email:</label>
                     <input class="form-control" ng-model="email.address" name ="email" type="email" required>
                     <span class="messages" ng-show="emailForm.email.$touched || !emailForm.email.$pristine || emailForm.$submitted">
-                        <span ng-show="emailForm.email.$error.required ">El campo 'Nombre' no puede quedar vacío.</span>
+                        <span ng-show="emailForm.email.$error.required ">El campo 'Email' no puede quedar vacío.</span>
                     </span>
                     <span class="messages" ng-show="emailForm.email.$touched  && emailForm.email.$invalid || emailForm.$submitted">
-                        <span ng-show="emailForm.email.$touched  && emailForm.email.$invalid && email.length">Ingresar un email válido.</span>
+                        <span ng-show="emailForm.email.$touched && emailForm.email.$invalid && !emailForm.email.$error.required">Ingresar un email válido.</span>
                     </span>
                 </div>
             </div>

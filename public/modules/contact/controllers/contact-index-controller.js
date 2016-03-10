@@ -4,12 +4,13 @@ angular.module('ContactModule')
     .controller('ContactIndexController', function ($scope, $rootScope, $route, Contact) {
         $scope.credits = "Mariano Rodecker - Ingeniería de Aplicaciones Web"
         $scope.success = false;
-
+        
         Contact.get()
             .success(function (response) {
                 $scope.success = true;
                 $scope.contact = response;
-                $scope.facePageToshow = '/' + $scope.contact.facebookPage.split('/')[3];
+                $rootScope.contact = response; 
+                $scope.facePageToshow = '/' + $rootScope.contact.facebookPage.split('/')[3];               
             })
             .error(function (response) {
                 $scope.error = response.message;
@@ -20,7 +21,10 @@ angular.module('ContactModule')
             e.stopPropagation();
             $scope.showtooltipAddress = !$scope.showtooltipAddress;
             if (!$scope.showtooltipAddress) {
-                Contact.update(contact);
+                Contact.update(contact)
+                .success(function(){
+                    $rootScope.contact.address = contact.address;
+                });
                 $('#editAddress').removeClass('glyphicon-ok');
                 $('#editAddress').addClass('glyphicon-edit');
             } else {
@@ -62,7 +66,10 @@ angular.module('ContactModule')
             e.stopPropagation();
             $scope.showtooltipEmail = !$scope.showtooltipEmail;
             if (!$scope.showtooltipEmail) {
-                Contact.update(contact);
+                Contact.update(contact).
+                success(function(){
+                    $rootScope.contact.email = contact.email;
+                });
                 $('#editEmail').removeClass('glyphicon-ok');
                 $('#editEmail').addClass('glyphicon-edit');
             } else {
@@ -76,7 +83,11 @@ angular.module('ContactModule')
             e.stopPropagation();
             $scope.showtooltipFacebookPage = !$scope.showtooltipFacebookPage;
             if (!$scope.showtooltipFacebookPage) {
-                Contact.update(contact);
+                Contact.update(contact)
+                .success(function(){
+                    $rootScope.contact.facebookPage = contact.facebookPage;
+                });
+                $scope.facePageToshow = '/' + $scope.contact.facebookPage.split('/')[3];
                 $('#editFacebookPage').removeClass('glyphicon-ok');
                 $('#editFacebookPage').addClass('glyphicon-edit');
             } else {

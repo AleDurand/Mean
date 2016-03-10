@@ -91,7 +91,6 @@ angular.module('AlbumsModule')
         this.sendEmail = function (email, album) {
             var photoNames = ""
             for (var i = 0; i < album.photos.length; i++) {
-                //TODO: cambiar
                 email.photos="";
                 if (document.getElementById(album.photos[i].name + '_selected').getAttribute('aria-checked')=="true"){
                     if (photoNames == "") {
@@ -102,6 +101,7 @@ angular.module('AlbumsModule')
             }
             email.photos = photoNames;
             email.album = album.name;
+            email.emailTo = $rootScope.contact.email;
             Contact.sendEmail(email)
                 .success(function (response) {
                     $scope.mailSended = true;

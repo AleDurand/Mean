@@ -4,6 +4,7 @@ angular.module('UsersModule')
     .controller('UserLoginController', function ($scope, $rootScope, $location, $window, User, Authentication) {
         $scope.changePassword = false;
         $scope.master = {};        
+        $('#layerslider').hide();
         //Admin User Controller (login, logout)
         this.login = function (username, password) {
             if (username !== undefined && password !== undefined) {

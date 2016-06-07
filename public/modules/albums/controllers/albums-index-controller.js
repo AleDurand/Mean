@@ -4,6 +4,7 @@ angular.module('AlbumsModule')
     .controller('AlbumsIndexController', function ($scope, $rootScope, $route, $location, Album) {
         $scope.showModal = false;
         $scope.AlbumType = $('#navbar li.active').attr("id"); 
+        $('#layerslider').show();
         $scope.toggleModal = function () {
             $scope.showModal = !$scope.showModal;
             $('#filecount').filestyle({

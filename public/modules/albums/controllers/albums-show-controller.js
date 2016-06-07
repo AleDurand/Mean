@@ -11,6 +11,7 @@ angular.module('AlbumsModule')
         $scope.prevName = '';
         $scope.toEmail = null;
         $scope.mailSended = false;
+        $('#layerslider').show();
         Album.get($routeParams.id)
             .success(function (response) {
                 $scope.success = true;

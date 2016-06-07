@@ -1,85 +1,98 @@
-<footer class="footer-distributed" ng-controller="ContactIndexController" ng-click="hideTooltips()">
-    <div class="footer-left">
-
-        <span><img src="resources/utils/logo.png"></span>
-
-        <p class="footer-company-name">{{credits}}</p>
+<!-- Content Row -->
+</br>
+<div class="row" ng-controller="ContactIndexController" ng-click="hideTooltips()">
+    <!-- Map Column -->
+    <div class="col-md-8">
+        <!-- Embedded Google Map -->
+        <iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
+        src="https://www.google.com/maps/embed/v1/search?q=-37.379536%2C-63.767148&zoom=15&key=AIzaSyC1xF2dXQepLd8XrQtiMH-8SYu-l5g2oeM"></iframe>
     </div>
-    <div class="footer-center">
-        <div>
+    <!-- Contact Details Column -->
+    <div class="col-md-4">
             <div class="tooltip" ng-click="$event.stopPropagation()" ng-show="showtooltipAddress">
                 <input maxlength="140" rows="4" cols="50" ng-model="contact.address" />
             </div>
             <div style=" margin-top:0 !important" class="tooltip" ng-click="$event.stopPropagation()" ng-show="showtooltipCity">
                 <input maxlength="140" rows="4" cols="50" ng-model="contact.city" />
             </div>
-            <i class="fa fa-map-marker"></i>
-            <p>
-                <span style="display:inline;">
-                    {{contact.address}} 
-                    <span ng-show="user" id="editAddress" class="glyphicon glyphicon-edit" style="cursor:pointer; display:inline;"
-                        ng-click="toggleTooltipAddress($event,contact)">
+            <div class="row">
+                <div class="col-md-1">
+                    <i class="fa fa-map-marker" style="color:#d0d24a"></i>
+                </div>
+            <div class="col-md-8">
+                <p style="color:#d0d24a">
+                    <span style="display:inline;">
+                        {{contact.address}} 
+                        <span ng-show="user" id="editAddress" class="glyphicon glyphicon-edit" style="cursor:pointer; display:inline; color:#d0d24a"
+                            ng-click="toggleTooltipAddress($event,contact)">
+                        </span>
                     </span>
-                </span>
-                </br>
-                {{contact.city}}
-                <span ng-show="user" id="editCity" class="glyphicon glyphicon-edit" style="cursor:pointer; display:inline;" ng-click="toggleTooltipCity($event,contact)">
-                </span>
-            </p>
-        </div>
+                    </br>
+                    {{contact.city}}
+                    <span ng-show="user" id="editCity" class="glyphicon glyphicon-edit" style="cursor:pointer; display:inline; color:#d0d24a" ng-click="toggleTooltipCity($event,contact)">
+                    </span>
+                </p>
+            </div>  
+            </div>
         <div>
             <div class="tooltip" ng-click="$event.stopPropagation()" ng-show="showtooltipPhoneNumber">
                 <input maxlength="140" rows="4" cols="50" ng-model="contact.phoneNumber" />
             </div>
-            <i class="fa fa-phone"></i>
-            <p>
-                {{contact.phoneNumber}}
-                <span ng-show="user" id="editPhoneNumber" class="glyphicon glyphicon-edit" style="cursor:pointer; display:inline;" ng-click="toggleTooltipPhoneNumber($event,contact)">
-                </span>
-            </p>
+            <div class="row">
+                <div class="col-md-1">
+                    <i class="fa fa-phone" style="color:#d0d24a"></i>
+                </div>
+                <div class="col-md-8">
+                    <p style="color:#d0d24a">
+                        {{contact.phoneNumber}}
+                        <span ng-show="user" id="editPhoneNumber" class="glyphicon glyphicon-edit" style="cursor:pointer; display:inline;" ng-click="toggleTooltipPhoneNumber($event,contact)">
+                        </span>
+                    </p>
+                </div>
+            </div>
         </div>
         <div>
             <div class="tooltip" ng-click="$event.stopPropagation()" ng-show="showtooltipEmail">
                 <input maxlength="140" rows="4" cols="50" ng-model="contact.email" />
             </div>
-            <i class="fa fa-envelope"></i>
-            <p>
-                <a ng-href="mailto:{{contact.email}}">
-                    {{contact.email}}                    
-                </a>
-                <a>
-                    <span ng-show="user" id="editEmail" class="glyphicon glyphicon-edit" style="cursor:pointer; display:inline;" ng-click="toggleTooltipEmail($event,contact)">
-                    </span>
-                </a>
-            </p>
+            <div class="row">
+                <div class="col-md-1">
+                    <i class="fa fa-envelope" style="color:#d0d24a"></i>
+                </div>
+                <div class="col-md-8">
+                    <p style="color:#d0d24a">
+                        <a ng-href="mailto:{{contact.email}}" style="color:#807c7c">
+                            {{contact.email}}                    
+                        </a>
+                        <a>
+                            <span ng-show="user" id="editEmail" class="glyphicon glyphicon-edit" style="cursor:pointer; display:inline;" ng-click="toggleTooltipEmail($event,contact)">
+                            </span>
+                        </a>
+                    </p>
+                </div>
         </div>
-        <!--fa fa-thumbs-o-up-->
         <div>
             <div class="tooltip" ng-click="$event.stopPropagation()" ng-show="showtooltipFacebookPage">
                 <input maxlength="140" rows="4" cols="50" ng-model="contact.facebookPage" />
             </div>
-            <i class="fa fa-facebook"></i>
-            <p>
-                <a ng-href="https://www.facebook.com{{facePageToshow}}" target="_blank">
-                    <p>{{facePageToshow}}</p>
-                </a>
-                <p ng-hide="true">{{contact.facebookPage}}</p>
-                <a>
-                    <span ng-show="user" id="editFacebookPage" class="glyphicon glyphicon-edit" style="cursor:pointer; display:inline;" ng-click="toggleTooltipFacebookPage($event,contact)">
-                    </span>
-                </a>
-            </p>
+             <div class="row">
+                <div class="col-md-1">
+                    <i class="fa fa-facebook" style="color:#d0d24a"></i>
+                </div>
+                <div class="col-md-8">
+                    <p style="color:#d0d24a">
+                        <a ng-href="https://www.facebook.com{{facePageToshow}}" target="_blank" style="color:#807c7c">
+                            {{facePageToshow}}
+                        </a>
+                        <p ng-hide="true">{{contact.facebookPage}}</p>
+                        <a>
+                            <span ng-show="user" id="editFacebookPage" class="glyphicon glyphicon-edit" style="cursor:pointer; display:inline;" ng-click="toggleTooltipFacebookPage($event,contact)">
+                            </span>
+                        </a>
+                    </p>
+                </div>
+             </div>
         </div>
     </div>
-    <div class="footer-right">
-        <div class="tooltip" ng-click="$event.stopPropagation()" ng-show="showtooltipAppDescription">
-            <input maxlength="140" rows="4" cols="50" ng-model="contact.appDescription" />
-        </div>
-        <p class="footer-company-about">
-            <span>Marcela Sánchez Fotografía</span> {{contact.appDescription}}
-            <span ng-show="user" id="editAppDescription" class="glyphicon glyphicon-edit" style="cursor:pointer; display:inline;" ng-click="toggleTooltipAppDescription($event,contact)">
-                </span>
-        </p>
-    </div>
-
-</footer>
+</div>
+<!-- /.row -->

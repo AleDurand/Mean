@@ -1,6 +1,6 @@
 <div class="row">
     <div class="center">
-        <div ng-repeat="album in albums | filter: {name: search} | orderBy:'album._id':true"" ng-animate="'slide'">
+        <div ng-repeat="album in albums | filter: {name: search, albumType: AlbumType} | orderBy:'album._id':true" ng-animate="'slide'">
             <div class="view view-eighth">
                 <img class="img-responsive" ng-src="{{album.albumImage.path}}" alt="{{album.name}}">
                 <div class="mask">
@@ -39,7 +39,6 @@
                 <span class="messages" ng-show="!albumform.name.$valid && albumForm.name.$touched && !albumForm.name.$error.required">
                     <span ng-show="!albumForm.name.$valid ">El nombre debe estar compuesto por letras o números.</span>
                 </span>
-                <code>{{albumform.name.$valid}}</code>
             </div>
             <div class="form-group">
                 <label for="description">Descripción</label>
@@ -48,6 +47,14 @@
                     <span ng-show="albumForm.description.$error.required ">Es obligatorio ingresar el nombre.</span>
                 </span>
             </div>
+             <div class="dropdown">
+                 <label for="albumType">Tipo de Álbum</label>
+                 <select class="form-control" ng-model="album.albumType">
+                    <option selected value="15">15 años</option>
+                    <option value="boda">Boda</option>
+                    <option value="otro">Otro</option>
+                </select>
+            </div> 
             <div class="form-group center-form">
                 <label>Subir portada de álbum</label>
                 <div class="row" style="padding: 10px 0">
@@ -83,3 +90,9 @@
         </div>
     </form>
 </modal>
+
+<script>
+$('#albumType li a').on('click',function(){
+    $('#albumType').val($(this).html());
+})
+</script>

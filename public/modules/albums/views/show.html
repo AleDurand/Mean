@@ -1,4 +1,4 @@
-<section class="header-image header-feature1 partial-box clearfix animated flipInY"">
+<!--<section class="header-image header-feature1 partial-box clearfix animated flipInY"">
     <div class="wrapper" ng-click="showController.hideTooltips(album)">
         <div class="tooltip" ng-click="$event.stopPropagation()" ng-show="showtooltipName">
             <input maxlenght="48" type="text" ng-model="album.name" />
@@ -10,7 +10,7 @@
         <p style="white-space:pre-line">{{album.description}} <span ng-show="user" id="editDescription" class="glyphicon glyphicon-edit" style="cursor:pointer"
             ng-click="showController.toggleTooltipDescription($event,album,album.description)"></span> </p>
     </div>
-</section>
+</section>-->
 <div class="row">
     <div ng-repeat="photo in album.photos">
         <div class="col-lg-3 col-md-4 col-xs-6">
@@ -19,14 +19,14 @@
             <input name="radiobuttons" style="float:left;" ng-checked="photo._id == album.albumImage" ng-show="user" type="radio" class="radio"
             id="{{photo.name}}_checkbox" ng-click="showController.selected(photo, album)">
             </> 
-            <label ng-show="user" style="padding:inherit;" for="{{photo.name}}_checkbox">Seleccionar como portada </label>            
+            <label style="color:#d0d24a"ng-show="user" style="padding:inherit;" for="{{photo.name}}_checkbox">Seleccionar como portada </label>            
             
             <button ng-show="user" class="button3d" ng-click="showController.deletePhoto(photo,album)">X</button>
             <p ng-init="htmlSwitchStatus = true"  >
-                <div id="{{photo.name}}_selected" toggle-switch type="checkbox" class="switch-primary switch-large" html="htmlSwitchStatus"
+                <div id="{{photo.name}}_selected" style=".ng-valid.ng-dirty: transparent !important" toggle-switch type="checkbox" class="switch-primary switch-large" html="htmlSwitchStatus"
                 knob-label='<i class="fa fa-camera-retro"></i>' ng-show="!user" on-label='<i class="fa fa-thumbs-up"></i>' off-label='<i class="fa fa-thumbs-down"></i>' ng-model="switchStatus" ></div>
             </p>
-            <a class="fancybox-button" rel="fancybox-button" href="{{photo.path}}" title="{{album.name}}">
+            <a class="fancybox-button " rel="fancybox-button" href="{{photo.path}}" title="{{album.name}}">
                 <img class="img-responsive img-thumbnail" ng-src="{{photo.path}}" alt="" />
             </a>
         </div>
@@ -56,13 +56,13 @@
 
 <div class="row" ng-show="!user">
     <div class="col-md-8">
-        <h3>¿Querés que imprima tus fotos?</h3>
-        <h5> Seleccionando las que desees se agregarán automáticamente al mail<h5>
+        <h3 style="color:#d0d24a">¿Querés que imprima tus fotos?</h3>
+        <h5 style="color:#d0d24a"> Seleccionando las que desees se agregarán automáticamente al mail<h5>
         <form ng-submit="emailForm.$valid && showController.sendEmail(email,album)" name ="emailForm" novalidate>
             <div class="control-group form-group">
                 <div class="controls">
-                    <label>Nombre:</label>
-                    <input type="text" class="form-control" name="name" ng-model="email.name" required>                    
+                    <label style="color:#d0d24a">Nombre:</label>
+                    <input style="color:white" type="text" class="form-control" name="name" ng-model="email.name" required>                    
                     <span class="messages" ng-show="emailForm.name.$touched  || !emailForm.name.$pristine || emailForm.$submitted">
                         <span ng-show="emailForm.name.$error.required ">Es obligatorio ingresar el nombre.</span>
                     </span>
@@ -70,8 +70,8 @@
             </div>
             <div class="control-group form-group">
                 <div class="controls">
-                    <label>Email:</label>
-                    <input class="form-control" ng-model="email.address" name ="email" type="email" required>
+                    <label style="color:#d0d24a">Email:</label>
+                    <input style="color:white" class="form-control" ng-model="email.address" name ="email" type="email" required>
                     <span class="messages" ng-show="emailForm.email.$touched || !emailForm.email.$pristine || emailForm.$submitted">
                         <span ng-show="emailForm.email.$error.required ">El campo 'Email' no puede quedar vacío.</span>
                     </span>
@@ -82,8 +82,8 @@
             </div>
             <div class="control-group form-group">
                 <div class="controls">
-                    <label>Mensaje:</label>
-                    <textarea name="message" rows="10" cols="100" class="form-control" ng-model="email.message"  maxlength="999" style="resize:none" required>
+                    <label style="color:#d0d24a">Mensaje:</label>
+                    <textarea style="color:white" name="message" rows="10" cols="100" class="form-control" ng-model="email.message"  maxlength="999" style="resize:none" required>
                     </textarea>
                     <span class="messages" ng-show="emailForm.message.$touched || !emailForm.message.$pristine || emailForm.$submitted">
                         <span ng-show="emailForm.message.$error.required ">El campo 'Mensaje' no puede quedar vacío.</span>

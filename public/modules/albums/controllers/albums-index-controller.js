@@ -2,12 +2,8 @@
 
 angular.module('AlbumsModule')
     .controller('AlbumsIndexController', function ($scope, $rootScope, $route, $location, Album) {
-        $('#Albums').addClass('active');
-        $('#Home').removeClass('active');
-        $('#Contact').removeClass('active');
-        $('#Login').removeClass('active');
-
         $scope.showModal = false;
+        $scope.AlbumType = $('#navbar li.active').attr("id"); 
         $scope.toggleModal = function () {
             $scope.showModal = !$scope.showModal;
             $('#filecount').filestyle({

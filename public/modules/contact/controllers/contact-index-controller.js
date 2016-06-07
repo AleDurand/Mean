@@ -87,7 +87,7 @@ angular.module('ContactModule')
                 .success(function(){
                     $rootScope.contact.facebookPage = contact.facebookPage;
                 });
-                $scope.facePageToshow = '/' + $scope.contact.facebookPage.split('/')[3];
+                $scope.facePageToshow = '/' + $rootScope.contact.facebookPage.split('/')[3];
                 $('#editFacebookPage').removeClass('glyphicon-ok');
                 $('#editFacebookPage').addClass('glyphicon-edit');
             } else {

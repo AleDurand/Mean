@@ -171,11 +171,11 @@
 }
 .ats-switch span.switch-right {
   color: #000;
-  background: #eeeeee;
+  background: #d0d24a;
 }
 .ats-switch.switch-primary span.switch-left {
-  color: #fff;
-  background: #428bca;
+  color: black;
+  background: #d0d24a;
 }
 .ats-switch.switch-info span.switch-left {
   color: #fff;

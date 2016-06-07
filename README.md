@@ -1,7 +1,5 @@
 # Mean
 
-[Tutorial a seguir](https://scotch.io/tutorials/creating-a-single-page-todo-app-with-node-and-angular)
-
 ## First install nodejs
 
 ## Execute the following command to install the dependencies:

@@ -14,6 +14,7 @@ exports.create = function(req, res) {
     Albums.create({
         name : req.body.name,
         description : req.body.description,
+        albumType: req.body.albumType,
         path : basepath + req.body.name + "/"
     })
     .then(function(album){

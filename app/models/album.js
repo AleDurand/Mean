@@ -19,6 +19,9 @@ var AlbumSchema = new Schema({
         unique: 'Path already exists',
         required: 'Please fill in a path'
     },
+    albumType:{
+        type: String
+    },
     albumImage: {
         type: Schema.Types.ObjectId, ref: 'Photo'
     },

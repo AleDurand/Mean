@@ -2,7 +2,7 @@
 
 angular.module('ContactModule')
     .controller('ContactIndexController', function ($scope, $rootScope, $route, Contact) {
-        $scope.credits = "Mariano Rodecker - Ingeniería de Aplicaciones Web"
+        $scope.credits = "Mariano Rodecker - Alejandro Durand"
         $scope.success = false;
         
         Contact.get()

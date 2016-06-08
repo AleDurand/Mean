@@ -3,13 +3,14 @@
     height: 200px;
     margin: 3.8473% 3.8473% 0.5%;
     float: left;
-    border: 10px solid #ffbe00;
+    /*border: 10px solid #ffbe00;*/
+    border-radius: 20px;
     overflow: hidden;
     position: relative;
     text-align: center;
-    box-shadow: 1px 1px 2px #101010;
+    box-shadow: 0 0 1.8em 0.8em rgba(223, 226, 0, 0.53);
     cursor: default;
-    background: #ffbe00 url(../images/bgimg.jpg) no-repeat center center
+    /*background: #ffbe00 url(../images/bgimg.jpg) no-repeat center center*/
 }
 .view .mask, .view .content {
     width: 300px;
@@ -20,6 +21,7 @@
     left: 0
 }
 .view img {
+    border-radius: 20px;
     display: block;
     position: relative
 }
@@ -146,6 +148,7 @@
 
 /*EIGTH*/
 .view-eighth .mask {
+    border-radius: 20px;
    background-color: rgba(255, 255, 255, 0.7);
    top: -200px;
    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";

@@ -12,7 +12,7 @@ angular.module('AlbumsModule')
         $scope.toEmail = null;
         $scope.mailSended = false;
         $('#layerslider').show();
-        Album.get($routeParams.id)
+        Album.get($routeParams.name)
             .success(function (response) {
                 $scope.success = true;
                 $scope.album = response;
@@ -26,7 +26,7 @@ angular.module('AlbumsModule')
             for (var i = 0; i < images.length; i++) {
                 fd.append('file' + i, images[i]._file);
             }
-            Album.addPhotos($routeParams.id, fd)
+            Album.addPhotos($routeParams.name, fd)
                 .success(function (response) {
                     $scope.success = true;
                     $scope.album = response;
@@ -38,7 +38,7 @@ angular.module('AlbumsModule')
         };
         this.selected = function (photo, album) {
             album.albumImage = photo._id;
-            Album.update(album._id, album);
+            Album.update(album.name, album);
         };
         this.hideTooltips = function () {
             getPrevValues();
@@ -56,7 +56,7 @@ angular.module('AlbumsModule')
             $scope.showtooltipName = !$scope.showtooltipName;
             if (!$scope.showtooltipName) {
                 album.name = name;
-                Album.update(album._id, album);
+                Album.update(album.name, album);
                 $('#editName').removeClass('glyphicon-ok');
                 $('#editName').addClass('glyphicon-edit');
             } else {
@@ -65,7 +65,7 @@ angular.module('AlbumsModule')
             }
         }
         function getPrevValues() {
-            Album.get($routeParams.id)
+            Album.get($routeParams.name)
                 .success(function (response) {
                     $scope.success = true;
                     $scope.album.name = response.name;
@@ -81,7 +81,7 @@ angular.module('AlbumsModule')
             $scope.showtooltipDescription = !$scope.showtooltipDescription;
             if (!$scope.showtooltipDescription) {
                 album.description = description;
-                Album.update(album._id, album);
+                Album.update(album.name, album);
                 $('#editDescription').removeClass('glyphicon-ok');
                 $('#editDescription').addClass('glyphicon-edit');
             } else {
@@ -129,7 +129,7 @@ angular.module('AlbumsModule')
                 $(document).off('click', '#Aceptar').on('click', '#Aceptar', function () {
                     $('body').removeClass('modal-open');
                     $('.modal-backdrop').remove();
-                    Album.deletePhoto(album._id, photo._id)
+                    Album.deletePhoto(album.name, photo._id)
                         .success(function (response) {
                             $scope.success = true;
                             $route.reload();

@@ -37,7 +37,7 @@ exports.all = function(req, res) {
 };
 
 exports.getById = function(req, res) {
-    Albums.findOne({ _id : req.params.album_id }).populate("photos")
+    Albums.findOne({ name : req.params.name }).populate("photos")
     .then(function(album) {
         if (!album) return res.status(404).send({ message: "Album not found." })
         return res.json(album);
@@ -48,7 +48,7 @@ exports.getById = function(req, res) {
 };
 
 exports.update = function(req, res) {
-    Albums.findOne({ _id : req.params.album_id })
+    Albums.findOne({ name : req.params.name})
     .then(function(album){
         if (!album) return res.status(404).send({ message: "Album not found." })
         return album.update({$set:{name: req.body.name,description: req.body.description,albumImage: req.body.albumImage}})
@@ -62,7 +62,7 @@ exports.update = function(req, res) {
 };
 
 exports.delete = function(req, res) {
-    Albums.findOne({ _id : req.params.album_id })
+    Albums.findOne({ name : req.params.name })
     .then(function(album){
         if (!album) return res.status(404).send({ message: "Album not found." })
         album.remove();
@@ -78,7 +78,7 @@ exports.delete = function(req, res) {
 };
 
 exports.deletePhoto = function(req,res){
-    var albumPath =  Albums.findOne({ _id : req.params.album_id }).path
+    var albumPath =  Albums.findOne({ name : req.params.name }).path
     Photos.findOne({_id : req.params.photo_id})
     .then(function(photo){
        photo.remove();
@@ -109,7 +109,7 @@ exports.addPhotos = function(req, res) {
                 path: album.path + file.originalname
             }).then(function(photo){
                 return Albums.update(
-                    { _id: req.params.album_id },
+                    { name: req.params.name },
                     { $addToSet: { photos: photo } 
                 })
             }).catch(function(error){
@@ -120,7 +120,7 @@ exports.addPhotos = function(req, res) {
             
         })
         .then(function(allItems) {
-            return Albums.findOne({_id : req.params.album_id}).populate('photos').populate('albumImage');
+            return Albums.findOne({name : req.params.name}).populate('photos').populate('albumImage');
         })
         .then(function(album) {
             return res.status(200).send(album);

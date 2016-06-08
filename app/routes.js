@@ -9,11 +9,11 @@ module.exports = function (app) {
     // Album enpoints
     app.route('/api/albums').post(auth.isAuthenticated, albums.create);
     app.route('/api/albums').get(albums.all);
-    app.route('/api/albums/:album_id').get(albums.getById);
-    app.route('/api/albums/:album_id').delete(auth.isAuthenticated, albums.delete);
-    app.route('/api/albums/:album_id/photos').post(auth.isAuthenticated, albums.addPhotos);
-    app.route('/api/albums/:album_id').put(auth.isAuthenticated, albums.update);
-    app.route('/api/albums/:album_id/photos/:photo_id').delete(auth.isAuthenticated, albums.deletePhoto);
+    app.route('/api/albums/:name').get(albums.getById);
+    app.route('/api/albums/:name').delete(auth.isAuthenticated, albums.delete);
+    app.route('/api/albums/:name/photos').post(auth.isAuthenticated, albums.addPhotos);
+    app.route('/api/albums/:name').put(auth.isAuthenticated, albums.update);
+    app.route('/api/albums/:name/photos/:photo_id').delete(auth.isAuthenticated, albums.deletePhoto);
     
     // User enpoints
     app.route('/api/users').post(auth.isAuthenticated, users.create);

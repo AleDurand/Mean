@@ -13,7 +13,7 @@ angular.module('AlbumsModule', ['ngRoute'])
                 controller: 'AlbumsCreateController',
                 controllerAs: 'createController'
             })
-            .when('/albums/:id', {
+            .when('/albums/:name', {
                 templateUrl: 'modules/albums/views/show.html',
                 controller: 'AlbumsShowController',
                 controllerAs: 'showController'

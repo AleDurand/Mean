@@ -6,17 +6,17 @@ angular.module('AlbumsModule')
             all: function () {
                 return $http({ method: 'GET', url: '/api/albums' });
             },
-            get: function (id) {
-                return $http({ method: 'GET', url: '/api/albums/' + id });
+            get: function (name) {
+                return $http({ method: 'GET', url: '/api/albums/' + name });
             },
             create: function (album) {
                 return $http({ method: 'POST', url: '/api/albums', data: album });
             },
-            update: function (id, album) {
-                return $http({ method: 'PUT', url: '/api/albums/' + id, data: album });
+            update: function (name, album) {
+                return $http({ method: 'PUT', url: '/api/albums/' + name, data: album });
             },
-            delete: function (id) {
-                return $http({ method: 'DELETE', url: '/api/albums/' + id });
+            delete: function (name) {
+                return $http({ method: 'DELETE', url: '/api/albums/' + name });
             },
             addPhotos: function (album_id, data) {
                 return $http({

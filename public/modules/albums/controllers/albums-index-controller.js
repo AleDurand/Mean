@@ -28,11 +28,11 @@ angular.module('AlbumsModule')
                     var images = [image];
                     fd.append('album', angular.toJson(response));
                     fd.append('file' + 0, images[0]._file);
-                    Album.addPhotos(response._id, fd)
+                    Album.addPhotos(response.name, fd)
                         .success(function (response) {
                             $scope.success = true;
                             response.albumImage = response.photos[0]._id;
-                            Album.update(response._id, response)
+                            Album.update(response.name, response)
                                 .success(function (response) {
                                     $scope.showModal = false;
                                     $('body').removeClass('modal-open');
@@ -68,7 +68,7 @@ angular.module('AlbumsModule')
             $(document).off('click', '#Aceptar').on('click', '#Aceptar', function () {
                 $('body').removeClass('modal-open');
                 $('.modal-backdrop').remove();
-                Album.delete(album._id)
+                Album.delete(album.name)
                     .success(function (response) {
                         $scope.success = true;
                         $scope.album = response;

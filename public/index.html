@@ -39,6 +39,7 @@
     <script src="libraries/js/flexy-menu.js"></script>
     <script src="libraries/js/bootstrap-filestyle.min.js"></script>
     <script src="libraries/js/search.js"></script>
+    <script src="libraries/js/placeholder.js" type="text/javascript"></script>
     
     <!--Layer Slider-->
     <script src="libraries/layerslider/jQuery/jquery-transit-modified.js" type="text/javascript"></script>
@@ -194,8 +195,26 @@
         </script>
     <!--</div>-->
 </body>
+<script type="text/javascript">
+  
+</script>
     <script type="text/javascript">
         $(document).ready(function(){
+             jQuery(document).ready(function() {
+                "use strict"; 
+                
+                // THE FANCYBOX PLUGIN INITALISATION
+                jQuery(".fancybox").fancybox();
+            
+                // FLEXY MENU SETTING
+                $(".flexy-menu").flexymenu({
+                        align: "right",
+                        indicator: true
+                    });
+                    
+                // PLACEHOLDER
+                $.fn.placeholder();
+            });
         $(".fancybox-button").fancybox({
             prevEffect		: 'elastic',
             nextEffect		: 'elastic',
@@ -215,14 +234,7 @@
         }
         });
         });
-        jQuery(document).ready(function() {
-            "use strict"; 
-            // FLEXY MENU SETTING
-            $(".flexy-menu").flexymenu({
-                align: "right",
-                indicator: true
-                });    
-        });
+       
         $('#layerslider').layerSlider({
 			skinsPath : 'libraries/layerslider/skins/',
 			skin : 'fullwidthdark',

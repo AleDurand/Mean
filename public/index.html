@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="libraries/css/style.css">
     <link rel="stylesheet" href="libraries/css/flexy-menu.css">
     <link rel="stylesheet" href="libraries/css/3deffects.css">
-    <link rel="stylesheet" href="libraries/css/footer-distributed.css">
+    <link rel="stylesheet" href="libraries/css/footer-distributed-with-address-and-phones.css">
     <link rel="stylesheet" href="libraries/css/angular-toggle-switch.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css">
     <link rel="stylesheet" href="libraries/css/login.css" >
@@ -174,7 +174,25 @@
             </div>
         </section>
         <div ng-view></div>
+        
     </div>
+    <footer class="footer-distributed" ng-controller="ContactIndexController" ng-click="hideTooltips()">
+        <div class="footer-right">
+        <div class="tooltip" ng-click="$event.stopPropagation()" ng-show="showtooltipAppDescription">
+            <input maxlength="140" rows="4" cols="50" ng-model="contact.appDescription" />
+        </div>
+        <p class="footer-company-about">
+            <span>Marcela Sánchez Fotografía</span> {{contact.appDescription}}
+            <span ng-show="user" id="editAppDescription" class="glyphicon glyphicon-edit" style="cursor:pointer; display:inline;" ng-click="toggleTooltipAppDescription($event,contact)">
+                </span>
+        </p>
+    </div>
+    <div class="footer-left">
+        <p class="footer-company-name"><i class="fa fa-copyright" aria-hidden="true"> {{credits}}</i></p>
+    </div>
+    
+
+</footer>
     <!--<div ng-include="'modules/contact/views/index.html'">-->
         <script>
             window.fbAsyncInit = function() {

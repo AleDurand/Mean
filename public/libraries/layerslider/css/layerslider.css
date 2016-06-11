@@ -109,7 +109,7 @@
 	width: 0px;
 	height: 2px;
 	background: white;
-	border-bottom: 2px solid #555;
+	border-bottom: 2px solid #ffbe00;
 	opacity: .55;
 	filter: alpha(opacity=55);
 	z-index: 4;
@@ -133,7 +133,7 @@
 }
 
 .ls-ct-center {
-	background: #444;
+	background: #ffbe00;
 }
 
 .ls-ct-left,
@@ -515,7 +515,7 @@
 
 .ls-3d-box div {
 	overflow: hidden;
-	background: #777;
+	background: #ffbe00;
 	margin: 0px;
 	padding: 0px;
 	position: absolute;
@@ -730,7 +730,7 @@ body * .ls-debug-console li:hover ul,
 }
 
 .ls-error .ls-error-text {
-	color: #555 !important;
+	color: #ffbe00 !important;
 	font-weight: normal !important;
 	font-size: 13px !important;
 }

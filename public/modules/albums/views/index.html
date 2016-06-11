@@ -17,7 +17,7 @@
                         </div>
                     </div>
                     <div ng-if="!user">
-                        <a class="info" ng-href="#/albums/{{album.name}}" style="margin-top:-14px !important;">Ver Álbum</a>
+                        <a class="info" ng-href="#/albums/{{album.name}}" ng-click="indexController.hideSlider()" style="margin-top:-14px !important;">Ver Álbum</a>
                     </div>
                 </div>
             </div>

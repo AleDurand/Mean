@@ -137,6 +137,7 @@
 .ls-fullwidthdark .ls-nav-start,
 .ls-fullwidthdark .ls-nav-stop {
 	width: 25px;
+	visibility: hidden;
 }
 
 .ls-fullwidthdark .ls-bottom-slidebuttons a {

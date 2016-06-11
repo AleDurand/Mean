@@ -1,6 +1,6 @@
 <!-- Content Row -->
 </br>
-<div class="row" ng-controller="ContactIndexController" ng-click="hideTooltips()">
+<div class="row" ng-controller="ContactIndexController" ng-click="hideTooltips()" style="padding-top:40px">
     <!-- Map Column -->
     <div class="col-md-8">
         <!-- Embedded Google Map -->
@@ -17,19 +17,19 @@
             </div>
             <div class="row">
                 <div class="col-md-1">
-                    <i class="fa fa-map-marker" style="color:#d0d24a"></i>
+                    <i class="fa fa-map-marker" style="color:white"></i>
                 </div>
             <div class="col-md-8">
-                <p style="color:#d0d24a">
+                <p style="color:white">
                     <span style="display:inline;">
                         {{contact.address}} 
-                        <span ng-show="user" id="editAddress" class="glyphicon glyphicon-edit" style="cursor:pointer; display:inline; color:#d0d24a"
+                        <span ng-show="user" id="editAddress" class="glyphicon glyphicon-edit" style="cursor:pointer; display:inline; color:white"
                             ng-click="toggleTooltipAddress($event,contact)">
                         </span>
                     </span>
                     </br>
                     {{contact.city}}
-                    <span ng-show="user" id="editCity" class="glyphicon glyphicon-edit" style="cursor:pointer; display:inline; color:#d0d24a" ng-click="toggleTooltipCity($event,contact)">
+                    <span ng-show="user" id="editCity" class="glyphicon glyphicon-edit" style="cursor:pointer; display:inline; color:white" ng-click="toggleTooltipCity($event,contact)">
                     </span>
                 </p>
             </div>  
@@ -40,10 +40,10 @@
             </div>
             <div class="row">
                 <div class="col-md-1">
-                    <i class="fa fa-phone" style="color:#d0d24a"></i>
+                    <i class="fa fa-phone" style="color:white"></i>
                 </div>
                 <div class="col-md-8">
-                    <p style="color:#d0d24a">
+                    <p style="color:white">
                         {{contact.phoneNumber}}
                         <span ng-show="user" id="editPhoneNumber" class="glyphicon glyphicon-edit" style="cursor:pointer; display:inline;" ng-click="toggleTooltipPhoneNumber($event,contact)">
                         </span>
@@ -57,10 +57,10 @@
             </div>
             <div class="row">
                 <div class="col-md-1">
-                    <i class="fa fa-envelope" style="color:#d0d24a"></i>
+                    <i class="fa fa-envelope" style="color:white"></i>
                 </div>
                 <div class="col-md-8">
-                    <p style="color:#d0d24a">
+                    <p style="color:white">
                         <a ng-href="mailto:{{contact.email}}" style="color:#807c7c">
                             {{contact.email}}                    
                         </a>
@@ -78,10 +78,10 @@
             </div>
              <div class="row">
                 <div class="col-md-1">
-                    <i class="fa fa-facebook" style="color:#d0d24a"></i>
+                    <i class="fa fa-facebook" style="color:white"></i>
                 </div>
                 <div class="col-md-8">
-                    <p style="color:#d0d24a">
+                    <p style="color:white">
                         <a ng-href="https://www.facebook.com{{facePageToshow}}" target="_blank" style="color:#807c7c">
                             {{facePageToshow}}
                         </a>

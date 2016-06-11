@@ -21,7 +21,7 @@ Contact.create({
     })
 
 var template = {
-    from: 'Marcela Sanchez Fotografias {{address}}',
+    from: 'Marcela Sanchez Fotografías {{address}}',
     to: '{{emailTo}}',
     subject: 'Contacta a {{name}}, su email es: {{address}}, número de teléfono: {{telefono}}',
     text: '{{message}} {{name}}',

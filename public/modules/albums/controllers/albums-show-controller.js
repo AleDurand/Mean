@@ -4,6 +4,7 @@ angular.module('AlbumsModule')
     .controller('AlbumsShowController', function ($scope, $rootScope, $route, $http, $routeParams, Album, Contact) {
         $scope.dialog = null;
         $scope.modalDialog = false;
+        $scope.emailModal = false;
         $scope.confirmDelete = false;
         $scope.showtooltipName = false;
         $scope.showtooltipDescription = false;
@@ -40,6 +41,7 @@ angular.module('AlbumsModule')
         };
         this.selected = function (photo, album) {
             album.albumImage = photo._id;
+            album.albumImagePath = photo.path;
             Album.update(album.name, album);
         };
         this.hideTooltips = function () {
@@ -108,11 +110,16 @@ angular.module('AlbumsModule')
             Contact.sendEmail(email)
                 .success(function (response) {
                     $scope.mailSended = true;
+                    window.setTimeout(function(){$scope.emailModal = false; $('.close').click();}, 4000);
                 })
                 .error(function (response) {
                     $scope.mailSended = false;
                     $scope.error = response.message;
                 });
+        }
+
+        this.openEmail = function(){
+            $scope.emailModal = true;
         }
 
         this.deletePhoto = function (photo, album) {

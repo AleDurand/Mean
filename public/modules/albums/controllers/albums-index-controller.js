@@ -5,6 +5,8 @@ angular.module('AlbumsModule')
         $scope.showModal = false;
         $scope.AlbumType = $('#navbar li.active').attr("id"); 
         $('#layerslider').show();
+        $('#contacto').removeClass('active');
+        $('#inicio').addClass('active');
         $scope.toggleModal = function () {
             $scope.showModal = !$scope.showModal;
             $('#filecount').filestyle({
@@ -16,6 +18,11 @@ angular.module('AlbumsModule')
             $('#clear').click(function () {
                 $('#filecount').filestyle('clear');
             });
+        };
+
+        this.removeActiveClass = function(to, e){
+            e.preventDefault();
+            $('#'+to).removeClass('active');
         };
 
         $scope.success = null;

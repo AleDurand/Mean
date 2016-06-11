@@ -8,7 +8,7 @@
     overflow: hidden;
     position: relative;
     text-align: center;
-    box-shadow: 0 0 1.8em 0.8em rgba(223, 226, 0, 0.53);
+    box-shadow: 0 0 1.5em 0.8em rgb(255, 190, 0);
     cursor: default;
     /*background: #ffbe00 url(../images/bgimg.jpg) no-repeat center center*/
 }

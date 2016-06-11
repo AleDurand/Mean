@@ -82,8 +82,14 @@
             </div>
             <div class="control-group form-group">
                 <div class="controls">
+                    <label style="color:#d0d24a">Teléfono:</label>
+                    <input style="color:white" class="form-control" ng-model="email.telefono" name ="telefono" >
+                </div>
+            </div>
+            <div class="control-group form-group">
+                <div class="controls">
                     <label style="color:#d0d24a">Mensaje:</label>
-                    <textarea style="color:white" name="message" rows="10" cols="100" class="form-control" ng-model="email.message"  maxlength="999" style="resize:none" required>
+                    <textarea  style="color:white" placeholder="Ejemplo de mensaje: Hola Marce, adjuntas dejo las fotos para que las imprimas en tamaño 15x21" name="message" rows="10" cols="100" class="form-control" ng-model="email.message"  maxlength="999" style="resize:none" required>
                     </textarea>
                     <span class="messages" ng-show="emailForm.message.$touched || !emailForm.message.$pristine || emailForm.$submitted">
                         <span ng-show="emailForm.message.$error.required ">El campo 'Mensaje' no puede quedar vacío.</span>

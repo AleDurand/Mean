@@ -1,4 +1,4 @@
-<!--<section class="header-image header-feature1 partial-box clearfix animated flipInY"">
+<section class="header-image header-feature1 partial-box clearfix animated flipInY" style="background:url({{album.albumImagePath}}) no-repeat;">
     <div class="wrapper" ng-click="showController.hideTooltips(album)">
         <div class="tooltip" ng-click="$event.stopPropagation()" ng-show="showtooltipName">
             <input maxlenght="48" type="text" ng-model="album.name" />
@@ -10,8 +10,8 @@
         <p style="white-space:pre-line">{{album.description}} <span ng-show="user" id="editDescription" class="glyphicon glyphicon-edit" style="cursor:pointer"
             ng-click="showController.toggleTooltipDescription($event,album,album.description)"></span> </p>
     </div>
-</section>-->
-<div class="row">
+</section>
+<div class="row" style="padding-top:30px">    
     <div ng-repeat="photo in album.photos">
         <div class="col-lg-3 col-md-4 col-xs-6">
             </br>
@@ -19,7 +19,7 @@
             <input name="radiobuttons" style="float:left;" ng-checked="photo._id == album.albumImage" ng-show="user" type="radio" class="radio"
             id="{{photo.name}}_checkbox" ng-click="showController.selected(photo, album)">
             </> 
-            <label style="color:#d0d24a"ng-show="user" style="padding:inherit;" for="{{photo.name}}_checkbox">Seleccionar como portada </label>            
+            <label style="color:#ffbe00"ng-show="user" style="padding:inherit;" for="{{photo.name}}_checkbox">Seleccionar como portada </label>            
             
             <button ng-show="user" class="button3d" ng-click="showController.deletePhoto(photo,album)">X</button>
             <p ng-init="htmlSwitchStatus = true"  >
@@ -53,16 +53,33 @@
         </form>
     </div>
 </div>
+</br></br>
+<h2 style="color:#ffbe00">¿Querés que imprima tus fotos?</h3>
+<h4 style="color:#ffbe00"> Me podés enviar un mail con todas las fotos que quieras que te imprima simplemente dándoles "like". </br>
+    Estas fotos se adjuntan automáticamente al mail, lo único que tenés que hacer es completar el formulario y listo!!<h5>
+<button ng-show="!user" class="btn btn-primary" ng-click="showController.openEmail()">Completar formulario <i class="fa fa-envelope"></i></button>
 
-<div class="row" ng-show="!user">
-    <div class="col-md-8">
-        <h3 style="color:#d0d24a">¿Querés que imprima tus fotos?</h3>
-        <h5 style="color:#d0d24a"> Seleccionando las que desees se agregarán automáticamente al mail<h5>
+
+<modal title="Enviar fotos." class="row" ng-show="!user" visible="emailModal" id="modalEmail">  
+        <style>
+            button.close{
+                color:white;
+            }
+            .modal-title{
+                color:white;                
+            }
+            .modal-content{
+                background-color: #2d2d26;
+            }
+            .modal-header{
+                border-bottom: 1px solid #ffbe00;
+            }
+        </style>
         <form ng-submit="emailForm.$valid && showController.sendEmail(email,album)" name ="emailForm" novalidate>
             <div class="control-group form-group">
                 <div class="controls">
-                    <label style="color:#d0d24a">Nombre:</label>
-                    <input style="color:white" type="text" class="form-control" name="name" ng-model="email.name" required>                    
+                    <label style="color:#ffbe00">Nombre:</label>
+                    <input placeholder="Nombre y apellido" style="color:white" type="text" class="form-control" name="name" ng-model="email.name" required>                    
                     <span class="messages" ng-show="emailForm.name.$touched  || !emailForm.name.$pristine || emailForm.$submitted">
                         <span ng-show="emailForm.name.$error.required ">Es obligatorio ingresar el nombre.</span>
                     </span>
@@ -70,8 +87,8 @@
             </div>
             <div class="control-group form-group">
                 <div class="controls">
-                    <label style="color:#d0d24a">Email:</label>
-                    <input style="color:white" class="form-control" ng-model="email.address" name ="email" type="email" required>
+                    <label style="color:#ffbe00">Email:</label>
+                    <input placeholder="miemail@hotmail.com, miemail@gmail.com" style="color:white" class="form-control" ng-model="email.address" name ="email" type="email" required>
                     <span class="messages" ng-show="emailForm.email.$touched || !emailForm.email.$pristine || emailForm.$submitted">
                         <span ng-show="emailForm.email.$error.required ">El campo 'Email' no puede quedar vacío.</span>
                     </span>
@@ -82,23 +99,24 @@
             </div>
             <div class="control-group form-group">
                 <div class="controls">
-                    <label style="color:#d0d24a">Teléfono:</label>
-                    <input style="color:white" class="form-control" ng-model="email.telefono" name ="telefono" >
+                    <label style="color:#ffbe00">Teléfono:</label>
+                    <input placeholder="(2954)587942" style="color:white" class="form-control" ng-model="email.telefono" name ="telefono" >
                 </div>
             </div>
             <div class="control-group form-group">
                 <div class="controls">
-                    <label style="color:#d0d24a">Mensaje:</label>
-                    <textarea  style="color:white" placeholder="Ejemplo de mensaje: Hola Marce, adjuntas dejo las fotos para que las imprimas en tamaño 15x21" name="message" rows="10" cols="100" class="form-control" ng-model="email.message"  maxlength="999" style="resize:none" required>
+                    <label style="color:#ffbe00">Mensaje:</label>
+                    <textarea  style="color:white; max-height:100px;" placeholder="Hola Marce, adjuntas dejo las fotos para que las imprimas en tamaño 15x21" name="message" rows="10" cols="100" class="form-control" ng-model="email.message"  maxlength="999" style="resize:none;" required>
                     </textarea>
                     <span class="messages" ng-show="emailForm.message.$touched || !emailForm.message.$pristine || emailForm.$submitted">
                         <span ng-show="emailForm.message.$error.required ">El campo 'Mensaje' no puede quedar vacío.</span>
                     </span>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-primary" style="margin-left:43%">Enviar <i class="fa fa-paper-plane-o"></i></button>
+            </br>
             <div ng-show="mailSended" class="text-center text-success">
-                <strong>El mail ha sido enviado exitósamente!</strong>
+                <strong>El mail ha sido enviado.</br> En breve me voy a estar comunicando con vos. Muchas gracias!!</strong>
             </div>
             <div ng-show="error" class="text-center text-danger">
                 <strong ng-bind="error"> Ocurrió un error al intentar enviar el mail. Por favor inténtelo nuevamente.</strong>
@@ -106,7 +124,7 @@
         </form>
     </div>
 
-</div>
+</modal>
 
 <modal title="Eliminar imagen" visible="modalDialog" id="modalError">
     <div class="modal-body">

@@ -6,6 +6,8 @@ angular.module('ContactModule')
         $scope.success = false;
         $('#contacto').addClass('active');
         $('#inicio').removeClass('active');
+        $('a.ls-nav-stop').click();
+        $('#layerslider').hide();
         Contact.get()
             .success(function (response) {
                 $scope.success = true;

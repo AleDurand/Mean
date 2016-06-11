@@ -25,6 +25,9 @@ var AlbumSchema = new Schema({
     albumImage: {
         type: Schema.Types.ObjectId, ref: 'Photo'
     },
+    albumImagePath:{
+        type: String
+    },
     photos: [{
         unique: false,
         type: Schema.Types.ObjectId, ref: 'Photo'

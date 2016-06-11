@@ -15,6 +15,12 @@ module.exports = function (app) {
     app.route('/api/albums/:name').put(auth.isAuthenticated, albums.update);
     app.route('/api/albums/:name/photos/:photo_id').delete(auth.isAuthenticated, albums.deletePhoto);
     
+    // Cover enpoints
+    app.route('/api/covers').post(auth.isAuthenticated, albums.create);
+    app.route('/api/covers').get(albums.all);
+    app.route('/api/covers/:_id').get(albums.getById);
+    app.route('/api/covers/:_id').put(auth.isAuthenticated, albums.update);
+
     // User enpoints
     app.route('/api/users').post(auth.isAuthenticated, users.create);
     app.route('/api/users/:username').get(auth.isAuthenticated, users.getByUsername);

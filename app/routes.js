@@ -3,6 +3,7 @@
 var albums = require('./controllers/albums');
 var users = require('./controllers/users');
 var contact = require('./controllers/contact');
+var covers = require('./controllers/covers');
 var auth = require('./controllers/middlewares/auth');
 
 module.exports = function (app) {
@@ -16,10 +17,10 @@ module.exports = function (app) {
     app.route('/api/albums/:name/photos/:photo_id').delete(auth.isAuthenticated, albums.deletePhoto);
     
     // Cover enpoints
-    app.route('/api/covers').post(auth.isAuthenticated, albums.create);
-    app.route('/api/covers').get(albums.all);
-    app.route('/api/covers/:_id').get(albums.getById);
-    app.route('/api/covers/:_id').put(auth.isAuthenticated, albums.update);
+    app.route('/api/covers').post(auth.isAuthenticated, covers.create);
+    app.route('/api/covers').get(covers.all);
+    app.route('/api/covers/:_id').get(covers.getById);
+    app.route('/api/covers/:_id').put(auth.isAuthenticated, covers.update);
 
     // User enpoints
     app.route('/api/users').post(auth.isAuthenticated, users.create);

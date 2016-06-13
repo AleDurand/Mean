@@ -13,7 +13,7 @@ angular.module('SliderModule')
 				skinsPath : 'libraries/layerslider/skins/',
 				skin : 'fullwidthdark',
 				thumbnailNavigation : 'enabled',
-				showCircleTimer : false,
+				showCircleTimer : true,
 				showBarTimer : false,
 	    		touchNav : true,
 				navStartStop : true,

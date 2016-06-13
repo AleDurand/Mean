@@ -6,8 +6,8 @@ var Contact = require('../models/contact');
 var contact = null;
 Contact.create({
     email: "mrnrodecker@gmail.com",
-    address: "20 de Agosto N° 15",
-    phoneNumber: "(2954)686401",
+    address: "Colón 270",
+    phoneNumber: "(2954)690150",
     city: "Alpachiri, La Pampa, Argentina",
     appDescription: "Espacio dedicado a mostrar las fotos tomadas en diferentes eventos.",
     facebookPage: "https://www.facebook.com/marcelasanchezdemosquera/"

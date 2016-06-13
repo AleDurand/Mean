@@ -76,6 +76,7 @@
 </head>
 
 <body style="background-color:black">
+    <div id="wrapper">
     <header class="header-section">
         <div class="wrapper header">
             <div class="logo">
@@ -116,7 +117,8 @@
         <div ng-view></div>
         
     </div>
-    <footer class="footer-distributed" ng-controller="ContactIndexController" ng-click="hideTooltips()">
+    </div>
+    <footer style="position:absolute" class="footer-distributed" ng-controller="ContactIndexController" ng-click="hideTooltips()">
         <div class="footer-right">
         <div class="tooltip" ng-click="$event.stopPropagation()" ng-show="showtooltipAppDescription">
             <input maxlength="140" rows="4" cols="50" ng-model="contact.appDescription" />
@@ -130,28 +132,27 @@
     <div class="footer-left">
         <p class="footer-company-name"><i class="fa fa-copyright" aria-hidden="true"> {{credits}}</i></p>
     </div>
+    </footer>
+    </div>
+<!--<div ng-include="'modules/contact/views/index.html'">-->
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+        appId      : '444839095711246',
+        xfbml      : true,
+        version    : 'v2.5'
+        });
+    };
     
-
-</footer>
-    <!--<div ng-include="'modules/contact/views/index.html'">-->
-        <script>
-            window.fbAsyncInit = function() {
-                FB.init({
-                appId      : '444839095711246',
-                xfbml      : true,
-                version    : 'v2.5'
-                });
-            };
-            
-            (function(d, s, id){
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) {return;}
-                js = d.createElement(s); js.id = id;
-                js.src = "//connect.facebook.net/en_US/sdk.js";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-        </script>
-    <!--</div>-->
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+<!--</div>-->
 </body>
 <script type="text/javascript">
   

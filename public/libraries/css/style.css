@@ -39,10 +39,15 @@ body {
 	color: #ffffff;
 	margin-top: 25px;
 }
-
-.container {
-    min-height: 400px;
-	top: 0;
+html, body {
+    height: 100%;
+}
+#wrapper {
+    width: 100%;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -80px; /* the bottom margin is the negative value of the footer's height */
 }
 
 .wrapper {

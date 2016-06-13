@@ -28,7 +28,7 @@
 <button class="btn btn-default" style="background-color:#25b5b8; color:white;margin-left: 45%; margin-top: 5%" ng-show="user" ng-click="toggleModal()" ><span class="glyphicon glyphicon-add"></span> Crear Álbum</button>
 
 <modal title="Crear Álbum" visible="showModal" id="createAlbumModal">
-    <form name="albumForm" ng-submit="albumForm.$valid && indexController.save(album,image)" novalidate>
+    <form name="albumForm" ng-submit="albumForm.$valid && indexController.save(album,image,imageHeader)" novalidate>
         <div class="modal-body">
             <div class="form-group">
                 <label for="name">Nombre</label>
@@ -62,6 +62,22 @@
                         <input type="file" name="file" id="filecount" ng-model="image" accept="image/*" file-model="image" valid-file required>
                         <span class="messages" ng-show="albumForm.file.$error.validFile ">
                             <span ng-show="albumForm.file.$error.validFile && albumForm.$submitted">Es obligatorio subir una imágen de portada.</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-xs-12 ">
+                        <button id="clear" class="btn btn-warning"><span class="glyphicon glyphicon-remove"></span> Cancelar selección </button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group center-form">
+                <label>Subir imágen "header" de álbum</label>
+                <div class="row" style="padding: 10px 0">
+                    <div class="col-md-12 col-xs-12 ">
+                        <input type="file" name="file" id="filecount2" ng-model="imageHeader" accept="image/*" file-model="imageHeader" valid-file required>
+                        <span class="messages" ng-show="albumForm.file.$error.validFile ">
+                            <span ng-show="albumForm.file.$error.validFile && albumForm.$submitted">Es obligatorio subir una imágen "header" de álbum (1300x300).</span>
                         </span>
                     </div>
                 </div>

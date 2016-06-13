@@ -25,7 +25,10 @@ var AlbumSchema = new Schema({
     albumImage: {
         type: Schema.Types.ObjectId, ref: 'Photo'
     },
-    albumImagePath:{
+    albumImageHeader: {
+        type: Schema.Types.ObjectId, ref: 'Photo'
+    },
+    albumImageHeaderPath:{
         type: String
     },
     photos: [{

@@ -16,22 +16,34 @@ angular.module('AlbumsModule')
             $('#clear').click(function () {
                 $('#filecount').filestyle('clear');
             });
+            $('#filecount2').filestyle({
+                input: false,
+                buttonText: 'Seleccionar imagen',
+                buttonName: 'btn-primary',
+                iconName: 'glyphicon glyphicon-folder-open'
+            });
+            $('#clear').click(function () {
+                $('#filecount2').filestyle('clear');
+            });
         };
 
         $scope.success = null;
         $scope.error = null;
-        this.save = function (album, image) {
+        this.save = function (album, image, imageHeader) {
             Album.create(album)
                 .success(function (response) {
                     $scope.success = true;
                     var fd = new FormData();
-                    var images = [image];
+                    var images = [image,imageHeader];
                     fd.append('album', angular.toJson(response));
                     fd.append('file' + 0, images[0]._file);
+                    fd.append('file' + 0, images[1]._file);
                     Album.addPhotos(response.name, fd)
                         .success(function (response) {
                             $scope.success = true;
                             response.albumImage = response.photos[0]._id;
+                            response.albumImageHeader = response.photos[1]._id;
+                            response.albumImageHeaderPath = response.photos[1].path;
                             Album.update(response.name, response)
                                 .success(function (response) {
                                     $scope.showModal = false;

@@ -97,12 +97,15 @@ angular.module('AlbumsModule')
             var photoNames = ""
             for (var i = 0; i < album.photos.length; i++) {
                 email.photos="";
-                if (document.getElementById(album.photos[i].name + '_selected').getAttribute('aria-checked')=="true"){
-                    if (photoNames == "") {
-                        photoNames = album.photos[i].name.split('.')[0]
-                    } else
-                        photoNames = photoNames + ', ' + album.photos[i].name.split('.')[0];
-                }
+                if(album.photos[i].path != album.albumImageHeaderPath)
+                    if (document.getElementById(album.photos[i].name + '_selected').getAttribute('aria-checked')=="true"){
+                        var e = document.getElementById(album.photos[i].name + '_tamaño');
+                        var tamaño = e.options[e.selectedIndex].value;
+                        if (photoNames == "") {
+                            photoNames = album.photos[i].name.split('.')[0] + ". En tamaño: " + tamaño + '\n';
+                        } else
+                            photoNames = photoNames + ', ' + album.photos[i].name.split('.')[0] + ". En tamaño: " + tamaño + '\n';
+                    }
             }
             email.photos = photoNames;
             email.album = album.name;

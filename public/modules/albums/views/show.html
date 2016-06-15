@@ -18,13 +18,29 @@
             <input name="radiobuttons" style="float:left;" ng-checked="photo._id == album.albumImage" ng-show="user" type="radio" class="radio"
             id="{{photo.name}}_checkbox" ng-click="showController.selected(photo, album)">
             </> 
-            <label style="color:#ffbe00"ng-show="user" style="padding:inherit;" for="{{photo.name}}_checkbox">Seleccionar como portada </label>            
+            <label style="color:#ffbe00" ng-show="user" style="padding:inherit;" for="{{photo.name}}_checkbox">Seleccionar como portada </label>            
             
             <button ng-show="user" class="button3d" ng-click="showController.deletePhoto(photo,album)">X</button>
-            <p ng-init="htmlSwitchStatus = true"  >
-                <div id="{{photo.name}}_selected" style=".ng-valid.ng-dirty: transparent !important" toggle-switch type="checkbox" class="switch-primary switch-large" html="htmlSwitchStatus"
-                knob-label='<i class="fa fa-camera-retro"></i>' ng-show="!user" on-label='<i class="fa fa-thumbs-up"></i>' off-label='<i class="fa fa-thumbs-down"></i>' ng-model="switchStatus" ></div>
-            </p>
+            <div class="row">
+            <div class="col-md-6" style="padding-top:13px;">
+                <p ng-init="htmlSwitchStatus = true"  >
+                    <div  id="{{photo.name}}_selected" style=".ng-valid.ng-dirty: transparent !important" toggle-switch type="checkbox" class="switch-primary switch-large" html="htmlSwitchStatus"
+                    knob-label='<i class="fa fa-camera-retro"></i>' ng-show="!user" on-label='<i class="fa fa-thumbs-up"></i>' off-label='<i class="fa fa-thumbs-down"></i>' ng-model="switchStatus" ></div>
+                </p>
+            </div>
+            <div class="col-md-6">
+                <div class="dropdown" ng-show="!user" style="max-width:46%">
+                    <label for="{{photo.name}}_tamaño" style="margin-bottom:7.7%; color:white;">Tamaño</label>
+                    <select id="{{photo.name}}_tamaño" class="ats-switch" style="min-height:39px; min-width:220%; font-family: 'Oswald', sans-serif; font-size:14.8px; padding-left:15px; color:black; background-color: #ffbe00;">
+                        <option selected value="acordar">A acordar</option>
+                        <option value="10x15">10x15(cm)</option>
+                        <option value="15x20">15x20(cm)</option>
+                        <option value="20x30">20x30(cm)</option>
+                        <option value="30x40">30x40(cm)</option>
+                    </select>
+                </div>
+            </div>
+            </div>
             <a class="fancybox-button " rel="fancybox-button" href="{{photo.path}}" title="{{album.name}}">
                 <img class="img-responsive img-thumbnail" ng-src="{{photo.path}}" alt="" />
             </a>
@@ -114,7 +130,8 @@
             </div>
             <button type="submit" class="btn btn-primary" style="margin-left:43%">Enviar <i class="fa fa-paper-plane-o"></i></button>
             </br>
-            <div ng-show="mailSended" class="text-center text-success">
+            </br>
+            <div ng-show="mailSended" class="text-center text-success" style="padding-top: 10px; color: white;" >
                 <strong>El mail ha sido enviado.</br> En breve me voy a estar comunicando con vos. Muchas gracias!!</strong>
             </div>
             <div ng-show="error" class="text-center text-danger">

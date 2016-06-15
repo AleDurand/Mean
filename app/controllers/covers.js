@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var Promise = require('bluebird');
 mongoose.Promise = Promise;
 var Covers = require('../models/cover');
-var upload = require('../utils/upload');
+var upload = require('../utils/upload_cover');
 var errorHandler = require('../errors/errorHandler');
 var basepath = 'resources/covers/';
 
@@ -85,15 +85,24 @@ exports.getById = function(req, res) {
 };
 
 exports.update = function(req, res) {
-    Covers.findOne({ _id : req.params._id})
-    .then(function(cover){
-        if (!cover) return res.status(404).send({ message: "Cover not found." })
-        return cover.update({$set:{description1: req.body.description1, description2: req.body.description2, description3: req.body.description3, path : req.body.path}})
-    })
-    .then(function (cover) {
-        return res.status(204).end();
-    })
-    .catch(function(error) {
-        return res.status(400).send({ message: errorHandler.getErrorMessage(error)});
+    var upload_p = upload.any();
+    upload_p(req, res, function(uploadError) {
+        if(uploadError){
+            return res.status(400).send({
+                message: 'Error occurred while uploading the photo'
+            });
+        }
+        var _cover = JSON.parse(req.body.cover);
+        Covers.findOne({ _id : req.params._id })
+        .then(function(cover){
+            if (!cover) return res.status(404).send({ message: "Cover not found." })
+            return cover.update({$set:{description1: _cover.description1, description2: _cover.description2, description3: _cover.description3}})
+        })
+        .then(function (cover) {
+            return res.status(204).end();
+        })
+        .catch(function(error) {
+            return res.status(400).send(error);
+        });
     });
 }

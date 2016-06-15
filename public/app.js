@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('meanApp', ['ngSanitize', 'toggle-switch', 'ngRoute', 'AlbumsModule', 'UsersModule', 'ContactModule', 'SliderModule']);
+var app = angular.module('meanApp', ['ngSanitize', 'toggle-switch', 'ngRoute', 'UsersModule', 'SliderModule', 'AlbumsModule', 'ContactModule']);
 
 
 app.run(function($rootScope) {

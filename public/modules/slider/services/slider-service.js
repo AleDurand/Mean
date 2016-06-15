@@ -5,6 +5,15 @@ angular.module('SliderModule')
         return {
             all: function () {
                 return $http({ method: 'GET', url: '/api/covers' });
-            }
+            },
+         	update: function (cover_id, data) {
+                return $http({
+                    method: 'PUT',
+                    url: '/api/covers/' + cover_id,
+                    data: data,
+                    transformRequest: angular.identity,
+                    headers: { 'Content-Type': undefined }
+                });
+            },        
         };
     }]);

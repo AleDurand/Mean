@@ -1,0 +1,68 @@
+<div ng-show="user">
+	<div class="row" style="padding-top:23px">
+		<div class="center">
+		    <div ng-repeat="image in images" ng-animate="'slide'">
+		    	<div class="col-lg-3 col-md-4 col-xs-6">
+		    		<div class="view view-eighth">
+						<img class="img-responsive" style="height:100%;" ng-src="{{image.path}}" alt="Cover {{$index + 1}}"/>
+						<div class="mask">
+							<h2>Cover {{$index + 1}}</h2>
+		                	<p style="margin-left:-13px !important;"></p>
+		               		<a class="info" ng-href="" style="cursor:pointer; margin-top:-14px !important;" ng-click="update(image)">Editar cover</a>
+		               	</div>
+		        	</div>    
+		        </div>	
+		        	
+			</div>	
+		</div>
+	</div>
+	<br>
+	<br>
+</div>	
+
+<modal ng-show="user" title="Modificar cover" visible="showModal" id="modificarCover">
+    <form name="coverForm" ng-submit="coverForm.$valid && save(cover, image)" novalidate>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="description">Descripción 1</label>
+                <input class="form-control" name="description1" ng-model="cover.description1" placeholder="Descripción" required/>
+                <span class="messages" ng-show="coverForm.description1.$touched  || !coverForm.description1.$pristine || coverForm.$submitted">
+                    <span ng-show="coverForm.description1.$error.required ">Es obligatorio ingresar la descripción.</span>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="description">Descripción 2</label>
+                <input class="form-control" name="description2" ng-model="cover.description2" placeholder="Descripción" required/>
+                <span class="messages" ng-show="coverForm.description2.$touched  || !coverForm.description2.$pristine || coverForm.$submitted">
+                    <span ng-show="coverForm.description2.$error.required ">Es obligatorio ingresar la descripción.</span>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="description">Descripción 3</label>
+                <input class="form-control" name="description3" ng-model="cover.description3" placeholder="Descripción" required/>
+                <span class="messages" ng-show="coverForm.description3.$touched  || !coverForm.description3.$pristine || coverForm.$submitted">
+                    <span ng-show="coverForm.description3.$error.required ">Es obligatorio ingresar la descripción.</span>
+                </span>
+            </div>
+            <div class="form-group center-form">
+                <label>Subir cover</label>
+                <div class="row" style="padding: 10px 0">
+                    <div class="col-md-12 col-xs-12 ">
+                        <input type="file" name="file" id="filecount" ng-model="image" accept="image/jpeg" file-model="image" required/>
+                        <span class="messages" ng-show="coverForm.file.$error.validFile ">
+                            <span ng-show="coverForm.file.$error.validFile && coverForm.$submitted">Es obligatorio subir una imágen (formato: .jpeg).</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-xs-12 ">
+                        <button id="clear" class="btn btn-warning"><span class="glyphicon glyphicon-remove"></span> Cancelar selección </button>
+                    </div>
+                </div>
+            </div>
+        <div class="modal-footer">
+            <button style="background-color:#25b5b8; color:white;" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-floppy-disk"></span> Aceptar</button>
+            <button class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        </div>
+    </form>
+</modal>

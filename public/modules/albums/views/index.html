@@ -1,3 +1,7 @@
+<div >
+    <h1 style="color: #ffbe00">Albums<h1>
+    <h4 ng-show="user" style="color: #ffbe00">Para crear un album hace click <a  ng-click="toggleModal()"href="">aqui</a>.</h4>    
+</div>
 <div class="row" style="padding-top:23px">
     <div class="center">
         <div ng-repeat="album in albums | filter: {name: search, albumType: AlbumType} | orderBy:'album._id':true" ng-animate="'slide'">
@@ -23,9 +27,7 @@
             </div>
         </div>
     </div>
-
 </div>
-<button class="btn btn-default" style="background-color:#25b5b8; color:white;margin-left: 45%; margin-top: 5%" ng-show="user" ng-click="toggleModal()" ><span class="glyphicon glyphicon-add"></span> Crear Álbum</button>
 
 <modal title="Crear Álbum" visible="showModal" id="createAlbumModal">
     <form name="albumForm" ng-submit="albumForm.$valid && indexController.save(album,image,imageHeader)" novalidate>

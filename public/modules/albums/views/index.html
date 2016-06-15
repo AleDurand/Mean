@@ -1,9 +1,4 @@
-<div>
-    <h1 style="color: #ffbe00">Albums<h1>
-    <h4 style="color: #ffbe00" ng-show="!results.length">No hay albums disponibles en esta vista.</h4>
-       
-</div>
-<h4 ng-show="user" style="color: #ffbe00">Para crear un album hace click <a ng-click="toggleModal()"href="">aqui</a>.</h4> 
+<h4 ng-show="user" style="padding-top:100px; color: #ffbe00">Para crear un album hace click <a ng-click="toggleModal()"href="">aqui</a>.</h4> 
 <div class="row" style="padding-top:23px">
     <div class="center">
         <div ng-repeat="album in albums | filter: ({name: search, albumType: AlbumType} | orderBy:'album._id':true ) as results" ng-animate="'slide'">
@@ -32,11 +27,25 @@
 </div>
 
 <modal title="Crear Álbum" visible="showModal" id="createAlbumModal">
+    <style>
+            button.close{
+                color:white;
+            }
+            .modal-title{
+                color:white;                
+            }
+            .modal-content{
+                background-color: #2d2d26;
+            }
+            .modal-header{
+                border-bottom: 1px solid #ffbe00;
+            }
+        </style>
     <form name="albumForm" ng-submit="albumForm.$valid && indexController.save(album,image,imageHeader)" novalidate>
         <div class="modal-body" style="max-height:250px;overflow-y:auto;" >
             <div class="form-group">
-                <label for="name">Nombre</label>
-                <input class="form-control" name="name" ng-pattern="'[a-zA-Z0-9\\s]+'" ng-model="album.name" placeholder="Nombre" required/>
+                <label for="name" style="color:#ffbe00">Nombre</label>
+                <input  style="color:white" class="form-control" name="name" ng-pattern="'[a-zA-Z0-9\\s]+'" ng-model="album.name" placeholder="Nombre" required/>
                 <span class="messages" ng-show="albumForm.name.$touched  || !albumForm.name.$pristine || albumForm.$submitted">
                     <span ng-show="albumForm.name.$error.required ">Es obligatorio ingresar el nombre.</span>
                 </span>
@@ -45,25 +54,25 @@
                 </span>
             </div>
             <div class="form-group">
-                <label for="description">Descripción</label>
-                <input class="form-control" name="description" ng-model="album.description" placeholder="Descripción" required/>
+                <label for="description" style="color:#ffbe00">Descripción</label>
+                <input style="color:white" class="form-control" name="description" ng-model="album.description" placeholder="Descripción" required/>
                 <span class="messages" ng-show="albumForm.description.$touched  || !albumForm.description.$pristine || albumForm.$submitted">
                     <span ng-show="albumForm.description.$error.required ">Es obligatorio ingresar el nombre.</span>
                 </span>
             </div>
              <div class="dropdown">
-                 <label for="albumType">Tipo de Álbum</label>
+                 <label for="albumType" style="color:#ffbe00">Tipo de Álbum</label>
                  <select class="form-control" ng-model="album.albumType">
-                    <option selected value="15">15 años</option>
-                    <option value="boda">Boda</option>
-                    <option value="otro">Otro</option>
+                    <option style="color:white" selected value="15">15 años</option>
+                    <option style="color:white" value="boda">Boda</option>
+                    <option style="color:white" value="otro">Otro</option>
                 </select>
             </div> 
             <div class="form-group center-form">
-                <label>Subir portada de álbum</label>
+                <label style="color:white">Subir portada de álbum</label>
                 <div class="row" style="padding: 10px 0">
                     <div class="col-md-12 col-xs-12 ">
-                        <input type="file" name="file" id="filecount" ng-model="image" accept="image/*" file-model="image" valid-file required>
+                        <input style="color:white" type="file" name="file" id="filecount" ng-model="image" accept="image/*" file-model="image" valid-file required>
                         <span class="messages" ng-show="albumForm.file.$error.validFile ">
                             <span ng-show="albumForm.file.$error.validFile && albumForm.$submitted">Es obligatorio subir una imágen de portada.</span>
                         </span>
@@ -76,7 +85,7 @@
                 </div>
             </div>
             <div class="form-group center-form">
-                <label>Subir imágen "header" de álbum (1300x300)</label>
+                <label style="color:white">Subir imágen "header" de álbum (1300x300)</label>
                 <div class="row" style="padding: 10px 0">
                     <div class="col-md-12 col-xs-12 ">
                         <input type="file" name="file" id="filecount2" ng-model="imageHeader" accept="image/*" file-model="imageHeader" valid-file required>
@@ -101,7 +110,7 @@
 
 <modal title="Eliminar Álbum" visible="showDeleteModal" id="DeleteAlbumModal">
     <form name="albumForm" validate>
-        <div class="modal-body">
+        <div style="color:white" class="modal-body">
             {{dialog}}
         </div>
         <div class="modal-footer">

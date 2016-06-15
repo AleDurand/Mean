@@ -69,8 +69,8 @@
     </div>
 </div>
 </br></br>
-<h2 style="color:#ffbe00">¿Querés que imprima tus fotos?</h3>
-<h4 style="color:#ffbe00"> Me podés enviar un mail con todas las fotos que quieras que te imprima simplemente dándoles "like". </br>
+<h2 ng-show="!user" style="color:#ffbe00">¿Querés que imprima tus fotos?</h3>
+<h4 ng-show="!user" style="color:#ffbe00"> Me podés enviar un mail con todas las fotos que quieras que te imprima simplemente dándoles "like". </br>
     Estas fotos se adjuntan automáticamente al mail, lo único que tenés que hacer es completar el formulario y listo!!<h5>
 <button ng-show="!user" class="btn btn-primary" ng-click="showController.openEmail()">Completar formulario <i class="fa fa-envelope"></i></button>
 

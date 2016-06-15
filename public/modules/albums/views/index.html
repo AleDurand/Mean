@@ -1,10 +1,12 @@
-<div >
+<div>
     <h1 style="color: #ffbe00">Albums<h1>
-    <h4 ng-show="user" style="color: #ffbe00">Para crear un album hace click <a  ng-click="toggleModal()"href="">aqui</a>.</h4>    
+    <h4 style="color: #ffbe00" ng-show="!results.length">No hay albums disponibles en esta vista.</h4>
+       
 </div>
+<h4 ng-show="user" style="color: #ffbe00">Para crear un album hace click <a ng-click="toggleModal()"href="">aqui</a>.</h4> 
 <div class="row" style="padding-top:23px">
     <div class="center">
-        <div ng-repeat="album in albums | filter: {name: search, albumType: AlbumType} | orderBy:'album._id':true" ng-animate="'slide'">
+        <div ng-repeat="album in albums | filter: ({name: search, albumType: AlbumType} | orderBy:'album._id':true ) as results" ng-animate="'slide'">
             <div class="view view-eighth">
                 <img class="img-responsive" ng-src="{{album.albumImage.path}}" alt="{{album.name}}">
                 <div class="mask">

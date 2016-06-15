@@ -1,12 +1,9 @@
 'use strict';
 
 angular.module('SliderModule')
-	.directive('slider', function ($timeout) {
+	.directive('slider', function ($timeout, $rootScope) {
 	  return {
 	    restrict: 'E',
-		scope:{
-			images: '='
-		},
 		controller: "SliderController",
 	    link: function (scope, elem, attrs) {
     		$('#layerslider').layerSlider({

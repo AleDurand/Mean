@@ -3,7 +3,7 @@
 var errorHandler = require('../errors/errorHandler');
 var nodemailer = require('nodemailer');
 var Contact = require('../models/contact');
-var contact = null;
+
 Contact.create({
     email: "mrnrodecker@gmail.com",
     address: "Colón 270",
@@ -13,7 +13,6 @@ Contact.create({
     facebookPage: "https://www.facebook.com/marcelasanchezdemosquera/"
     })
     .then(function (contact) {
-        this.contact=contact;
         console.log("Contact created")
     })
     .catch(function (error) {

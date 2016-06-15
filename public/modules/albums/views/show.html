@@ -1,5 +1,5 @@
 <section class="header-image header-feature1 partial-box clearfix animated flipInY" style="background:url({{album.albumImageHeaderPath}}) no-repeat;">
-    <div class="wrapper" ng-click="showController.hideTooltips(album)">
+    <div class="wrapper" ng-click="user && showController.hideTooltips($event)">
         <div class="tooltip" ng-click="$event.stopPropagation()" ng-show="showtooltipName">
             <input maxlenght="48" type="text" ng-model="album.name" />
         </div>

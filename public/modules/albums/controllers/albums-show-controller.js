@@ -43,7 +43,8 @@ angular.module('AlbumsModule')
             album.albumImagePath = photo.path;
             Album.update(album.name, album);
         };
-        this.hideTooltips = function () {
+        this.hideTooltips = function (e) {
+            e.preventDefault();
             getPrevValues();
             $scope.showtooltipName = false;
             $scope.showtooltipDescription = false;
@@ -53,6 +54,7 @@ angular.module('AlbumsModule')
             $('#editName').addClass('glyphicon-edit');
             $('#editDescription').removeClass('glyphicon-ok');
             $('#editDescription').addClass('glyphicon-edit');
+            e.stopPropagation();
         }
         this.toggleTooltipName = function (e, album, name) {
             e.stopPropagation();

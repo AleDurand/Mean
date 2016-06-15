@@ -31,7 +31,7 @@
 
 <modal title="Crear Álbum" visible="showModal" id="createAlbumModal">
     <form name="albumForm" ng-submit="albumForm.$valid && indexController.save(album,image,imageHeader)" novalidate>
-        <div class="modal-body">
+        <div class="modal-body" style="max-height:250px;overflow-y:auto;" >
             <div class="form-group">
                 <label for="name">Nombre</label>
                 <input class="form-control" name="name" ng-pattern="'[a-zA-Z0-9\\s]+'" ng-model="album.name" placeholder="Nombre" required/>
@@ -74,12 +74,12 @@
                 </div>
             </div>
             <div class="form-group center-form">
-                <label>Subir imágen "header" de álbum</label>
+                <label>Subir imágen "header" de álbum (1300x300)</label>
                 <div class="row" style="padding: 10px 0">
                     <div class="col-md-12 col-xs-12 ">
                         <input type="file" name="file" id="filecount2" ng-model="imageHeader" accept="image/*" file-model="imageHeader" valid-file required>
                         <span class="messages" ng-show="albumForm.file.$error.validFile ">
-                            <span ng-show="albumForm.file.$error.validFile && albumForm.$submitted">Es obligatorio subir una imágen "header" de álbum (1300x300).</span>
+                            <span ng-show="albumForm.file.$error.validFile && albumForm.$submitted">Es obligatorio subir una imágen "header" de álbum.</span>
                         </span>
                     </div>
                 </div>

@@ -12,7 +12,7 @@
     </div>
 </section>
 <div class="row" style="padding-top:30px">    
-    <div ng-repeat="photo in album.photos | filter: {'_id': album.albumImage}">
+    <div ng-repeat="photo in album.photos ">
         <div class="col-lg-3 col-md-4 col-xs-6" ng-if="photo.path != album.albumImageHeaderPath">
             </br>           
             <input name="radiobuttons" style="float:left;" ng-checked="photo._id == album.albumImage" ng-show="user" type="radio" class="radio"

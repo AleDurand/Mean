@@ -14,7 +14,6 @@ angular.module('AlbumsModule')
         $scope.mailSended = false;
         $('#contacto').removeClass('active');
         $('a.ls-nav-stop').click();
-        $('#layerslider').hide();
         Album.get($routeParams.name)
             .success(function (response) {
                 $scope.success = true;

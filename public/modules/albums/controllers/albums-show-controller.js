@@ -12,8 +12,11 @@ angular.module('AlbumsModule')
         $scope.prevName = '';
         $scope.toEmail = null;
         $scope.mailSended = false;
+        $scope.error = false;
+        $scope.errorMessage = "";
         $('#contacto').removeClass('active');
         $('a.ls-nav-stop').click();
+        $('slider').hide();
         Album.get($routeParams.name)
             .success(function (response) {
                 $scope.success = true;
@@ -26,6 +29,7 @@ angular.module('AlbumsModule')
             var fd = new FormData();
             fd.append('album', angular.toJson(album));
             for (var i = 0; i < images.length; i++) {
+                images[i].size = 2097152;
                 fd.append('file' + i, images[i]._file);
             }
             Album.addPhotos($routeParams.name, fd)
@@ -35,7 +39,8 @@ angular.module('AlbumsModule')
                     $route.reload();
                 })
                 .error(function (response) {
-                    $scope.error = response.message;
+                    $scope.error = true;
+                    $scope.errorMessage = response.message;
                 });
         };
         this.selected = function (photo, album) {

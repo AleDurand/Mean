@@ -22,7 +22,7 @@ exports.create = function(req, res) {
         return res.status(201).send(album);
     })
     .catch(function(error) {
-        res.status(400).send({ message: 'Error occurred while creating the album.' });
+        res.status(400).send({ message: error.code == 11000 ? "Ya hay un álbum con igual nombre, descripción, foto de portada o foto 'header' de 'album" :'Error occurred while creating the album.' });
     });
 };
 
@@ -114,7 +114,7 @@ exports.addPhotos = function(req, res) {
                 })
             }).catch(function(error){
                 return res.status(404).send({
-                                message: errorHandler.getErrorMessage(error)
+                                message: error.code == 11000 ? "La imágen ya fue subida en este álbum." : errorHandler.getErrorMessage(error)
                             });
             })
             

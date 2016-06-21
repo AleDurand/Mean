@@ -145,7 +145,7 @@
 <modal title="Eliminar imagen" visible="modalDialog" id="modalError">
     <div class="modal-body">
         <div class="form-group">
-            <label>{{dialog}}</label>
+            <label style="color:white">{{dialog}}</label>
         </div>
     </div>
     <div ng-if="!confirmDelete" class="modal-footer">
@@ -157,6 +157,16 @@
     </div>
 </modal>
 
+<modal title="Error" visible="error" id="modalError">
+    <div class="modal-body">
+        <div class="form-group">
+            <label style="color:white">{{errorMessage}}</label>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button id="Aceptar" data-dismiss="modal" style="background-color:#25b5b8; color:white;" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Aceptar</button>
+    </div>
+</modal>
 
 <script>
     $('#filecount').filestyle({

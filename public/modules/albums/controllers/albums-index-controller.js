@@ -3,10 +3,15 @@
 angular.module('AlbumsModule')
     .controller('AlbumsIndexController', function ($scope, $rootScope, $route, $location, Album) {
         $scope.showModal = false;
-        $scope.AlbumType = $('#navbar li.active').attr("id"); 
+        $scope.AlbumType = $('#navbar li.active').attr("id");
+        $scope.error = false;
+        $scope.errorMessage = ""; 
         $('#contacto').removeClass('active');
         if($('#inicio').hasClass('active')){
-            $('#layerslider').show();
+            $('slider').show();
+        }else{
+            $('a.ls-nav-stop').click();
+            $('slider').hide();
         }
         $scope.toggleModal = function () {
             $scope.showModal = !$scope.showModal;
@@ -41,6 +46,8 @@ angular.module('AlbumsModule')
                     fd.append('album', angular.toJson(response));
                     fd.append('file' + 0, images[0]._file);
                     fd.append('file' + 0, images[1]._file);
+                    images[0].size = 2097152;
+                    images[1].size = 2097152;
                     Album.addPhotos(response.name, fd)
                         .success(function (response) {
                             $scope.success = true;
@@ -55,7 +62,8 @@ angular.module('AlbumsModule')
                                     $location.path('/');
                                 })
                                 .error(function (response) {
-                                    $scope.error = response.message;
+                                    $scope.error = true;
+                                    $scope.errorMessage = "Ya hay un álbum con igual foto de header.";
                                 });
                         })
                         .error(function (response) {
@@ -64,7 +72,8 @@ angular.module('AlbumsModule')
 
                 })
                 .error(function (response) {
-                    $scope.error = response.message;
+                    $scope.error = true;
+                    $scope.errorMessage = "No pueden haber dos álbumes con igual nombre";
                 });
         };
         Album.all()

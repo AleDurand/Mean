@@ -3,12 +3,13 @@
 angular.module('AlbumsModule')
     .controller('AlbumsIndexController', function ($scope, $rootScope, $route, $location, Album) {
         $scope.showModal = false;
-        $scope.AlbumType = $('#navbar li.active').attr("id");
+        $scope.AlbumType = $('#navbar li.active').attr("id") == undefined ? localStorage.getItem('active') : $('#navbar li.active').attr("id");
         $scope.error = false;
         $scope.errorMessage = ""; 
-        $('#contacto').removeClass('active');
-        if($('#inicio').hasClass('active')){
+        if($('#inicio').hasClass('active') || localStorage.getItem('active')){
+            $('a.ls-nav-start').click();
             $('slider').show();
+            $('#layerslider').show();
         }else{
             $('a.ls-nav-stop').click();
             $('slider').hide();

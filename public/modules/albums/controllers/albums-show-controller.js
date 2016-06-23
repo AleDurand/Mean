@@ -14,7 +14,6 @@ angular.module('AlbumsModule')
         $scope.mailSended = false;
         $scope.error = false;
         $scope.errorMessage = "";
-        $('#contacto').removeClass('active');
         $('a.ls-nav-stop').click();
         $('slider').hide();
         Album.get($routeParams.name)

@@ -4,7 +4,6 @@ angular.module('ContactModule')
     .controller('ContactIndexController', function ($scope, $rootScope, $route, Contact) {
         $scope.credits = "Mariano Rodecker - Alejandro Durand"
         $scope.success = false;
-        $('#contacto').addClass('active');
         $('#inicio').removeClass('active');
         $('a.ls-nav-stop').click();
         $('#layerslider').hide();

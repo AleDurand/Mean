@@ -6,7 +6,7 @@ angular.module('AlbumsModule')
         $scope.AlbumType = $('#navbar li.active').attr("id") == undefined ? localStorage.getItem('active') : $('#navbar li.active').attr("id");
         $scope.error = false;
         $scope.errorMessage = ""; 
-        if($('#inicio').hasClass('active') || localStorage.getItem('active')){
+        if($('#inicio').hasClass('active') || localStorage.getItem('active') == 'inicio'){
             $('a.ls-nav-start').click();
             $('slider').show();
             $('#layerslider').show();

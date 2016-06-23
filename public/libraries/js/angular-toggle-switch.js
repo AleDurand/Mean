@@ -41,13 +41,13 @@ angular.module('toggle-switch', ['ng']).directive('toggleSwitch', ['$compile', f
 
 			return function postLink(scope, iElement, iAttrs, ngModel) {
 				iElement.attr('tabindex', attrs.tabindex);
-
+				scope.attrs = iAttrs;
 				scope.toggle = function toggle() {
 					if (!scope.isDisabled) {
 						scope.model = !scope.model;
 						ngModel.$setViewValue(scope.model);
 					}
-					scope.onChange();
+					scope.onChange(scope.attrs.id);
 				};
 
 				var spaceCharCode = 32;

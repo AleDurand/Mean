@@ -156,6 +156,17 @@ angular.module('AlbumsModule')
             }
         };
 
+        this.onChange = function(id){
+            var element = document.getElementById(id);
+            if(element.classList.contains('nodisplay')){
+                element.classList.remove('nodisplay');
+                element.classList.add('displayy');
+            }else{
+                element.classList.remove('displayy');
+                element.classList.add('nodisplay');
+            }
+        }
+
     });
  
     

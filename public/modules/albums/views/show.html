@@ -25,11 +25,11 @@
             <div class="col-md-6" style="padding-top:13px;">
                 <p ng-init="htmlSwitchStatus = true"  >
                     <div  id="{{photo.name}}_selected" style=".ng-valid.ng-dirty: transparent !important" toggle-switch type="checkbox" class="switch-primary switch-large" html="htmlSwitchStatus"
-                    knob-label='<i class="fa fa-camera-retro"></i>' ng-show="!user" on-label='<i class="fa fa-thumbs-up"></i>' off-label='<i class="fa fa-thumbs-down"></i>' ng-model="switchStatus" ></div>
+                    knob-label='<i class="fa fa-camera-retro"></i>' ng-change="showController.onChange(photo.name+'_tamaño_dd')" ng-show="!user" on-label='<i class="fa fa-thumbs-up"></i>' off-label='<i class="fa fa-thumbs-down"></i>' ng-model="switchStatus" ></div>
                 </p>
             </div>
             <div class="col-md-6">
-                <div class="dropdown" ng-show="!user" style="max-width:46%">
+                <div class="dropdown nodisplay" id="{{photo.name}}_tamaño_dd" ng-show="!user" style="max-width:46%">
                     <label for="{{photo.name}}_tamaño" style="margin-bottom:7.7%; color:white;">Tamaño</label>
                     <select id="{{photo.name}}_tamaño" class="ats-switch" style="min-height:39px; min-width:220%; font-family: 'Oswald', sans-serif; font-size:14.8px; padding-left:15px; color:black; background-color: #ffbe00;">
                         <option selected value="acordar">A acordar</option>

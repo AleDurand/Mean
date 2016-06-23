@@ -18,6 +18,14 @@ body {
     margin-top: 1%;
 }
 
+.nodisplay{
+  display:none;
+}
+
+.displayy{
+  display:block;
+}
+
 .header-image .wrapper {
 	padding: 50px 0px 40px 0px;
 }

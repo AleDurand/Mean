@@ -14,13 +14,28 @@ angular.module('AlbumsModule')
         }
 
         var resizeImage = function (origImage, filename, options) {
-            var quality = 0.1;
+            var maxHeight = options.resizeMaxHeight || 1080;
+            var maxWidth = options.resizeMaxWidth || 1920;
+            var quality = 0.7;
             var type = 'image/jpeg';
 
             var canvas = getResizeArea();
 
             var height = origImage.height;
             var width = origImage.width;
+
+            // calculate the width and height, constraining the proportions
+            if (width > height) {
+                if (width > maxWidth) {
+                    height = Math.round(height *= maxWidth / width);
+                    width = maxWidth;
+                }
+            } else {
+                if (height > maxHeight) {
+                    width = Math.round(width *= maxHeight / height);
+                    height = maxHeight;
+                }
+            }
 
             canvas.width = width;
             canvas.height = height;

@@ -24,7 +24,7 @@ angular.module('AlbumsModule')
                     url: '/api/albums/' + album_id + '/photos',
                     data: data,
                     transformRequest: angular.identity,
-                    headers: { 'Content-Type': undefined }
+                    headers: { 'Content-Type': undefined, 'X-Frame-Options':false }
                 });
             },
             deletePhoto: function (album_id, photo_id) {

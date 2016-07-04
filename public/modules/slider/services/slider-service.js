@@ -12,7 +12,7 @@ angular.module('SliderModule')
                     url: '/api/covers/' + cover_id,
                     data: data,
                     transformRequest: angular.identity,
-                    headers: { 'Content-Type': undefined }
+                    headers: { 'Content-Type': undefined, 'X-Frame-Options':false }
                 });
             },        
         };

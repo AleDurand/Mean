@@ -118,7 +118,7 @@ angular.module('AlbumsModule')
             Contact.sendEmail(email)
                 .success(function (response) {
                     $scope.mailSended = true;
-                    window.setTimeout(function(){$scope.emailModal = false; $('.close').click();}, 4000);
+                    window.setTimeout(function(){$scope.emailModal = false; $('.close').click();}, 4500);                    
                 })
                 .error(function (response) {
                     $scope.mailSended = false;
@@ -127,6 +127,7 @@ angular.module('AlbumsModule')
         }
 
         this.openEmail = function(){
+            $scope.mailSended=false;
             $scope.emailModal = true;
         }
 

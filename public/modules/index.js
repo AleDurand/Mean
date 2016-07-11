@@ -40,5 +40,5 @@ $(document).on('ready',function(){
     jQuery(window).load(function() {
         var active = localStorage.getItem('active');
         $('#'+active).addClass('active');
-    })
-})
+    });
+});

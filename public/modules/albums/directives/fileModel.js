@@ -10,7 +10,6 @@ angular.module('AlbumsModule')
                 resizeArea = document.createElement('canvas');
                 resizeArea.id = resizeAreaId;
                 resizeArea.style.visibility = 'hidden';
-                document.body.appendChild(resizeArea);
             }
             return resizeArea;
         }

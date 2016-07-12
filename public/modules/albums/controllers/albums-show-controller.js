@@ -28,7 +28,6 @@ angular.module('AlbumsModule')
             var fd = new FormData();
             fd.append('album', angular.toJson(album));
             for (var i = 0; i < images.length; i++) {
-                images[i].size = 2097152;
                 fd.append('file' + i, images[i]._file);
             }
             Album.addPhotos($routeParams.name, fd)

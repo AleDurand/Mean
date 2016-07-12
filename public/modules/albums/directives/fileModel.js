@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('AlbumsModule')
     .directive('fileModel', ['$parse', '$q', function ($parse, $q) {
 

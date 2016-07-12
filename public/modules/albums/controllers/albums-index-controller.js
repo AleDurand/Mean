@@ -46,9 +46,7 @@ angular.module('AlbumsModule')
                     var images = [image,imageHeader];
                     fd.append('album', angular.toJson(response));
                     fd.append('file' + 0, images[0]._file);
-                    fd.append('file' + 0, images[1]._file);
-                    images[0].size = 2097152;
-                    images[1].size = 2097152;
+                    fd.append('file' + 1, images[1]._file);
                     Album.addPhotos(response.name, fd)
                         .success(function (response) {
                             $scope.success = true;

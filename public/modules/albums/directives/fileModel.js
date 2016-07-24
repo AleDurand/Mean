@@ -101,7 +101,7 @@ angular.module('AlbumsModule')
                             _file: item
                         };
 
-                        fileToDataURL(item).then(function (dataURL) {
+                        fileToDataURL(item, function (dataURL) {
                             imageResult.dataURL = dataURL;
                         });
 

@@ -31,7 +31,7 @@ angular.module('AlbumsModule')
                 buttonName: 'btn-primary',
                 iconName: 'glyphicon glyphicon-folder-open'
             });
-            $('#clear').click(function () {
+            $('#clear2').click(function () {
                 $('#filecount2').filestyle('clear');
             });
         };
@@ -119,9 +119,9 @@ angular.module('AlbumsModule')
             '</div>' +
             '</div>',
             restrict: 'E',
+            scope: true,
             transclude: true,
             replace: true,
-            scope: true,
             link: function postLink(scope, element, attrs) {
                 scope.title = attrs.title;
 
@@ -146,15 +146,16 @@ angular.module('AlbumsModule')
             }
         };
     });
+
 angular.module('AlbumsModule')    
     .directive('validFile',function(){
     return {
         require:'ngModel',
         link:function(scope,el,attrs,ctrl){
-            ctrl.$setValidity('validFile', el.val() != '');
+            ctrl.$setValidity('validFile', el.val() != '' && el.val() != undefined);
             //change event is fired when file is selected
             el.bind('change',function(){
-                ctrl.$setValidity('validFile', el.val() != '');
+                ctrl.$setValidity('validFile', el.val() != '' && el.val() != undefined);
                 scope.$apply(function(){
                     ctrl.$setViewValue(el.val());
                     ctrl.$render();
@@ -162,4 +163,4 @@ angular.module('AlbumsModule')
             });
         }
     }
-})
+});

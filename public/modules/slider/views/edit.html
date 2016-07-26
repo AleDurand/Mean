@@ -22,7 +22,7 @@
 </div>	
 
 <modal ng-show="user" title="Modificar cover" visible="showModal" id="modificarCover">
-    <form name="coverForm" ng-submit="coverForm.$valid && save(cover, image)" novalidate>
+    <form name="coverForm" ng-submit="coverForm.$valid && save(cover, image[0])" novalidate>
         <div class="modal-body">
             <div class="form-group">
                 <label for="description">Descripción 1</label>

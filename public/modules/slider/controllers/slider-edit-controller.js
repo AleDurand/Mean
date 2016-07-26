@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('SliderModule')
-	.controller('SliderEditController', function ($scope, $rootScope, $location, Slider) {
+	.controller('SliderEditController', function ($scope, $rootScope, $route, $location, Slider) {
 		$scope.showModal = false;
 		
 		Slider.all()
@@ -36,7 +36,7 @@ angular.module('SliderModule')
                     $('body').removeClass('modal-open');
                     $('.modal-backdrop').remove();
                    	$scope.cover = null;
-                   	$location.path('/');
+                   	$route.reload();
                 })
                 .error(function (response) {
                     $scope.error = response.message;

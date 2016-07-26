@@ -41,7 +41,7 @@
                 border-bottom: 1px solid #ffbe00;
             }
         </style>
-    <form name="albumForm" ng-submit="albumForm.$valid && indexController.save(album, image, imageHeader)" novalidate>
+    <form name="albumForm" ng-submit="albumForm.$valid && indexController.save(album, image[0], imageHeader[0])" novalidate>
         <div class="modal-body" style="max-height:250px;overflow-y:auto;" >
             <div class="form-group">
                 <label for="name" style="color:#ffbe00">Nombre</label>

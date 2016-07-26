@@ -79,7 +79,6 @@ angular.module('AlbumsModule')
             restrict: 'A',
             link: function (scope, element, attrs) {
                 var model = $parse(attrs.fileModel);
-                var isMultiple = attrs.multiple;
                 var modelSetter = model.assign;
 
                 var doResizing = function(imageResult, callback) {
@@ -88,6 +87,7 @@ angular.module('AlbumsModule')
                         imageResult._file = file;
                         callback(imageResult);
                     });
+
                 };
 
                 element.bind('change', function () {
@@ -101,22 +101,19 @@ angular.module('AlbumsModule')
                             _file: item
                         };
 
-                        fileToDataURL(item, function (dataURL) {
+                        fileToDataURL(item).then(function (dataURL) {
                             imageResult.dataURL = dataURL;
                         });
 
                         doResizing(imageResult, function(imageResult) {
-                                values.push(imageResult);
+                            values.push(imageResult);
                         });
                     });
                     scope.$apply(function () {
-                        if (isMultiple) {
-                            modelSetter(scope, values);
-                        } else {
-                            modelSetter(scope, values[0]);
-                        }
+                        modelSetter(scope, values);                         
                     });
                 });
+
             }
         };
     }]);

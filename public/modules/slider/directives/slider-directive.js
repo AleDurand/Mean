@@ -15,8 +15,10 @@ angular.module('SliderModule')
 	    		touchNav : true,
 				navStartStop : true,
 				navButtons : true,
-				animateFirstLayer : true,
-				responsive : true
+				animateFirstLayer : false,
+				responsive : true,
+				responsiveUnder : 1226,
+				sublayerContainer: 1226
 			});
 	    },
 		templateUrl:'modules/slider/views/index.html'

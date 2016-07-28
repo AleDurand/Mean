@@ -7,6 +7,14 @@ angular.module('ContactModule')
         $('#inicio').removeClass('active');
         $('a.ls-nav-stop').click();
         $('#layerslider').hide();
+        if($('#inicio').hasClass('active') || localStorage.getItem('active') == 'inicio'){
+            $('a.ls-nav-start').click();
+            $('slider').show();
+            $('#layerslider').show();
+        }else{
+            $('a.ls-nav-stop').click();
+            $('slider').hide();
+        }
         Contact.get()
             .success(function (response) {
                 $scope.success = true;

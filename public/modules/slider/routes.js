@@ -4,9 +4,9 @@ angular.module('SliderModule', ['ngRoute'])
 .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/covers/edit', {
-                templateUrl: 'modules/slider/views/edit.html',
                 controller: 'SliderEditController',
-                controllerAs: 'editController'
+                controllerAs: 'editController',
+                templateUrl: 'modules/slider/views/edit.html'
             })
-            .otherwise({ redirectTo: '/albums' });
     }]);
+    

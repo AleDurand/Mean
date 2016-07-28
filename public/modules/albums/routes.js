@@ -8,6 +8,21 @@ angular.module('AlbumsModule', ['ngRoute'])
                 controller: 'AlbumsIndexController',
                 controllerAs: 'indexController',
             })
+            .when('/albums/15', {
+                templateUrl: 'modules/albums/views/index.html',
+                controller: 'AlbumsIndexController',
+                controllerAs: 'indexController',
+            })
+            .when('/albums/bodas', {
+                templateUrl: 'modules/albums/views/index.html',
+                controller: 'AlbumsIndexController',
+                controllerAs: 'indexController',
+            })
+            .when('/albums/otros-eventos', {
+                templateUrl: 'modules/albums/views/index.html',
+                controller: 'AlbumsIndexController',
+                controllerAs: 'indexController',
+            })
             .when('/albums/create', {
                 templateUrl: 'modules/albums/views/create.html',
                 controller: 'AlbumsCreateController',
@@ -18,5 +33,4 @@ angular.module('AlbumsModule', ['ngRoute'])
                 controller: 'AlbumsShowController',
                 controllerAs: 'showController'
             })
-            .otherwise({ redirectTo: '/albums' });
     }]);

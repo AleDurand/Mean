@@ -7,11 +7,10 @@ angular.module('AlbumsModule')
         $scope.error = false;
         $scope.errorMessage = ""; 
         if($('#inicio').hasClass('active') || localStorage.getItem('active') == 'inicio'){
-            $('a.ls-nav-start').click();
+            $('#layerslider').layerSlider('start'); 
             $('slider').show();
-            $('#layerslider').show();
         }else{
-            $('a.ls-nav-stop').click();
+            $('#layerslider').layerSlider('stop'); 
             $('slider').hide();
         }
         $scope.toggleModal = function () {

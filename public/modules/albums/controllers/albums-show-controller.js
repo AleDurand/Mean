@@ -14,8 +14,13 @@ angular.module('AlbumsModule')
         $scope.mailSended = false;
         $scope.error = false;
         $scope.errorMessage = "";
-        $('a.ls-nav-stop').click();
-        $('slider').hide();
+        if($('#inicio').hasClass('active') || localStorage.getItem('active') == 'inicio'){
+            $('#layerslider').layerSlider('start'); 
+            $('slider').show();
+        }else{
+            $('#layerslider').layerSlider('stop'); 
+            $('slider').hide();
+        }
         Album.get($routeParams.name)
             .success(function (response) {
                 $scope.success = true;

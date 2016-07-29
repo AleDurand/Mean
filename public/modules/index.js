@@ -3,6 +3,7 @@ $(document).on('ready', function(){
         $('#layerslider').layerSlider('start'); 
         $('slider').show();
         localStorage.setItem('active','inicio');
+        $('#layerslider').layerSlider('next')
         return true;        
     });
     $(document).on('click','#15 a',function(){

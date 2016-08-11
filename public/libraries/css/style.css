@@ -47,9 +47,22 @@ body {
 	color: #ffffff;
 	margin-top: 25px;
 }
-html, body {
+html {
     height: 100%;
 }
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-wrap: wrap;;
+}
+
+footer {
+  align-self: flex-end;
+  width: 100%;
+}
+
+
 #wrapper {
     width: 100%;
     min-height: 100%;

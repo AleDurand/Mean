@@ -8,20 +8,21 @@ var Albums = require('../models/album');
 var Photos = require('../models/photo');
 var upload = require('../utils/upload');
 var errorHandler = require('../errors/errorHandler');
-var basepath = 'resources/albums/';
+var media = require('../../config/media');
 
 exports.create = function(req, res) {
     Albums.create({
         name : req.body.name,
         description : req.body.description,
         albumType: req.body.albumType,
-        path : basepath + req.body.name + "/"
+        path : media.path_albums + req.body.name + "/"
     })
     .then(function(album){
-        fs.mkdirSync('./public/' + basepath + req.body.name);
+        fs.mkdirSync(media.path_media + media.path_albums + req.body.name);
         return res.status(201).send(album);
     })
     .catch(function(error) {
+        console.log(error);
         res.status(400).send({ message: error.code == 11000 ? "Ya hay un álbum con igual nombre, descripción, foto de portada o foto 'header' de 'album" :'Error occurred while creating the album.' });
     });
 };
@@ -69,7 +70,7 @@ exports.delete = function(req, res) {
         return album;
     })
     .then(function(album){
-        rmdir('./public/' + album.path);
+        rmdir(media.path_media + album.path);
         return res.status(204).end();
     })
     .catch(function(error) {
@@ -85,7 +86,7 @@ exports.deletePhoto = function(req,res){
        return photo; 
     })
     .then(function(photo){
-        fs.unlink('./public/' + photo.path);
+        fs.unlink(media.path_media + photo.path);
         return res.status(204).end();
     })
     .catch(function(error) {

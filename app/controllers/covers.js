@@ -7,10 +7,10 @@ mongoose.Promise = Promise;
 var Covers = require('../models/cover');
 var upload = require('../utils/upload_cover');
 var errorHandler = require('../errors/errorHandler');
-var basepath = 'resources/covers/';
+var media = require('../../config/media');
 
 Covers.create({
-    path: "resources/covers/slide1.jpg",
+    path: media.path_covers + "slide1.jpg",
     description1: "Podes entrar en la sección",
     description2: "cumpleaños de 15",
     description3: "y encargar tus fotos"
@@ -23,7 +23,7 @@ Covers.create({
     })
 
 Covers.create({
-    path: "resources/covers/slide2.jpg",
+    path: media.path_covers + "slide2.jpg",
     description1: "Detené el tiempo",
     description2: "en los momentos únicos e irrepetibles",
     description3: "donde primen las emociones"
@@ -36,7 +36,7 @@ Covers.create({
     })
 
 Covers.create({
-    path: "resources/covers/slide3.jpg",
+    path: media.path_covers + "slide3.jpg",
     description1: "Tus momentos registrados en fotos",
     description2: "serán resguardados",
     description3: "para siempre"

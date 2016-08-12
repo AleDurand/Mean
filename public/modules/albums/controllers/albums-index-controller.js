@@ -2,17 +2,12 @@
 
 angular.module('AlbumsModule')
     .controller('AlbumsIndexController', function ($scope, $rootScope, $route, $location, Album) {
+        $('#layerslider').layerSlider('stop'); 
+        $('slider').hide();
         $scope.showModal = false;
         $scope.AlbumType = $('#navbar li.active').attr("id") == undefined ? localStorage.getItem('active') : $('#navbar li.active').attr("id");
         $scope.error = false;
         $scope.errorMessage = ""; 
-        if($('#inicio').hasClass('active') || localStorage.getItem('active') == 'inicio'){
-            $('#layerslider').layerSlider('start'); 
-            $('slider').show();
-        }else{
-            $('#layerslider').layerSlider('stop'); 
-            $('slider').hide();
-        }
         $scope.toggleModal = function () {
             $scope.showModal = !$scope.showModal;
             $('#filecount').filestyle({

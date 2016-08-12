@@ -4,13 +4,8 @@ angular.module('ContactModule')
     .controller('ContactIndexController', function ($scope, $rootScope, $route, Contact) {
         $scope.credits = "Mariano Rodecker - Alejandro Durand"
         $scope.success = false;
-       if($('#inicio').hasClass('active') || localStorage.getItem('active') == 'inicio'){
-            $('#layerslider').layerSlider('start'); 
-            $('slider').show();
-        }else{
-            $('#layerslider').layerSlider('stop'); 
-            $('slider').hide();
-        }
+        $('#layerslider').layerSlider('stop'); 
+        $('slider').hide();
         Contact.get()
             .success(function (response) {
                 $scope.success = true;

@@ -7,7 +7,7 @@
 						<img class="img-responsive" style="height:100%;" ng-src="{{image.path}}" alt="Cover {{$index + 1}}"/>
 						<div class="mask">
 							<h2>Cover {{$index + 1}}</h2>
-		                	<p style="margin-left:-13px !important;"></p>
+		                	<p style="margin-left:13px !important;"></p>
 		               		<a class="info" ng-href="" style="cursor:pointer; margin-top:-14px !important;" ng-click="update(image)">Editar cover</a>
 		               	</div>
 		        	</div>    
@@ -16,9 +16,8 @@
 			</div>	
 		</div>
 	</div>
+    <br>
 	<br>
-	<br>
-    <h4 ng-show="user" style="color: #ffbe00">Para crear un album hace click <a ng-click="toggleModal()"href="">aqui</a>.</h4>
 </div>	
 
 <modal ng-show="user" title="Modificar cover" visible="showModal" id="modificarCover">

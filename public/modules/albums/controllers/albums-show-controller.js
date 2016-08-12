@@ -2,6 +2,8 @@
 
 angular.module('AlbumsModule')
     .controller('AlbumsShowController', function ($scope, $rootScope, $route, $http, $routeParams, Album, Contact) {
+        $('#layerslider').layerSlider('stop'); 
+        $('slider').hide();
         $scope.dialog = null;
         $scope.modalDialog = false;
         $scope.emailModal = false;
@@ -14,13 +16,6 @@ angular.module('AlbumsModule')
         $scope.mailSended = false;
         $scope.error = false;
         $scope.errorMessage = "";
-        if($('#inicio').hasClass('active') || localStorage.getItem('active') == 'inicio'){
-            $('#layerslider').layerSlider('start'); 
-            $('slider').show();
-        }else{
-            $('#layerslider').layerSlider('stop'); 
-            $('slider').hide();
-        }
         Album.get($routeParams.name)
             .success(function (response) {
                 $scope.success = true;

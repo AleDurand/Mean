@@ -2,7 +2,7 @@
 
 angular.module('SliderModule')
 	.controller('SliderEditController', function ($scope, $rootScope, $route, $location, Slider) {
-		$scope.showModal = false;
+        $scope.showModal = false;
 		
 		Slider.all()
             .success(function (response) {

@@ -8,7 +8,9 @@ $(document).on('click', '#search-nav button[type="reset"]', function (event) {
 function openSearch() {
     $('#search-nav').addClass('active');
     $('.search-field').show();
+    $('.search-field').css({ display: "inline-flex" });
     $('#search-nav button[type="reset"]').show();
+    $('#search-nav button[type="reset"]').css({ display: "inline-flex" });
 }
 
 // Show Search if form is not active or input search empty

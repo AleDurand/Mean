@@ -14,7 +14,7 @@ var media = require('./config/media');
 // configuration ===============================================================
 mongoose.connect(database.url);     // connect to mongoDB database on modulus.io
 
-app.use(express.static(__dirname + '/private'));                 // set the static files location /public/img will be /img for users
+app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
 app.use(express.static(__dirname + '/media'));   
 app.use(morgan('dev'));                                         // log every request to the console
 app.use(bodyParser.json({limit: '50mb'}));

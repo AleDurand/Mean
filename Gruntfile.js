@@ -40,9 +40,20 @@ module.exports = function(grunt) {
             'public/app.js':['public/app.js']
           }
         }
+      },
+      cssmin: {
+        target: {
+          files: [{
+            expand: true,
+            cwd: 'public/libraries/css/',
+            src: ['*.css'],
+            dest: 'public/libraries/css/',
+            ext:'.css'
+          }]
+        }
       }
     });
-
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify'); // load the given tasks asdf
-    grunt.registerTask('default', ['uglify']); // Default grunt tasks maps to grunt
+    grunt.registerTask('default', ['uglify', 'cssmin']); // Default grunt tasks maps to grunt
   };

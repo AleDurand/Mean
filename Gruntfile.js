@@ -38,6 +38,6 @@
       }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-uglify'); // load the given tasks
+    grunt.loadNpmTasks('grunt-contrib-uglify'); // load the given tasks asdf
     grunt.registerTask('default', ['uglify']); // Default grunt tasks maps to grunt
   };

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ContactModule')
-    .controller('ContactIndexController', function ($scope, $rootScope, $route, Contact) {
+    .controller('ContactIndexController',['$scope', '$rootScope','$route','Contact', function ($scope, $rootScope, $route, Contact) {
         $scope.credits = "Mariano Rodecker - Alejandro Durand"
         $scope.success = false;
         $('#layerslider').layerSlider('stop'); 
@@ -159,4 +159,4 @@ angular.module('ContactModule')
             $('#Contact').removeClass('active');
             $('#Albums').addClass('active');
         }
-    });
+    }]);

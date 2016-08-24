@@ -16,5 +16,9 @@
     "nodemailer": "^2.1.0",
     "passport": "~0.3.2",
     "passport-http": "0.3.0"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-uglify": "^2.0.0"
   }
 }

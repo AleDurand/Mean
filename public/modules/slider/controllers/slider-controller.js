@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('SliderModule')
-	.controller('SliderController', function ($scope, $rootScope, Slider) {
+	.controller('SliderController', ['$scope', '$rootScope', 'Slider', function ($scope, $rootScope, Slider) {
 		$('#layerslider').layerSlider('start'); 
         $('slider').show();
     
@@ -10,5 +10,5 @@ angular.module('SliderModule')
                 $scope.images = response;
             })
 	}
-);
+    ]);
  

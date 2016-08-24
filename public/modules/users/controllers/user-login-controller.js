@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('UsersModule')
-    .controller('UserLoginController', function ($scope, $rootScope, $location, $window, User, Authentication) {
+    .controller('UserLoginController',['$scope','$rootScope', '$location','$window', 'User', 'Authentication', function ($scope, $rootScope, $location, $window, User, Authentication) {
         $scope.changePassword = false;
         $scope.master = {};        
         $('#layerslider').layerSlider('stop'); 
@@ -89,7 +89,7 @@ angular.module('UsersModule')
         }
 
 
-    });
+    }]);
  angular.module('UsersModule')   
     .directive('enterDirective', function () {
     return {

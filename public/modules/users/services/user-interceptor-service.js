@@ -35,6 +35,6 @@ angular.module('meanApp')
         };
     }]);
 
-angular.module('meanApp').config(function ($httpProvider) {
+angular.module('meanApp').config(['$httpProvider',function ($httpProvider) {
     $httpProvider.interceptors.push('TokenInterceptor');
-});
+}]);

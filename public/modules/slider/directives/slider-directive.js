@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('SliderModule')
-	.directive('slider', function ($timeout, $rootScope) {
+	.directive('slider',['$timeout','$rootScope', function ($timeout, $rootScope) {
 	  return {
 	    restrict: 'E',
 		controller: "SliderController",
@@ -25,4 +25,4 @@ angular.module('SliderModule')
 		templateUrl:'modules/slider/views/index.html'
 	  }
 	}
-);
+	]);

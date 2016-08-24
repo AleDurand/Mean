@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('meanApp')
-    .factory('TokenInterceptor', function ($q, $window, Authentication) {
+    .factory('TokenInterceptor',['$q', '$window', 'Authentication', function ($q, $window, Authentication) {
         return {
             request: function (config) {
                 config.headers = config.headers || {};
@@ -33,7 +33,7 @@ angular.module('meanApp')
                 return $q.reject(rejection);
             }
         };
-    });
+    }]);
 
 angular.module('meanApp').config(function ($httpProvider) {
     $httpProvider.interceptors.push('TokenInterceptor');

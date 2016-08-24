@@ -18,7 +18,13 @@
     "passport-http": "0.3.0"
   },
   "devDependencies": {
+<<<<<<< HEAD
+    "grunt-contrib-uglify": "~2.0.0",
+    "grunt-cli": "~1.2.0",
+    "grunt": "~1.0.1"
+=======
     "grunt": "^1.0.1",
     "grunt-contrib-uglify": "^2.0.0"
+>>>>>>> 538a75af343428af0368e565f10d3ba486bf54e1
   }
 }

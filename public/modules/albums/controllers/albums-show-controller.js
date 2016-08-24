@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('AlbumsModule')
-    .controller('AlbumsShowController', function ($scope, $rootScope, $route, $http, $routeParams, Album, Contact) {
+    .controller('AlbumsShowController',['$scope','$rootScope','$route','$http', '$routeParams', 'Album', 'Contact', function ($scope, $rootScope, $route, $http, $routeParams, Album, Contact) {
         $('#layerslider').layerSlider('stop'); 
         $('slider').hide();
         $scope.dialog = null;
@@ -166,6 +166,6 @@ angular.module('AlbumsModule')
             }
         }
 
-    });
+    }]);
  
     

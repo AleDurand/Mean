@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('AlbumsModule')
-    .controller('AlbumsIndexController', function ($scope, $rootScope, $route, $location, Album) {
+    .controller('AlbumsIndexController', ['$scope', '$rootScope', '$route', '$location', 'Album', function ($scope, $rootScope, $route, $location, Album) {
         $('#layerslider').layerSlider('stop'); 
         $('slider').hide();
         $scope.showModal = false;
@@ -97,7 +97,7 @@ angular.module('AlbumsModule')
             });
         };
 
-    });
+    }]);
 angular.module('AlbumsModule')
     .directive('modal', function () {
         return {

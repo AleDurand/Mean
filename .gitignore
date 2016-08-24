@@ -36,4 +36,5 @@ node_modules
 # Project files
 public/resources/albums
 media/albums
+Gruntfile.js
 .vscode

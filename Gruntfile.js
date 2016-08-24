@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 module.exports = function(grunt) {
-    grunt.initConfig({
-=======
-  module.exports = function(grunt) {
   grunt.initConfig({
->>>>>>> 538a75af343428af0368e565f10d3ba486bf54e1
       uglify: {
         albums_target: {
           files: {
@@ -12,11 +7,7 @@ module.exports = function(grunt) {
             'public/modules/albums/controllers/albums-show-controller.js': ['public/modules/albums/controllers/albums-show-controller.js'],
             'public/modules/albums/directives/fileModel.js': ['public/modules/albums/directives/fileModel.js'],
             'public/modules/albums/services/album-service.js': ['public/modules/albums/services/album-service.js'],
-<<<<<<< HEAD
             'public/modules/albums/routes.js': ['public/modules/albums/routes.js']            
-          }
-=======
-            'public/modules/albums/routes.js': ['public/modules/albums/routes.js']
           }
         },
         contact_target: {
@@ -43,7 +34,6 @@ module.exports = function(grunt) {
             'public/modules/users/services/user-service.js': ['public/modules/users/services/user-service.js'],
             'public/modules/users/routes.js': ['public/modules/users/routes.js']
         	}
->>>>>>> 538a75af343428af0368e565f10d3ba486bf54e1
         }
       }
     });
@@ -51,7 +41,3 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify'); // load the given tasks asdf
     grunt.registerTask('default', ['uglify']); // Default grunt tasks maps to grunt
   };
-<<<<<<< HEAD
-
-=======
->>>>>>> 538a75af343428af0368e565f10d3ba486bf54e1

@@ -6,7 +6,7 @@ app.config(['$compileProvider', function ($compileProvider) {
 	$compileProvider.debugInfoEnabled(false);
 }]);
 
-app.run(function($rootScope, $location, $document, $route) {
+app.run(['$rootScope', '$location', '$document', '$route',function($rootScope, $location, $document, $route) {
     $rootScope.user = false;
     $rootScope.userLogged = null;
     $rootScope.contact = null;
@@ -96,7 +96,7 @@ app.run(function($rootScope, $location, $document, $route) {
 	    });
 	});
 
-});
+}]);
 
 
 

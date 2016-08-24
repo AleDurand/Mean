@@ -34,6 +34,11 @@ module.exports = function(grunt) {
             'public/modules/users/services/user-service.js': ['public/modules/users/services/user-service.js'],
             'public/modules/users/routes.js': ['public/modules/users/routes.js']
         	}
+        },
+        app_target: {
+          files: {
+            'public/app.js':['public/app.js']
+          }
         }
       }
     });

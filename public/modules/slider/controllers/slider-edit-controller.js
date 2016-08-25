@@ -1,7 +1,11 @@
 'use strict';
 
+
 angular.module('SliderModule')
-	.controller('SliderEditController',['$scope', '$rootScope','$route', '$location', 'Slider', function ($scope, $rootScope, $route, $location, Slider) {
+	.controller('SliderEditController', SliderEditController);
+SliderEditController.$inject = ['$scope', '$rootScope','$route', '$location', 'Slider'];
+
+function SliderEditController($scope, $rootScope, $route, $location, Slider) {
         $scope.showModal = false;
 		
 		Slider.all()
@@ -50,6 +54,5 @@ angular.module('SliderModule')
         };   
 
 
-	}
-]);
+	};
  

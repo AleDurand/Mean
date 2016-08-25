@@ -9,7 +9,7 @@ var storage = multer.diskStorage({
     },
     filename: function (req, file, cb) {
     	var cover = JSON.parse(req.body.cover);
-    	var filename = path.parse(cover.path).base;
+    	var filename = path.basename(cover.path);
         cb(null, filename);
     }
 

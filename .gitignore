@@ -36,4 +36,5 @@ node_modules
 # Project files
 public/
 media/albums
+media/covers
 .vscode

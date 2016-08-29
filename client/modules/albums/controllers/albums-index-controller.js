@@ -33,6 +33,7 @@ angular.module('AlbumsModule')
         $scope.success = null;
         $scope.error = null;
         this.save = function (album, image, imageHeader) {
+            album.albumType = $scope.AlbumType;
             Album.create(album)
                 .success(function (response) {
                     $scope.success = true;

@@ -2,19 +2,25 @@
 var express  = require('express');
 var app      = express();                               // create our app w/ express
 var mongoose = require('mongoose');                     // mongoose for mongodb
-var port     = 50000;                // set the port
-var database = require('./config/database');            // load the database config
 var morgan = require('morgan');             // log requests to the console (express4)
 var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 var multer = require('multer');
-var fs = require('fs');
-var passport = require('passport');		//Authentication 
-var media = require('./config/media');
-// configuration ===============================================================
-mongoose.connect(database.url);     // connect to mongoDB database on modulus.io
+var passport = require('passport');		
 
-app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
+var config = require('./config/config');
+mongoose.connect(config.database);    
+
+var environment = process.env.NODE_ENV || 'development';
+if(environment == 'development'){
+	app.use(express.static(__dirname + '/public/', {
+  		index: 'index.html'
+	}));
+	app.use(express.static(__dirname + '/client/'));
+} else {
+	app.use(express.static(__dirname + '/public')); 	
+}
+
 app.use(express.static(__dirname + '/media'));   
 app.use(morgan('dev'));                                         // log every request to the console
 app.use(bodyParser.json({limit: '50mb'}));
@@ -27,5 +33,6 @@ app.use(passport.initialize());
 require('./app/routes.js')(app);
 
 // listen (start app with node server.js) ======================================
-app.listen(port);
-console.log("App listening on port " + port);
+app.listen(config.port);
+console.log("App listening on port " + config.port);
+console.log("Running on " + environment);

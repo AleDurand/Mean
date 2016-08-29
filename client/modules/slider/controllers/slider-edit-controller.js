@@ -2,10 +2,7 @@
 
 
 angular.module('SliderModule')
-	.controller('SliderEditController', SliderEditController);
-SliderEditController.$inject = ['$scope', '$rootScope','$route', '$location', 'Slider'];
-
-function SliderEditController($scope, $rootScope, $route, $location, Slider) {
+	.controller('SliderEditController', ['$scope', '$rootScope','$route', '$location', 'Slider', function ($scope, $rootScope, $route, $location, Slider) {
         $scope.showModal = false;
 		
 		Slider.all()
@@ -52,7 +49,6 @@ function SliderEditController($scope, $rootScope, $route, $location, Slider) {
             $scope.toggleModal();
             $scope.cover = cover;
         };   
-
-
-	};
+	}
+]);
  

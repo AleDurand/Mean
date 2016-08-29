@@ -8,17 +8,17 @@ var Albums = require('../models/album');
 var Photos = require('../models/photo');
 var upload = require('../utils/upload');
 var errorHandler = require('../errors/errorHandler');
-var media = require('../../config/media');
+var config = require('../../config/config');
 
 exports.create = function(req, res) {
     Albums.create({
         name : req.body.name,
         description : req.body.description,
         albumType: req.body.albumType,
-        path : media.path_albums + req.body.name + "/"
+        path : config.path_albums + req.body.name + "/"
     })
     .then(function(album){
-        fs.mkdirSync(media.path_media + media.path_albums + req.body.name);
+        fs.mkdirSync(config.path_media + config.path_albums + req.body.name);
         return res.status(201).send(album);
     })
     .catch(function(error) {
@@ -70,7 +70,7 @@ exports.delete = function(req, res) {
         return album;
     })
     .then(function(album){
-        rmdir(media.path_media + album.path);
+        rmdir(config.path_media + album.path);
         return res.status(204).end();
     })
     .catch(function(error) {
@@ -86,7 +86,7 @@ exports.deletePhoto = function(req,res){
        return photo; 
     })
     .then(function(photo){
-        fs.unlink(media.path_media + photo.path);
+        fs.unlink(config.path_media + photo.path);
         return res.status(204).end();
     })
     .catch(function(error) {

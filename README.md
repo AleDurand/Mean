@@ -18,7 +18,7 @@ This can be fixed with nodemon. To use:
 
 	NODE_ENV=production nodemon server.js
 	
-## Execute the following command to build and run the app in development:
+## Execute the following command to build and run the app in development enviroment:
 	
 	grunt dev
 

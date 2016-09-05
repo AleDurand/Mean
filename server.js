@@ -1,21 +1,12 @@
  // set up ======================================================================
 var express  = require('express');
-var app      = express();                               
-var mongoose = require('mongoose');                     
-var morgan = require('morgan');         
-// pull information from HTML POST (express4)    
-var bodyParser = require('body-parser');    
-// simulate DELETE and PUT (express4)
-var methodOverride = require('method-override'); 
+var app      = express();                               // create our app w/ express
+var mongoose = require('mongoose');                     // mongoose for mongodb
+var morgan = require('morgan');             // log requests to the console (express4)
+var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
+var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 var multer = require('multer');
 var passport = require('passport');		
-var FileStreamRotator = require('file-stream-rotator');
-var fs = require('fs');
-var path = require('path');
-var winston = require('winston');
-	winston.emitErrs = true;
-require('winston-daily-rotate-file');	
-
 
 var config = require('./config/config');
 mongoose.connect(config.database);    
@@ -26,65 +17,22 @@ if(environment == 'development'){
   		index: 'index.html'
 	}));
 	app.use(express.static(__dirname + '/client/'));
-	app.use(morgan('dev'));      
 } else {
-	app.use(express.static(__dirname + '/public'));
-	fs.existsSync('logs') || fs.mkdirSync('logs'); 	
-	var logger = new (winston.Logger)({
-		transports: [
-        	new (winston.transports.DailyRotateFile)({
-            	filename: '-all.log',
-            	dirname: 'logs',
-            	datePattern: 'yyyy-MM-dd',
-            	prepend: true,
-            	timestamp: 'YYYY-MM-DD'
-        	}),
-        	new winston.transports.File({ filename: 'all', json: false }),
-        	new winston.transports.Console({
-            	level: 'debug',
-            	handleExceptions: false,
-            	json: false,
-            	colorize: true
-        	})
-    	],
-	    exceptionHandlers: [
-      		new (winston.transports.DailyRotateFile)({
-            	filename: '-exceptions.log',
-            	dirname: 'logs',
-            	datePattern: 'yyyy-MM-dd',
-            	prepend: true,
-            	timestamp: true,
-            	humanReadableUnhandledException: true
-        	}),
-        	new winston.transports.Console({
-            	level: 'debug',
-            	json: true,
-            	colorize: true
-        	})
-	    ],
-	    exitOnError: false
-	});
-
-	var accessLogStream = FileStreamRotator.getStream({
-  		date_format: 'YYYY-MM-DD',
-  		filename: path.join(path.join(__dirname, 'logs'), '%DATE%-requests.log'),
-  		frequency: 'daily',
-  		verbose: true
-	})
-	app.use(morgan('combined', {stream: accessLogStream}))
-	
+	app.use(express.static(__dirname + '/public')); 	
 }
 
 app.use(express.static(__dirname + '/media'));   
+app.use(morgan('dev'));                                         // log every request to the console
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));                                  
-app.use(bodyParser.json({ type: 'application/vnd.api+json' })); 
+app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
 app.use(methodOverride());
 app.use(passport.initialize());
 
+// routes ======================================================================
 require('./app/routes.js')(app);
 
+// listen (start app with node server.js) ======================================
 app.listen(config.port);
-
-console.log("[APPLICATION] App listening on port " + config.port);
-console.log("[APPLICATION] Running on " + environment);
+console.log("App listening on port " + config.port);
+console.log("Running on " + environment);

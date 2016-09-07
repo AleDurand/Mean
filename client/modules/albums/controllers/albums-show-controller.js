@@ -20,6 +20,7 @@ angular.module('AlbumsModule')
             .success(function (response) {
                 $scope.success = true;
                 $scope.album = response;
+                $scope.url = encodeURIComponent(response.albumImageHeaderPath);
             })
             .error(function (response) {
                 $scope.error = response.message;

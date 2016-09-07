@@ -1,4 +1,4 @@
-<section class="header-image header-feature1 partial-box clearfix animated flipInY" ng-style="{'background-image':'url('+album.albumImageHeaderPath+') '}">
+<section class="header-image header-feature1 partial-box clearfix animated flipInY" >
     <div class="wrapper" ng-click="user && showController.hideTooltips($event)">
         <div class="tooltip" ng-click="$event.stopPropagation()" ng-show="showtooltipName">
             <input maxlenght="48" type="text" ng-model="album.name" />
@@ -180,3 +180,9 @@
     });
 
 </script>
+
+<style>
+    .header-image.header-feature1 {
+            background:  url({{url}}) no-repeat;
+    }
+    </style>

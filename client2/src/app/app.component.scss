@@ -1,8 +1,18 @@
 header {
+  border-bottom: #ffbe00 solid 5px;
+  .brand-logo {
+    padding-left: 50px;
+    padding-top: 3px;
+  }
+}
 
+.content {
+  background-color: black;
+  height: 100%;
 }
 
 footer {
+  border-top: #ffbe00 solid 5px;
   position: fixed;
   bottom: 0;
   width: 100%;

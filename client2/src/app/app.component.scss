@@ -1,4 +1,10 @@
-.logo {
-  margin-top: 40px;
-  margin-right: 10px;
+md-toolbar {
+  .logo {
+    margin-top: 80px;
+    margin-left: 20px;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
 }

@@ -16,7 +16,7 @@
       "polyfills": "polyfills.ts",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

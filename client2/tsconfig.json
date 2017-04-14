@@ -12,7 +12,10 @@
     "typeRoots": [
       "node_modules/@types"
     ],
-    "types": ["hammerjs"],
+    "types": [
+      "jquery",
+      "materialize-css"
+    ],
     "lib": [
       "es2016",
       "dom"

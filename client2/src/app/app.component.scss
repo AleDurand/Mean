@@ -1,10 +1,9 @@
-md-toolbar {
-  .logo {
-    margin-top: 80px;
-    margin-left: 20px;
-  }
+header {
 
-  .spacer {
-    flex: 1 1 auto;
-  }
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }

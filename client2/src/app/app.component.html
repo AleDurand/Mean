@@ -1,15 +1,39 @@
-<md-toolbar color="primary">
-  <span class="logo">
-    <img src="assets/marce_logo_opt5.png" alt="logo" />
-  </span>
-  <span class="spacer"></span>
-  <span>
-    <md-tab-group layout-align="start center" >
-      <md-tab label="Inicio"></md-tab>
-      <md-tab label="15 a&ntilde;os"></md-tab>
-      <md-tab label="Bautismos"></md-tab>
-      <md-tab label="Otros eventos"></md-tab>
-      <md-tab label="Contacto"></md-tab>
-    </md-tab-group>
-  </span>
-</md-toolbar>
+<header>
+  <mz-navbar>
+    <a href="#" class="brand-logo">
+      <img src="assets/marce_logo_opt5.png" alt="logo" />
+    </a>
+    <mz-navbar-item-container [align]="'right'">
+      <mz-navbar-item *ngFor="let tab of tabs;">
+        <a href="#">{{ tab.title }}</a>
+      </mz-navbar-item>
+    </mz-navbar-item-container>
+  </mz-navbar>
+</header>
+
+<div class="content">
+
+</div>
+
+<footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">Marcela Sanchez Fotograf&iacute;as</h5>
+        <p class="grey-text text-lighten-4">Espacio dedicado a mostrar las fotos tomadas en diferentes eventos.</p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">Links</h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+    © 2017 Alejandro Durand - Mariano Rodecker
+    </div>
+  </div>
+</footer>

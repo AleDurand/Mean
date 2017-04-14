@@ -1,24 +1,24 @@
  // set up ======================================================================
 var express  = require('express');
-var app      = express();                               
-var mongoose = require('mongoose');                     
-var morgan = require('morgan');         
-// pull information from HTML POST (express4)    
-var bodyParser = require('body-parser');    
+var app      = express();
+var mongoose = require('mongoose');
+var morgan = require('morgan');
+// pull information from HTML POST (express4)
+var bodyParser = require('body-parser');
 // simulate DELETE and PUT (express4)
-var methodOverride = require('method-override'); 
+var methodOverride = require('method-override');
 var multer = require('multer');
-var passport = require('passport');		
+var passport = require('passport');
 var FileStreamRotator = require('file-stream-rotator');
 var fs = require('fs');
 var path = require('path');
 var winston = require('winston');
 	winston.emitErrs = true;
-require('winston-daily-rotate-file');	
+require('winston-daily-rotate-file');
 
 
 var config = require('./config/config');
-mongoose.connect(config.database);    
+mongoose.connect(config.database);
 
 var environment = process.env.NODE_ENV || 'development';
 if(environment == 'development'){
@@ -26,10 +26,10 @@ if(environment == 'development'){
   		index: 'index.html'
 	}));
 	app.use(express.static(__dirname + '/client/'));
-	app.use(morgan('dev'));      
+	app.use(morgan('dev'));
 } else {
 	app.use(express.static(__dirname + '/public'));
-	fs.existsSync('logs') || fs.mkdirSync('logs'); 	
+	fs.existsSync('logs') || fs.mkdirSync('logs');
 	var logger = new (winston.Logger)({
 		transports: [
         	new (winston.transports.DailyRotateFile)({
@@ -72,17 +72,17 @@ if(environment == 'development'){
   		verbose: true
 	})
 	app.use(morgan('combined', {stream: accessLogStream}))
-	
+
 }
 
-app.use(express.static(__dirname + '/media'));   
+app.use(express.static(__dirname + '/media'));
 app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));                                  
-app.use(bodyParser.json({ type: 'application/vnd.api+json' })); 
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(methodOverride());
 app.use(passport.initialize());
 
-require('./app/routes.js')(app);
+require('./server/routes.js')(app);
 
 app.listen(config.port);
 

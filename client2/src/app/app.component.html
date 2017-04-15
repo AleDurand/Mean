@@ -4,9 +4,13 @@
       <img src="assets/marce_logo_opt5.png" alt="logo" />
     </a>
     <mz-navbar-item-container [align]="'right'">
-      <mz-navbar-item *ngFor="let tab of tabs;">
-        <a href="#">{{ tab.title }}</a>
-      </mz-navbar-item>
+      <tabs>
+        <tab *ngFor="let tab of tabs;" (tabClicked)="selectTab(tab)" [title]="tab.title">
+          <mz-navbar-item>
+            <a href="#">{{ tab.title }}</a>
+          </mz-navbar-item>
+        </tab>
+      </tabs>
     </mz-navbar-item-container>
   </mz-navbar>
 </header>

@@ -1,4 +1,4 @@
-import { Component, Optional } from '@angular/core';
+import { Component, Optional, ViewChild } from '@angular/core';
 
 export interface Tab {
   title: string;
@@ -8,13 +8,11 @@ export interface Tab {
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
 
   public tabs: Array<Tab>;
-  public selectedTab: number = 0;
-  public smallResolution: boolean;
 
   constructor() {
     this.tabs = [
@@ -26,12 +24,8 @@ export class AppComponent {
     ];
   }
 
-  updateSelectedTab($event) {
-    this.selectedTab = $event;
-  }
-
-  showMenu() {
-
+  selectTab(tab: Tab) {
+    console.log(tab.title);
   }
 
 }

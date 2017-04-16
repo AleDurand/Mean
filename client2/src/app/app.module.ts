@@ -1,6 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { MaterializeModule } from 'ng2-materialize';
@@ -26,7 +26,7 @@ import { PageNotFoundComponent } from '../pages/page-not-found/page-not-found.co
   ],
   imports: [
     AppRoutingModule, BrowserModule, ComponentsModule.forRoot(),
-    FormsModule, HttpModule, MaterializeModule.forRoot(),
+    FormsModule, ReactiveFormsModule, HttpModule, MaterializeModule.forRoot(),
     PipesModule, RouterModule
   ],
   bootstrap: [AppComponent],

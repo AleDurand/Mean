@@ -16,12 +16,13 @@ import { PipesModule } from '../pipes/pipes.module';
 import { AlbumListComponent } from '../pages/albums/album-list/album-list.component';
 import { ContactComponent } from '../pages/contact/contact.component';
 import { HomeComponent } from '../pages/home/home.component';
+import { LoginComponent } from '../pages/login/login.component';
 import { PageNotFoundComponent } from '../pages/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent, AlbumListComponent, ContactComponent,
-    HomeComponent, PageNotFoundComponent
+    LoginComponent, HomeComponent, PageNotFoundComponent
   ],
   imports: [
     AppRoutingModule, BrowserModule, ComponentsModule.forRoot(),

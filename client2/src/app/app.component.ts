@@ -23,7 +23,7 @@ export class AppComponent {
 
   constructor() {
     this.tabs = [
-      { title: 'Inicio', url: '/', selected: false },
+      { title: 'Inicio', url: '/home', selected: false },
       { title: 'Cumplea\u00F1os', url: '/birthdays', selected: false },
       { title: 'Bodas', url: '/weddings', selected: false },
       { title: 'Otros eventos', url: '/other-events', selected: false },
@@ -32,7 +32,7 @@ export class AppComponent {
   }
 
   selectTab(tab: Tab) {
-    
+
   }
 
 }

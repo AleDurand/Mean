@@ -8,8 +8,10 @@ import { PageNotFoundComponent } from '../pages/page-not-found/page-not-found.co
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'albums', component: AlbumListComponent },
-  { path: 'contact', component: ContactComponent },
+  { path: 'birthdays', component: AlbumListComponent, data: { filter: 'birthdays'} },
+  { path: 'weddings', component: AlbumListComponent, data: { filter: 'weddings'} },
+  { path: 'other-events', component: AlbumListComponent, data: { filter: 'other-events'} },
+  { path: 'contact', component: ContactComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];

@@ -24,15 +24,15 @@ export class AppComponent {
   constructor() {
     this.tabs = [
       { title: 'Inicio', url: '/', selected: false },
-      { title: '15 a\u00F1os', url: '/albums', selected: false },
-      { title: 'Bautismos', url: '/albums', selected: false },
-      { title: 'Otros eventos', url: '/albums', selected: false },
+      { title: 'Cumplea\u00F1os', url: '/birthdays', selected: false },
+      { title: 'Bodas', url: '/weddings', selected: false },
+      { title: 'Otros eventos', url: '/other-events', selected: false },
       { title: 'Contacto', url: '/contact', selected: false }
     ];
   }
 
   selectTab(tab: Tab) {
-    console.log(tab.title);
+    
   }
 
 }

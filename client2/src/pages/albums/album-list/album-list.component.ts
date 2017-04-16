@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'album-list-page',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AlbumListComponent {
 
+  public filter: string;
+
+  constructor(private route: ActivatedRoute) {
+    this.route.data.subscribe((data) => {
+      this.filter = data.filter;
+      console.log(this.filter);
+    });
+  }
 }

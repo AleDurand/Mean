@@ -25,9 +25,9 @@ export class TabsComponent implements AfterContentInit {
 
   selectTab(tab: TabComponent) {
     this.tabs.toArray().forEach((tab) => {
-      if(tab) tab.selected = false;
+      tab.setSelected(false);
     });
-    if(tab) tab.selected = true;
+    tab.setSelected(true);
   }
 
 }

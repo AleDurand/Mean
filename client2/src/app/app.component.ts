@@ -1,8 +1,13 @@
-import { Component, Optional, ViewChild } from '@angular/core';
+import { Component, ElementRef, Optional, ViewChild } from '@angular/core';
+
+import { TabsComponent } from '../components/tabs/tabs/tabs.component';
+
+import { AlbumListComponent } from '../pages/albums/album-list/album-list.component';
 
 export interface Tab {
   title: string;
-  component: any;
+  url: string;
+  selected: boolean;
 }
 
 @Component({
@@ -14,13 +19,15 @@ export class AppComponent {
 
   public tabs: Array<Tab>;
 
+  @ViewChild(TabsComponent) tabsComponent;
+
   constructor() {
     this.tabs = [
-      { title: 'Inicio', component: '' },
-      { title: '15 a\u00F1os', component: '' },
-      { title: 'Bautismos', component: '' },
-      { title: 'Otros eventos', component: '' },
-      { title: 'Contacto', component: '' }
+      { title: 'Inicio', url: '/', selected: false },
+      { title: '15 a\u00F1os', url: '/albums', selected: false },
+      { title: 'Bautismos', url: '/albums', selected: false },
+      { title: 'Otros eventos', url: '/albums', selected: false },
+      { title: 'Contacto', url: '/', selected: false }
     ];
   }
 

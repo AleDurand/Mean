@@ -1,12 +1,17 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 
-import { TabsComponent } from './tabs/tabs/tabs.component';;
-import { TabComponent } from './tabs/tab/tab.component';
+import * as TabsComponent from './tabs';
 
 @NgModule({
-  imports: [ BrowserModule ],
-  declarations: [TabsComponent, TabComponent ],
-  exports: [ TabsComponent, TabComponent ]
+  imports: [ CommonModule ],
+  declarations: [TabsComponent.TabsComponent, TabsComponent.TabComponent ],
+  exports: [ TabsComponent.TabsComponent, TabsComponent.TabComponent ]
 })
-export class ComponentsModule { }
+export class ComponentsModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: ComponentsModule,
+    };
+  }
+}

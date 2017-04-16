@@ -7,7 +7,7 @@
       <tabs>
         <tab *ngFor="let tab of tabs;" (tabClicked)="selectTab(tab)" [title]="tab.title">
           <mz-navbar-item>
-            <a href="#">{{ tab.title }}</a>
+            <a [routerLink]="tab.url" routerLinkActive="active">{{ tab.title }}</a>
           </mz-navbar-item>
         </tab>
       </tabs>
@@ -16,7 +16,7 @@
 </header>
 
 <div class="content">
-
+  <router-outlet></router-outlet>
 </div>
 
 <footer class="page-footer">

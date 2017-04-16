@@ -4,6 +4,16 @@ header {
     padding-left: 50px;
     padding-top: 3px;
   }
+
+  tab {
+    a:hover {
+      background: #f5b406;
+    }
+
+    &.selected a {
+      background: #f5b406;
+    }
+  }
 }
 
 .content {

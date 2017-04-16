@@ -27,7 +27,7 @@ export class AppComponent {
       { title: '15 a\u00F1os', url: '/albums', selected: false },
       { title: 'Bautismos', url: '/albums', selected: false },
       { title: 'Otros eventos', url: '/albums', selected: false },
-      { title: 'Contacto', url: '/', selected: false }
+      { title: 'Contacto', url: '/contact', selected: false }
     ];
   }
 

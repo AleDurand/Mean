@@ -14,10 +14,15 @@ import { ComponentsModule } from '../components/components.module';
 import { PipesModule } from '../pipes/pipes.module';
 
 import { AlbumListComponent } from '../pages/albums/album-list/album-list.component';
+import { ContactComponent } from '../pages/contact/contact.component';
+import { HomeComponent } from '../pages/home/home.component';
 import { PageNotFoundComponent } from '../pages/page-not-found/page-not-found.component';
 
 @NgModule({
-  declarations: [AppComponent, AlbumListComponent, PageNotFoundComponent],
+  declarations: [
+    AppComponent, AlbumListComponent, ContactComponent,
+    HomeComponent, PageNotFoundComponent
+  ],
   imports: [
     AppRoutingModule, BrowserModule, ComponentsModule.forRoot(),
     FormsModule, HttpModule, MaterializeModule.forRoot(),

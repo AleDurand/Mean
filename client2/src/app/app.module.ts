@@ -23,6 +23,9 @@ import { HomeComponent } from '../pages/home/home.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { PageNotFoundComponent } from '../pages/page-not-found/page-not-found.component';
 
+import { AlbumService } from '../services/album.service';
+import { SafeHttp } from '../services/safe-http.service';
+
 @NgModule({
   declarations: [
     AppComponent, AlbumListComponent, ContactComponent,
@@ -34,7 +37,7 @@ import { PageNotFoundComponent } from '../pages/page-not-found/page-not-found.co
     PipesModule, RouterModule
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ ],
-  providers: [ ]
+  entryComponents: [],
+  providers: [ AlbumService, SafeHttp ]
 })
 export class AppModule { }

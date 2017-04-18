@@ -4,8 +4,8 @@ export class ModelFactory {
     var fields = (<any> this.constructor)._alias;
     for (var field in fields) {
       var alias = fields[field]['alias'];
-      if(!this.isNullOrUndefined(args[alias]) || this.isNullOrUndefined(args[field])) {
-        var value = args[alias] | args[field];
+      if(!this.isNullOrUndefined(args[alias]) || !this.isNullOrUndefined(args[field])) {
+        var value = args[alias] || args[field];
         if(this.isPrimitiveOrPrimitiveClass(value)) {
           var type = fields[field]['type'];
           if(this.isNullOrUndefined(type)) {

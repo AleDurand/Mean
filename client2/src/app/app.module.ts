@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-import { MaterializeModule } from 'ng2-materialize';
+
+import 'hammerjs';
 
 import { Router, RouterOutlet, RouterOutletMap } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { MyMaterialModule } from './app-material.module';
 
 import { ComponentsModule } from '../components/components.module';
 import { PipesModule } from '../pipes/pipes.module';
@@ -25,8 +29,8 @@ import { PageNotFoundComponent } from '../pages/page-not-found/page-not-found.co
     LoginComponent, HomeComponent, PageNotFoundComponent
   ],
   imports: [
-    AppRoutingModule, BrowserModule, ComponentsModule.forRoot(),
-    FormsModule, ReactiveFormsModule, HttpModule, MaterializeModule.forRoot(),
+    AppRoutingModule, BrowserModule, BrowserAnimationsModule, ComponentsModule.forRoot(),
+    FormsModule, ReactiveFormsModule, HttpModule, MaterialModule.forRoot(), MyMaterialModule,
     PipesModule, RouterModule
   ],
   bootstrap: [AppComponent],

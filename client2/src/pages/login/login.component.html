@@ -1,14 +1,11 @@
 <div>
   <form [formGroup]="loginForm" (ngSubmit)="loginForm.valid && login()" novalidate>
-    <mz-input-container>
-      <input mz-input [label]="'Usuario'" formControlName="username" length="50" type="text">
-    </mz-input-container>
-    <mz-input-container>
-      <input mz-input [label]="'Contrase&ntilde;a'" formControlName="password" length="50" type="password">
-    </mz-input-container>
+
+    <input md-input formControlName="username" length="50" type="text">
+  
+    <input md-input formControlName="password" length="50" type="password">
     <div>
-      <mz-progress *ngIf="loading" [backgroundClass]="'blue lighten-4'" [progressClass]="'blue'"></mz-progress>
-      <button mz-button [disabled]="loading || !loginForm.valid" type="submit">Login</button>
+      <button md-button [disabled]="loading || !loginForm.valid" type="submit">Login</button>
     </div>
   </form>
 </div>

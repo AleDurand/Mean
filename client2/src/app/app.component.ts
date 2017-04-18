@@ -1,4 +1,5 @@
 import { Component, ElementRef, Optional, ViewChild } from '@angular/core';
+import { MdTabNavBar } from '@angular/material'
 
 import { TabsComponent } from '../components/tabs/tabs/tabs.component';
 
@@ -14,6 +15,7 @@ export interface Tab {
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  providers: [ MdTabNavBar ]
 })
 export class AppComponent {
 

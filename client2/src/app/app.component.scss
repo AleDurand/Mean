@@ -1,18 +1,17 @@
 header {
   border-bottom: #ffbe00 solid 5px;
+
+  nav {
+    border: 0;
+  }
+
   .brand-logo {
     padding-left: 50px;
     padding-top: 3px;
   }
 
-  tab {
-    a:hover {
-      background: #f5b406;
-    }
-
-    &.selected a {
-      background: #f5b406;
-    }
+  .fill-remaining-space {
+    flex: 1 1 auto;
   }
 }
 
@@ -21,8 +20,24 @@ header {
 }
 
 footer {
+  display: inline-block;
   border-top: #ffbe00 solid 5px;
+  background-color: #212121;
   position: fixed;
   bottom: 0;
   width: 100%;
+
+  .footer-description {
+    padding: 16px 32px;
+    width: 100%;
+    text-align: left;
+    font-size: small;
+  }
+
+  .footer-copyright {
+    padding: 16px 32px 16px 0px;
+    width: 100%;
+    text-align: right;
+    font-size: small;
+  }
 }

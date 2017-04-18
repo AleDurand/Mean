@@ -1,43 +1,32 @@
 <header>
-  <mz-navbar>
-    <a href="#" class="brand-logo">
-      <img src="assets/marce_logo_opt5.png" alt="logo" />
-    </a>
-    <mz-navbar-item-container [align]="'right'">
-      <tabs>
-        <tab *ngFor="let tab of tabs;" (tabClicked)="selectTab(tab)" [title]="tab.title">
-          <mz-navbar-item>
-            <a [routerLink]="tab.url" routerLinkActive="active">{{ tab.title }}</a>
-          </mz-navbar-item>
-        </tab>
-      </tabs>
-    </mz-navbar-item-container>
-  </mz-navbar>
+  <nav md-tab-nav-bar>
+    <md-toolbar color="primary">
+      <span>
+        <a md-tab-link routerLink="/" class="brand-logo">
+          <img src="assets/marce_logo_opt.png" alt="logo" />
+        </a>
+      </span>
+      <span class="fill-remaining-space"></span>
+      <span>
+        <a md-tab-link *ngFor="let tab of tabs;" [routerLink]="tab.url" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">{{ tab.title }}</a>
+      </span>
+    </md-toolbar>
+  </nav>
 </header>
 
 <div class="content">
   <router-outlet></router-outlet>
 </div>
 
-<footer class="page-footer">
-  <div class="container">
-    <div class="row">
-      <div class="col l6 s12">
-        <h5 class="white-text">Marcela Sanchez Fotograf&iacute;as</h5>
-        <p class="grey-text text-lighten-4">Espacio dedicado a mostrar las fotos tomadas en diferentes eventos.</p>
-      </div>
-      <div class="col l4 offset-l2 s12">
-        <h5 class="white-text">Links</h5>
-        <ul>
-          <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-          <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="footer-copyright">
-    <div class="container">
-    © 2017 Alejandro Durand - Mariano Rodecker
-    </div>
-  </div>
+<footer>
+  <md-toolbar color="primary">
+    <span class="footer-description">
+      <h3>Marcela Sanchez Fotograf&iacute;as</h3>
+      <p>Espacio dedicado a mostrar las fotos tomadas en diferentes eventos.</p>
+    </span>
+    <span class="fill-remaining-space"></span>
+    <span>
+      <p class="footer-copyright">© 2017 Alejandro Durand - Mariano Rodecker</p>
+    </span>
+  </md-toolbar>
 </footer>
